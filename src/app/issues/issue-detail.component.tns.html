@@ -1,0 +1,55 @@
+<ActionBar [title]="'Issue #' + issue?.id" [class.issue-open]="issue?.state === 'open'" [class.issue-closed]="issue?.state === 'closed'">
+  <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" (tap)="onNavBtnTap()"></NavigationButton>
+</ActionBar>
+
+<GridLayout rows="auto *">
+  <!-- Header -->
+  <StackLayout *ngIf="issue" class="issue-detail-title" [class.issue-open]="issue?.state === 'open'" [class.issue-closed]="issue?.state === 'closed'">
+    <Label [text]="issue?.title" textWrap="true" class="title"></Label>
+    <Label [text]="issue?.state | uppercase" class="status-tag"></Label>
+  </StackLayout>
+
+  <!-- Scrollable Conetnet -->
+  <ScrollView row="1" *ngIf="issue">
+    <StackLayout>
+      <ns-section title="Description">
+        <Label row="1" [text]="issue?.body | truncate: truncateLength" textWrap="true"></Label>
+        <Label *ngIf="issue?.body.length > 200" [text]="isTruncating ? 'see more' : 'see less'" (tap)="toggleTruncate()" class="link-btn"></Label>
+      </ns-section>
+
+      <ns-section title="Labels">
+        <WrapLayout orientation="horizontal" col="1" row="2" margin="6 0">
+          <Label *ngFor="let label of issue?.labels" [text]="label.name" [style.backgroundColor]="label.color" class="tag"></Label>
+        </WrapLayout>
+      </ns-section>
+
+      <ns-section title="Assignees">
+        <ns-user *ngFor="let assignee of issue?.assignees" [user]="assignee"></ns-user>
+      </ns-section>
+
+      <ns-section>
+        <GridLayout rows="auto auto auto auto" columns="* *">
+          <Label row="0" text="Created on" class="section-title"></Label>
+          <Label row="1" [text]="issue?.date | date"></Label>
+
+          <Label col="1" row="0" *ngIf="issue?.dateClosed" text="Closed on" class="section-title"></Label>
+          <Label col="1" row="1" *ngIf="issue?.dateClosed" [text]="issue?.dateClosed | date"></Label>
+
+          <Label row="2" *ngIf="issue?.milestone" text="Milestone" class="section-title"></Label>
+          <Label row="3" *ngIf="issue?.milestone" [text]="issue?.milestone?.title"></Label>
+        </GridLayout>
+      </ns-section>
+
+      <ns-section title="Author">
+        <ns-user [user]="issue?.author"></ns-user>
+      </ns-section>
+
+      <!--<ns-section title="Participants">
+      </ns-section>-->
+
+      <!--<Label [text]="issue | json" textWrap="true"></Label>-->
+    </StackLayout>
+  </ScrollView>
+
+  <ActivityIndicator width="100" height="100" [busy]="!issue" rowSpan="2"></ActivityIndicator>
+</GridLayout>
