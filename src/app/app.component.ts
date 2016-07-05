@@ -3,33 +3,20 @@
  */
 import { Component, ViewEncapsulation, ElementRef, ViewChild } from '@angular/core';
 import { AppState } from './app.service';
-import * as $ from "jquery";
-import "kendo-ui-core";
-
-@Component({
-    selector: 'kendo-ng-slider',
-    template: '<input #input type="text" />'
-})
-class Slider {
-    @ViewChild('input') private input: ElementRef;
-
-    ngOnInit() {
-        $(this.input.nativeElement).kendoSlider();
-    }
-}
-
+import { KendoSlider } from '@telerik/kendo-angular-inputs';
 /*
  * App Component
  * Top Level Component
  */
 @Component({
-  directives: [ Slider ],
+  directives: [ KendoSlider ],
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   styles: [
       require("./app.style.scss").toString()
   ],
   template: `
+    <kendo-slider></kendo-slider>
     <div class="container-fluid">
         <div class="row">
             <nav class="col-sm-4">
