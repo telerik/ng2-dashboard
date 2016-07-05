@@ -1,61 +1,77 @@
 /*
  * Angular 2 decorators and services
  */
-import { Component, ViewEncapsulation } from '@angular/core';
-
+import { Component, ViewEncapsulation, ElementRef, ViewChild } from '@angular/core';
 import { AppState } from './app.service';
+import * as $ from "jquery";
+import "kendo-ui-core";
+
+@Component({
+    selector: 'kendo-ng-slider',
+    template: '<input #input type="text" />'
+})
+class Slider {
+    @ViewChild('input') private input: ElementRef;
+
+    ngOnInit() {
+        $(this.input.nativeElement).kendoSlider();
+    }
+}
 
 /*
  * App Component
  * Top Level Component
  */
 @Component({
+  directives: [ Slider ],
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: [
-    './app.style.css'
+  styles: [
+      require("./app.style.scss").toString()
   ],
   template: `
-    <nav>
-      <span>
-        <a [routerLink]=" ['./'] ">
-          Index
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./home'] ">
-          Home
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./detail'] ">
-          Detail
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./about'] ">
-          About
-        </a>
-      </span>
-    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-sm-4">
+              <span>
+                <a [routerLink]=" ['./'] ">
+                  Index
+                </a>
+              </span>
+              |
+              <span>
+                <a [routerLink]=" ['./home'] ">
+                  Home
+                </a>
+              </span>
+              |
+              <span>
+                <a [routerLink]=" ['./detail'] ">
+                  Detail
+                </a>
+              </span>
+              |
+              <span>
+                <a [routerLink]=" ['./about'] ">
+                  About
+                </a>
+              </span>
+            </nav>
 
-    <main>
-      <router-outlet></router-outlet>
-    </main>
+            <main class="col-sm-4">
+              <h1>Example heading <span class="label label-primary">New</span></h1>
 
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
+              <kendo-ng-slider></kendo-ng-slider>
 
-    <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
-        </a>
-      </div>
-    </footer>
+              <router-outlet></router-outlet>
+            </main>
+        </div>
+
+        <div class="row">
+            <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
+        </div>
+
+    </div>
   `
 })
 export class App {
