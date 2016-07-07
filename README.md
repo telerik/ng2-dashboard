@@ -1,4 +1,4 @@
-The original README.md with plenty of technical details is moved to [ng-class-readme](https://github.com/telerik/ng2-dashboard/blob/master/ng-class-readme.md)
+The original README.md with plenty of technical details is moved to [ng-class-readme](https://github.com/telerik/ng2-dashboard/blob/master/ng-class-readme.md).
 
 # Kendo UI for Angular 2 Proof of Concept — Northwind Dashboard
 
