@@ -3,20 +3,15 @@
  */
 import { Component, ViewEncapsulation, ElementRef, ViewChild } from '@angular/core';
 import { AppState } from './app.service';
-import { KendoSlider } from '@telerik/kendo-angular-inputs';
+
 /*
  * App Component
  * Top Level Component
  */
 @Component({
-  directives: [ KendoSlider ],
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  styles: [
-      require("./app.style.scss").toString()
-  ],
   template: `
-    <kendo-slider></kendo-slider>
     <div class="container-fluid">
         <div class="row">
             <nav class="col-sm-4">
@@ -47,9 +42,6 @@ import { KendoSlider } from '@telerik/kendo-angular-inputs';
 
             <main class="col-sm-4">
               <h1>Example heading <span class="label label-primary">New</span></h1>
-
-              <kendo-ng-slider></kendo-ng-slider>
-
               <router-outlet></router-outlet>
             </main>
         </div>

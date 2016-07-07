@@ -1,41 +1,9 @@
-<div class="card-container">
-  <h1 x-large class="sample-content">Your Content Here</h1>
+<kendo-slider [min]='min' [max]='max' [smallStep]='smallStep' [value]='value' (valueChange)="onValueChange($event)"></kendo-slider>  Value: {{value}}<br /><br />
+<kendo-switch [checked]="checked"></kendo-switch> <br /> <br />
 
-  <div>
-    For material design components use the <a href="https://github.com/AngularClass/angular2-webpack-starter/tree/material2"><b>material2</b></a> branch
-  </div>
-
-  <hr>
-
-  <div>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
-  </div>
-
-  <hr>
-
-  <div>
-    <h4>Local State</h4>
-
-    <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
-
-      <input
-        [value]="localState.value"
-        (input)="localState.value = $event.target.value"
-        placeholder="Submit Local State to App State"
-        autofocus>
-
-      <button md-raised-button color="primary">Submit Value</button>
-    </form>
-    <!--
-        <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
-        Rather than wiring up two-way data-binding ourselves with [value] and (input)
-        we can use Angular's [(ngModel)] syntax
-        <input type="text" name="textInput" [(ngModel)]="localState.value" autofocus>
-      -->
-
-    <pre>this.localState = {{ localState | json }}</pre>
-
-  </div>
-
-</div>
+<button kendoButton [icon]="'refresh'">My Button</button> <br /><br />
+<kendo-button-group>
+  <button kendoButton [togglable]="true" [icon]="icon">Button1</button>
+  <button kendoButton [togglable]="true" [iconClass]="iconClass">Button2</button>
+  <button kendoButton [togglable]="true" [icon]="icon">Button3</button>
+</kendo-button-group>
