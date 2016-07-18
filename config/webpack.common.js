@@ -172,7 +172,16 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
-      }
+      },
+      {
+        test: /\.scss$/,
+        loaders: [
+          'css?modules&localIdentName=k-[local]&sourceMap',
+          'resolve-url',
+          'sass?sourceMap'
+        ]
+      },
+      { test: /\.(gif|png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
     ]
 
   },
