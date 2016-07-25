@@ -8,7 +8,7 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
 */
 import { PLATFORM_PROVIDERS } from './platform/browser';
 import { ENV_PROVIDERS, decorateComponentRef } from './platform/environment';
-
+import { FIREBASE_PROVIDERS, defaultFirebase } from 'angularfire2';
 
 /*
 * App Component
@@ -27,6 +27,13 @@ export function main(initialHmrState?: any): Promise<any> {
     ...PLATFORM_PROVIDERS,
     ...ENV_PROVIDERS,
     ...APP_PROVIDERS,
+    ...FIREBASE_PROVIDERS,
+    defaultFirebase({
+      apiKey: "AIzaSyBQQE6IXJAqnVz1szkxbewQ0M1arorXZak",
+      authDomain: "northwind-dashboard.firebaseapp.com",
+      databaseURL: "https://northwind-dashboard.firebaseio.com",
+      storageBucket: "northwind-dashboard.appspot.com"
+    })
   ])
   .then(decorateComponentRef)
   .catch(err => console.error(err));

@@ -3,7 +3,7 @@
  */
 import { Component, ViewEncapsulation, ElementRef, ViewChild } from '@angular/core';
 import { AppState } from './app.service';
-
+import { AngularFire, FirebaseListObservable } from 'angularfire2'
 /*
  * App Component
  * Top Level Component
@@ -54,16 +54,28 @@ import { AppState } from './app.service';
         </div>
 
     </div>
+    <h1>Orders List</h1>
+    <table>
+      <tr *ngFor="let order of orders | async">
+        <td>{{order.ShipCity}}</td>
+        <td>{{order.ShipCountry}}</td>
+        <td>{{order.ShipName}}</td>
+      </tr>
+    </table>
   `
 })
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
-
-  constructor(
-    public appState: AppState) {
-
+  orders: FirebaseListObservable<any[]>;
+  constructor(public appState: AppState, public firebase: AngularFire) {
+    this.orders = firebase.database.list('/Orders', {
+      query: {
+        limitToFirst: 10,
+        orderByKey: true
+      }
+    })
   }
 
   ngOnInit() {
