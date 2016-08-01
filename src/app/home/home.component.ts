@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLarge } from './x-large';
-import { KendoSlider, KendoSwitch } from '@telerik/kendo-angular-inputs';
-import { KendoButton, KendoButtonGroup } from '@telerik/kendo-angular-buttons';
+import { KendoSlider, KendoSwitch } from '@progress/kendo-angular-inputs';
+import { KendoButton, KendoButtonGroup } from '@progress/kendo-angular-buttons';
 
 @Component({
   // The selector is what angular internally uses
