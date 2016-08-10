@@ -29,10 +29,10 @@ export function main(initialHmrState?: any): Promise<any> {
     ...APP_PROVIDERS,
     ...FIREBASE_PROVIDERS,
     defaultFirebase({
-      apiKey: "AIzaSyBQQE6IXJAqnVz1szkxbewQ0M1arorXZak",
-      authDomain: "northwind-dashboard.firebaseapp.com",
-      databaseURL: "https://northwind-dashboard.firebaseio.com",
-      storageBucket: "northwind-dashboard.appspot.com"
+      apiKey: "AIzaSyAEuTwRkGXGqpZ7BFPiD9dRM5EciHdz1EM",
+      authDomain: "ng2-dashboard.firebaseapp.com",
+      databaseURL: "https://ng2-dashboard.firebaseio.com",
+      storageBucket: "ng2-dashboard.appspot.com"
     })
   ])
   .then(decorateComponentRef)

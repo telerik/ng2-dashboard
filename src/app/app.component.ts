@@ -5,7 +5,6 @@ import { Component, ViewEncapsulation, ElementRef, ViewChild } from '@angular/co
 import { AppState } from './app.service';
 import { GRID_DIRECTIVES, PagerSettings, ScrollMode, GridDataResult, GridComponent } from '@progress/kendo-angular-grid';
 import { Observable } from 'rxjs/Rx';
-import { ProductsService } from './common/northwind.service';
 
 /*
  * App Component
@@ -14,7 +13,6 @@ import { ProductsService } from './common/northwind.service';
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  providers: [ ProductsService ],
   styles: [
         require("./app.style.scss").toString()
   ],
@@ -56,48 +54,6 @@ import { ProductsService } from './common/northwind.service';
         </div>
       <div id="main-section" class="col-xs-12 column" ng-viewport></div>
     </div>
-
-    <kendo-grid [scrollable]="scrollable"
-          [data]="view | async"
-          [total]="total"
-          [pageSize]="pageSize"
-          [rowHeight]="37"
-          [detailRowHeight]="75"
-          [skip]="skip"
-          [sortable]="true"
-          [sort]="sort"
-          [pageable]="pagerOptions"
-        >
-        <kendo-grid-column field="ProductName" [locked]="true" width="300">
-            <template kendoHeaderTemplate>
-                template
-            </template>
-            <template kendoCellTemplate let-dataItem>
-                <input type="checkbox"
-                    [checked]="dataItem.Discontinued"
-                    (change)="dataItem.Discontinued = !dataItem.Discontinued"/>
-                {{dataItem.Discontinued}}
-            </template>
-        </kendo-grid-column>
-        <kendo-grid-column field="ProductID" title="ProductID" width="200" [locked]="true">
-        </kendo-grid-column>
-
-        <kendo-grid-column field="ProductName" title="Product Name" width="400">
-        </kendo-grid-column>
-
-        <kendo-grid-column field="ProductID" title="foo" width="400">
-            <!--template [ngIf]="show">
-            <template  kendoCellTemplate let-dataItem let-column="column">
-              for field "{{column.field}}", the value is "{{dataItem.idx}}"
-            </template>
-            </template-->
-            <!--
-            <div *kendoCellTemplate="let dataItem = dataItem; let column = column;">
-              for field "{{column.field}}", the value is "{{dataItem.idx}}"
-            </div>
-            -->
-        </kendo-grid-column>
-      </kendo-grid>
     <main class="col-sm-4">
       <router-outlet></router-outlet>
     </main>
@@ -108,39 +64,8 @@ export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
-  constructor(public appState: AppState, private service: ProductsService) {
-      this.view = service.load();
+  constructor(public appState: AppState) {
   }
-  private sort = [];
-  private view: Observable<GridDataResult>;
-  private scrollable: ScrollMode = 'scrollable';
-
-  private pagerOptions: PagerSettings = {
-      input: true,
-      buttonCount: 4,
-      previousNext: true,
-      pageSizes: [3, 5, 4]
-  }
-  @ViewChild(GridComponent) grid: GridComponent;
-  ngAfterViewInit() {
-        this.grid.pageChange
-            .merge(this.grid.sortChange.map(x => ({ sort: x })))
-            .scan((acc, one) => Object.assign({}, acc, one), {
-                skip: this.skip,
-                take: this.pageSize,
-                sort: this.sort
-            })
-            .do(({ skip, take, sort }: any) => {
-                this.skip = skip;
-                this.pageSize = take;
-                this.sort = sort;
-            })
-            .subscribe(x => this.service.query(x));
-    }
-    total = 100;
-    pageSize = 10;
-    skip = 0;
-
 }
 
 /*

@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLarge } from './x-large';
-import { KendoSlider, KendoSwitch } from '@progress/kendo-angular-inputs';
-import { KendoButton, KendoButtonGroup } from '@progress/kendo-angular-buttons';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { GRID_DIRECTIVES, PagerSettings, ScrollMode, GridDataResult, GridComponent } from '@progress/kendo-angular-grid';
 
 @Component({
   // The selector is what angular internally uses
@@ -22,10 +22,7 @@ import { KendoButton, KendoButtonGroup } from '@progress/kendo-angular-buttons';
   ],
   directives: [
     XLarge,
-    KendoSlider,
-    KendoSwitch,
-    KendoButton,
-    KendoButtonGroup
+    GRID_DIRECTIVES
   ],
   // We need to tell Angular's compiler which custom pipes are in our template.
   pipes: [ ],
@@ -48,19 +45,17 @@ export class Home {
       this.checked = !this.checked;
 
   }
-  constructor(public appState: AppState, public title: Title) {
-
+  public orders: FirebaseListObservable<any[]>;
+  constructor(public appState: AppState, public title: Title, public firebase: AngularFire) {
+    this.orders = firebase.database.list('/issues', {
+      query: {
+        limitToFirst: 5
+      }
+    })
   }
 
   ngOnInit() {
     console.log('hello `Home` component');
     // this.title.getData().subscribe(data => this.data = data);
   }
-
-  submitState(value) {
-    console.log('submitState', value);
-    this.appState.set('value', value);
-    this.localState.value = '';
-  }
-
 }
