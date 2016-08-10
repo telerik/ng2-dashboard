@@ -12,24 +12,14 @@ import { Observable } from 'rxjs/Rx';
  */
 @Component({
   selector: 'app',
-  encapsulation: ViewEncapsulation.None,
   styles: [
-        require("./app.style.scss").toString()
+    //require("./app.style.scss").toString()
   ],
-  directives: [GRID_DIRECTIVES],
+  directives: [ GRID_DIRECTIVES ],
   template: `
-  <div class="row row-offcanvas row-offcanvas-left">
-    <div id="nav-section" class="col-xs-12 column">
-        <div class="navbar-default">
-          <button id="toggle-button" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-          </button>
-        </div>
-        <h1 id="dash-logo" class="center-block">Northwind&#183;Dash</h1>
-        <div class="collapse navbar-collapse" id="sidebar-nav" role="navigation">
-          <ul class="nav">
+        <h1>Issues</h1>
+        <h4>Sample Dashboard</h4>
+          <ul>
               <li id="regional-sales-status">
                <a [routerLink]=" ['./sales'] ">
                 <span class="icon icon-chart-column"></span>Regional Sales Status</a>
@@ -50,10 +40,6 @@ import { Observable } from 'rxjs/Rx';
             <div id="rights">
               <p>Copyright &copy; 2016, Progress Software Corporation and/or its subsidiaries or affiliates. All Rights Reserved.</p>
             </div>
-          </div>
-        </div>
-      <div id="main-section" class="col-xs-12 column" ng-viewport></div>
-    </div>
     <main class="col-sm-4">
       <router-outlet></router-outlet>
     </main>

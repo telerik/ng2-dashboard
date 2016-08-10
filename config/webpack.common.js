@@ -177,8 +177,8 @@ module.exports = {
       {
         test: /\.scss$/,
         loaders: [
-          'css?modules&localIdentName=k-[local]&sourceMap',
-          'resolve-url',
+          'css?sourceMap',
+          //'resolve-url',
           'sass?sourceMap'
         ]
       },
