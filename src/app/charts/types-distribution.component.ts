@@ -11,7 +11,7 @@ import { CHART_DIRECTIVES } from '@progress/kendo-angular-charts/dist/npm/js/mai
 <kendo-chart>
     <kendo-chart-series-defaults type="area"></kendo-chart-series-defaults>
     <kendo-chart-category-axis>
-        <kendo-chart-category-axis-item [majorGridLines]="false" [crosshair]="{visible: true}">
+        <kendo-chart-category-axis-item [majorGridLines]="false" [crosshair]="{visible: true}" baseUnit="months" >
         </kendo-chart-category-axis-item>
     </kendo-chart-category-axis>
     <kendo-chart-series>

@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
+import { IssuesModel } from './issues.model';
 
 @Injectable()
 export class IssuesProcessor {
-
     process(data) {
         const mappedIssues = this.mapIssues(data);
         const groupedIssues = this.groupIssues(mappedIssues);
 
-        return {
-            active: mappedIssues,
-            typesDistribution: this.distribution(mappedIssues),
-            issueTypes: this.groupLabels(mappedIssues),
-            groupedIssues: groupedIssues,
-            open: groupedIssues.open.length,
-            closed: groupedIssues.closed.length,
-            closeRate: this.closeRate(groupedIssues)
-        }
+        return new IssuesModel(
+          mappedIssues,
+          groupedIssues.open.length,
+          groupedIssues.closed.length,
+          groupedIssues,
+          this.groupLabels(mappedIssues),
+          this.distribution(mappedIssues),
+          this.closeRate(groupedIssues))
     }
     mapIssues(data) {
         return data.reduce((agg, curr) => [...agg, ...curr], [])
@@ -26,7 +25,7 @@ export class IssuesProcessor {
                         count: 1,
                         labels: item.labels,
                         created_at: item.created_at
-                    }));
+                    }))
     }
 
     flatten(data) {

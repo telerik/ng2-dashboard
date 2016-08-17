@@ -15,7 +15,7 @@ import { CHART_DIRECTIVES } from '@progress/kendo-angular-charts/dist/npm/js/mai
                 <kendo-chart-series-item [data]="active" field="count" categoryField="date" aggregate="count"></kendo-chart-series-item>
             </kendo-chart-series>
             <kendo-chart-category-axis>
-                <kendo-chart-category-axis-item baseUnit="weeks" [labels]="{rotation: 'auto'}"></kendo-chart-category-axis-item>
+                <kendo-chart-category-axis-item baseUnit="months" [labels]="{rotation: 'auto'}"></kendo-chart-category-axis-item>
             </kendo-chart-category-axis>
     </kendo-chart>
   <h3>Closed issues</h3>
@@ -25,7 +25,7 @@ import { CHART_DIRECTIVES } from '@progress/kendo-angular-charts/dist/npm/js/mai
                 <kendo-chart-series-item [data]="data.closed" field="count" categoryField="date" aggregate="count"></kendo-chart-series-item>
             </kendo-chart-series>
             <kendo-chart-category-axis>
-                <kendo-chart-category-axis-item baseUnit="weeks" [labels]="{rotation: 'auto'}"></kendo-chart-category-axis-item>
+                <kendo-chart-category-axis-item baseUnit="months" [labels]="{rotation: 'auto'}"></kendo-chart-category-axis-item>
             </kendo-chart-category-axis>
     </kendo-chart>
     <h3>Open issues</h3>
@@ -35,7 +35,7 @@ import { CHART_DIRECTIVES } from '@progress/kendo-angular-charts/dist/npm/js/mai
                 <kendo-chart-series-item [data]="data.open" field="count" categoryField="date" aggregate="count"></kendo-chart-series-item>
             </kendo-chart-series>
             <kendo-chart-category-axis>
-                <kendo-chart-category-axis-item baseUnit="weeks" [labels]="{rotation: 'auto'}"></kendo-chart-category-axis-item>
+                <kendo-chart-category-axis-item baseUnit="months" [labels]="{rotation: 'auto'}"></kendo-chart-category-axis-item>
             </kendo-chart-category-axis>
     </kendo-chart>
     <h3>All issues</h3>
@@ -46,7 +46,7 @@ import { CHART_DIRECTIVES } from '@progress/kendo-angular-charts/dist/npm/js/mai
             <kendo-chart-series-item [data]="data.closed" field="count" categoryField="date" aggregate="count"></kendo-chart-series-item>
         </kendo-chart-series>
         <kendo-chart-category-axis>
-            <kendo-chart-category-axis-item baseUnit="days" [labels]="{rotation: 'auto'}"></kendo-chart-category-axis-item>
+            <kendo-chart-category-axis-item baseUnit="months" [labels]="{rotation: 'auto'}"></kendo-chart-category-axis-item>
         </kendo-chart-category-axis>
     </kendo-chart>
   `
