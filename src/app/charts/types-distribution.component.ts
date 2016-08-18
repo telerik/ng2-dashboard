@@ -8,7 +8,7 @@ import { CHART_DIRECTIVES } from '@progress/kendo-angular-charts/dist/npm/js/mai
       require("../app.style.scss").toString()
   ],
   template: `
-<kendo-chart>
+<kendo-chart renderAs="canvas">
     <kendo-chart-series-defaults type="area"></kendo-chart-series-defaults>
     <kendo-chart-category-axis>
         <kendo-chart-category-axis-item [majorGridLines]="false" [crosshair]="{visible: true}" baseUnit="months" >

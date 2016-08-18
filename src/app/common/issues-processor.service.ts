@@ -3,8 +3,8 @@ import { IssuesModel } from './issues.model';
 
 @Injectable()
 export class IssuesProcessor {
-    process(data) {
-        const mappedIssues = this.mapIssues(data);
+    process(data, months) {
+        const mappedIssues = this.filterByMonth(this.mapIssues(data), months);
         const groupedIssues = this.groupIssues(mappedIssues);
 
         return new IssuesModel(
@@ -109,4 +109,16 @@ export class IssuesProcessor {
                          .map(label => label.name)
     return filtered.length === 0 ? 'Others' : filtered[0];
   }
+
+  filterByMonth(data, months) {
+        return data.filter(value => {
+          return new Date(value.created_at).getTime() > this.getMonthsRange(months).getTime();
+        })
+    }
+
+    getMonthsRange(months) {
+        let since = new Date();
+        since.setMonth(since.getMonth() - months);
+        return since;
+    }
 }

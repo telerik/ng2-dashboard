@@ -23,18 +23,4 @@ export class GithubService {
         }
         return result;
     }
-
-    filterByMonth(data, months) {
-        return data.filter(value => {
-          return new Date(value.created_at).getTime() > this.getMonthsRange(months).getTime();
-        })
-    }
-
-    getMonthsRange(months) {
-        let since = new Date();
-        since.setMonth(since.getMonth() - months);
-        return since;
-    }
-
-
 }

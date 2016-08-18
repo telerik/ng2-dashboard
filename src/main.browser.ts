@@ -7,6 +7,7 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
 * our providers/directives/pipes
 */
 import { PLATFORM_PROVIDERS } from './platform/browser';
+import { enableProdMode } from '@angular/core';
 import { ENV_PROVIDERS, decorateComponentRef } from './platform/environment';
 import { FIREBASE_PROVIDERS, defaultFirebase } from 'angularfire2';
 
@@ -21,7 +22,6 @@ import { App, APP_PROVIDERS } from './app';
  * our Services and Providers into Angular's dependency injection
  */
 export function main(initialHmrState?: any): Promise<any> {
-
   return bootstrap(App, [
     // To add more vendor providers please look in the platform/ folder
     ...PLATFORM_PROVIDERS,
@@ -36,14 +36,7 @@ export function main(initialHmrState?: any): Promise<any> {
     })
   ])
   .then(decorateComponentRef)
-  .catch(err => console.error(err));
-
 }
-
-
-
-
-
 /*
  * Vendors
  * For vendors for example jQuery, Lodash, angular2-jwt just import them anywhere in your app

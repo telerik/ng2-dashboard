@@ -41,7 +41,7 @@ export class Issues {
 
   onFilterClick(e) {
     this.skip = 0;
-    this.applyPaging(this.githubService.filterByMonth(this.allIssues, e));
+    //this.applyPaging(this.githubService.filterByMonth(this.allIssues, e)); CHANGE THIS TO NEW SERVICE
   }
 
   onPageChange(e) {
