@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TABSTRIP_DIRECTIVES } from '@progress/kendo-angular-layout';
+//import { TABSTRIP_DIRECTIVES } from '@progress/kendo-angular-layout';
 import { GithubService } from '../common/github.service'
 import { IssuesProcessor } from '../common/issues-processor.service'
-import { KendoButton, KendoButtonGroup } from '@progress/kendo-angular-buttons';
+//import { KendoButton, KendoButtonGroup } from '@progress/kendo-angular-buttons';
 import { IssueTypesComponent } from '../charts/issue-types.component';
 import { TypesDistributionComponent } from '../charts/types-distribution.component';
 import { ActiveIssuesComponent } from '../charts/active-issues.component';
@@ -12,7 +12,7 @@ import { Observable, Subscription } from 'rxjs/Rx';
 
 @Component({
   selector: 'overview',
-  directives: [KendoButton, KendoButtonGroup, TABSTRIP_DIRECTIVES, IssueTypesComponent, TypesDistributionComponent, ActiveIssuesComponent],
+  //directives: [KendoButton, KendoButtonGroup, TABSTRIP_DIRECTIVES, IssueTypesComponent, TypesDistributionComponent, ActiveIssuesComponent],
   providers: [GithubService, IssuesProcessor],
    styles: [
       require("../app.style.scss").toString()

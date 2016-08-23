@@ -3,7 +3,7 @@
  */
 import { Component, ViewEncapsulation, ElementRef, ViewChild } from '@angular/core';
 import { AppState } from './app.service';
-import { GRID_DIRECTIVES, PagerSettings, ScrollMode, GridDataResult, GridComponent } from '@progress/kendo-angular-grid';
+//import { GRID_DIRECTIVES, PagerSettings, ScrollMode, GridDataResult, GridComponent } from '@progress/kendo-angular-grid';
 import { Observable } from 'rxjs/Rx';
 
 /*
@@ -15,7 +15,7 @@ import { Observable } from 'rxjs/Rx';
   styles: [
     //require("./app.style.scss").toString()
   ],
-  directives: [ GRID_DIRECTIVES ],
+  //directives: [ GRID_DIRECTIVES ],
   template: `
         <h1>Issues</h1>
         <h4>Sample Dashboard</h4>

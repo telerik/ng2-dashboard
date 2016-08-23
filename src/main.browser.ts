@@ -1,41 +1,25 @@
 /*
- * Providers provided by Angular
+ * Angular bootstraping
  */
-import { bootstrap } from '@angular/platform-browser-dynamic';
-/*
-* Platform and Environment
-* our providers/directives/pipes
-*/
-import { PLATFORM_PROVIDERS } from './platform/browser';
-import { enableProdMode } from '@angular/core';
-import { ENV_PROVIDERS, decorateComponentRef } from './platform/environment';
-import { FIREBASE_PROVIDERS, defaultFirebase } from 'angularfire2';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { decorateComponentRef } from './platform/environment';
 
 /*
-* App Component
-* our top level component that holds all of our components
-*/
-import { App, APP_PROVIDERS } from './app';
+ * App Module
+ * our top level module that holds all of our components
+ */
+import { AppModule } from './app';
 
 /*
- * Bootstrap our Angular app with a top level component `App` and inject
- * our Services and Providers into Angular's dependency injection
+ * Bootstrap our Angular app with a top level NgModule
  */
 export function main(initialHmrState?: any): Promise<any> {
-  return bootstrap(App, [
-    // To add more vendor providers please look in the platform/ folder
-    ...PLATFORM_PROVIDERS,
-    ...ENV_PROVIDERS,
-    ...APP_PROVIDERS,
-    ...FIREBASE_PROVIDERS,
-    defaultFirebase({
-      apiKey: "AIzaSyAEuTwRkGXGqpZ7BFPiD9dRM5EciHdz1EM",
-      authDomain: "ng2-dashboard.firebaseapp.com",
-      databaseURL: "https://ng2-dashboard.firebaseio.com",
-      storageBucket: "ng2-dashboard.appspot.com"
-    })
-  ])
-  .then(decorateComponentRef)
+
+  return platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .then(decorateComponentRef)
+    .catch(err => console.error(err));
+
 }
 /*
  * Vendors
