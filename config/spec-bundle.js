@@ -42,11 +42,11 @@ testing.setBaseTestProviders(
  * require that webpack created in order to tell webpack
  * what files we actually want to require or import.
  * Below, context will be an function/object with file names as keys.
- * using that regex we are saying look in ./src/app and ./test then find
+ * using that regex we are saying look in ./web/app and ./test then find
  * any file that ends with spec.js and get its path. By passing in true
  * we say do this recursively
  */
-var testContext = require.context('../src', true, /\.spec\.ts/);
+var testContext = require.context('../web', true, /\.spec\.ts/);
 
 /*
  * get all the files, for each file, call the context function

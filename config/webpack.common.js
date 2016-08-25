@@ -54,9 +54,9 @@ module.exports = {
    */
   entry: {
 
-    'polyfills': './src/polyfills.browser.ts',
-    'vendor':    './src/vendor.browser.ts',
-    'main':      './src/main.browser.ts'
+    'polyfills': './web/polyfills.browser.ts',
+    'vendor':    './web/vendor.browser.ts',
+    'main':      './web/main.browser.ts'
 
   },
 
@@ -74,8 +74,8 @@ module.exports = {
      */
     extensions: ['', '.ts', '.js', '.json'],
 
-    // Make sure root is src
-    root: helpers.root('src'),
+    // Make sure root is web
+    root: helpers.root('web'),
 
     // remove other default values
     modulesDirectories: ['node_modules']
@@ -172,7 +172,7 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'raw-loader',
-        exclude: [helpers.root('src/index.html')]
+        exclude: [helpers.root('web/index.html')]
       },
       {
         test: /\.scss$/,
@@ -233,7 +233,7 @@ module.exports = {
      * See: https://www.npmjs.com/package/copy-webpack-plugin
      */
     new CopyWebpackPlugin([{
-      from: 'src/assets',
+      from: 'web/assets',
       to: 'assets'
     }]),
 
@@ -246,7 +246,7 @@ module.exports = {
      * See: https://github.com/ampedandwired/html-webpack-plugin
      */
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'web/index.html',
       chunksSortMode: 'dependency'
     }),
 
