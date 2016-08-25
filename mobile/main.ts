@@ -2,6 +2,7 @@
 import { platformNativeScriptDynamic, NativeScriptModule, AppOptions } from "nativescript-angular/platform";
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
+import {} from ''
 
 @NgModule({
     declarations: [AppComponent],

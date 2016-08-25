@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-//import { GRID_DIRECTIVES, PagerSettings, ScrollMode, GridDataResult, GridComponent } from '@progress/kendo-angular-grid';
 import { MarkdownComponent } from '../markdown/markdown.component';
-//import { KendoButton, KendoButtonGroup } from '@progress/kendo-angular-buttons';
 import { Http, Headers } from '@angular/http';
 import { Observable, Subject } from 'rxjs/Rx';
-import { GithubService } from '../common/github.service'
+import { GithubService } from '../../../shared/github.service'
 
 @Component({
   selector: 'issues',
@@ -14,12 +12,6 @@ import { GithubService } from '../common/github.service'
   styles: [
       require("../app.style.scss").toString()
   ],
-  // directives: [
-  //   GRID_DIRECTIVES,
-  //   MarkdownComponent,
-  //   KendoButton,
-  //   KendoButtonGroup
-  // ],
   templateUrl: './issues.template.html'
 })
 export class Issues {
