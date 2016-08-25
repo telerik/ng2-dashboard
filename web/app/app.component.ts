@@ -3,7 +3,6 @@
  */
 import { Component, ViewEncapsulation, ElementRef, ViewChild } from '@angular/core';
 import { AppState } from './app.service';
-//import { GRID_DIRECTIVES, PagerSettings, ScrollMode, GridDataResult, GridComponent } from '@progress/kendo-angular-grid';
 import { Observable } from 'rxjs/Rx';
 
 /*
@@ -12,10 +11,6 @@ import { Observable } from 'rxjs/Rx';
  */
 @Component({
   selector: 'app',
-  styles: [
-    //require("./app.style.scss").toString()
-  ],
-  //directives: [ GRID_DIRECTIVES ],
   template: `
         <h1>Issues</h1>
         <h4>Sample Dashboard</h4>
@@ -40,7 +35,7 @@ import { Observable } from 'rxjs/Rx';
             <div id="rights">
               <p>Copyright &copy; 2016, Progress Software Corporation and/or its subsidiaries or affiliates. All Rights Reserved.</p>
             </div>
-    <main class="col-sm-4">
+    <main>
       <router-outlet></router-outlet>
     </main>
 

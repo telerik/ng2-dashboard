@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { MarkdownComponent } from '../markdown/markdown.component';
 import { Http, Headers } from '@angular/http';
 import { Observable, Subject } from 'rxjs/Rx';
 import { GithubService } from '../../../shared/github.service'
+import { IssuesProcessor } from '../../../shared/issues-processor.service';
 
 @Component({
   selector: 'issues',
+  encapsulation: ViewEncapsulation.None,
   providers: [
-    GithubService
+    GithubService,
+    IssuesProcessor
   ],
   styles: [
       require("../app.style.scss").toString()
@@ -23,7 +26,7 @@ export class Issues {
   public skip = 0;
   localState = { value: '' };
 
-  constructor(public http: Http, public githubService: GithubService) {
+  constructor(public http: Http, public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
     githubService.getGithubIssues({pages: 4}).subscribe((data: any[]) => {
       data = data.reduce((agg, curr) => [...agg, ...curr], []).filter(issue => issue.pull_request ? false : true);
       this.allIssues = data;
@@ -33,7 +36,7 @@ export class Issues {
 
   onFilterClick(e) {
     this.skip = 0;
-    //this.applyPaging(this.githubService.filterByMonth(this.allIssues, e)); CHANGE THIS TO NEW SERVICE
+    this.applyPaging(this.issuesProcessor.filterByMonth(this.allIssues, e));
   }
 
   onPageChange(e) {

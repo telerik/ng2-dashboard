@@ -16,6 +16,13 @@ import { App } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState } from './app.service';
 import { NoContent } from './no-content';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { GridModule } from '@progress/kendo-angular-grid';
+import { MarkdownComponent } from './markdown/markdown.component';
+
+
+import { Overview } from './overview/overview.component';
+import { Issues } from './issues/issues.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -30,12 +37,17 @@ const APP_PROVIDERS = [
   bootstrap: [ App ],
   declarations: [
     App,
-    NoContent
+    MarkdownComponent,
+    NoContent,
+    Overview,
+    Issues
   ],
   imports: [ // import Angular's modules
     BrowserModule,
+    ButtonsModule,
     FormsModule,
     HttpModule,
+    GridModule,
     RouterModule.forRoot(ROUTES, { useHash: true })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

@@ -8,19 +8,14 @@ import { providePrefetchIdleCallbacks } from '@angularclass/request-idle-callbac
 import { DataResolver } from './app.resolver';
 
 const asyncRoutes: AsyncRoutes = {
-  // we have to use the alternative syntax for es6-promise-loader to grab the routes
   'About': require('es6-promise-loader!./about'),
   'Detail': require('es6-promise-loader!./+detail'),
-  'Index': require('es6-promise-loader!./+detail'), // must be exported with detail/index.ts
+  'Index': require('es6-promise-loader!./+detail')
 };
 
-
-// Optimizations for initial loads
-// An array of callbacks to be invoked after bootstrap to prefetch async routes
 const prefetchRouteCallbacks: Array<IdleCallbacks> = [
   asyncRoutes['About'],
-  asyncRoutes['Detail'],
-   // es6-promise-loader returns a function
+  asyncRoutes['Detail']
 ];
 
 export const ROUTES: Routes = [
@@ -28,9 +23,6 @@ export const ROUTES: Routes = [
   { path: 'overview',  component: Overview },
   { path: 'issues',  component: Issues }
 ];
-
-
-// Es6PromiseLoader and AsyncRoutes interfaces are defined in custom-typings
 
 export const ROUTING_PROVIDERS = [
   provideWebpack(asyncRoutes),
