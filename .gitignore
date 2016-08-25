@@ -75,3 +75,6 @@ mobile/**/*.js.map
 web/**/*.js
 web/**/*.js.map
 
+shared/**/*.js
+shared/**/*.js.map
+
