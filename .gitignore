@@ -72,6 +72,6 @@ hooks
 mobile/**/*.js
 mobile/**/*.js.map
 
-src/**/*.js
-src/**/*.js.map
+web/**/*.js
+web/**/*.js.map
 
