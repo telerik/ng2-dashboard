@@ -1,21 +1,30 @@
 import {Component} from "@angular/core";
+import { GithubService } from '../shared/github.service';
+import { IssuesProcessor } from '../shared/issues-processor.service';
+import { IssuesModel } from '../shared/issues.model';
+import { Observable, Subscription } from 'rxjs/Rx';
 
 @Component({
     selector: "my-app",
+    providers: [GithubService, IssuesProcessor],
     template: require("./app.component.html"),
 })
 export class AppComponent {
-    public counter: number = 16;
+    issues: IssuesModel;
+    subscription: Subscription;
+    months: number = 1;
 
-    public get message(): string {
-        if (this.counter > 0) {
-            return this.counter + " taps left";
-        } else {
-            return "Hoorraaay! \nYou are ready to start building!";
-        }
+    constructor(public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
+        this.subscription = githubService
+            .getGithubIssues({ pages: 12 })
+            .map(data => this.issuesProcessor.process(data, this.months))
+            .merge(Observable.of(new IssuesModel()))
+            .subscribe((data: IssuesModel) => {
+                this.issues = data;
+            });
     }
-    
-    public onTap() {
-        this.counter--;
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

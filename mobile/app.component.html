@@ -1,4 +1,10 @@
 <ActionBar title="Issues"></ActionBar>
-<StackLayout>
-    <Label text="here be dragons"></Label>
-</StackLayout>
+<GridLayout>
+    <ListView [items]="issues.active">
+        <template let-item="item" let-i="index">
+            <StackLayout>
+                <Label [text]='item.title' margin="12"></Label>
+            </StackLayout>
+        </template>
+    </ListView>
+</GridLayout>

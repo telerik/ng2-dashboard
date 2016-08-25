@@ -20,12 +20,13 @@ export class IssuesProcessor {
         return data.reduce((agg, curr) => [...agg, ...curr], [])
                    .filter(issue => !issue.pull_request)
                    .map((item: any) => ({
+                        title: item.title,
                         state: item.state,
                         date: new Date(item.created_at),
                         count: 1,
                         labels: item.labels,
                         created_at: item.created_at
-                    }))
+                    }));
     }
 
     flatten(data) {
@@ -36,7 +37,7 @@ export class IssuesProcessor {
       return data.reduce((agg, curr) => {
                  agg[curr[field]] = (agg[curr[field]] || 0) + 1
     	           return agg;
-               }, {})
+               }, {});
     }
 
     closeRate(data) {

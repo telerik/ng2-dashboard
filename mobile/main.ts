@@ -2,10 +2,11 @@
 import { platformNativeScriptDynamic, NativeScriptModule, AppOptions } from "nativescript-angular/platform";
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import {} from ''
+import { NS_HTTP_PROVIDERS } from "nativescript-angular/http";
 
 @NgModule({
     declarations: [AppComponent],
+    providers: [NS_HTTP_PROVIDERS],
     bootstrap: [AppComponent],
     imports: [NativeScriptModule],
 })
