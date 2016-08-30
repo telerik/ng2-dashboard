@@ -18,8 +18,9 @@ import { AppState } from './app.service';
 import { NoContent } from './no-content';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { GridModule } from '@progress/kendo-angular-grid';
+import { InputsModule } from '@progress/kendo-angular-inputs';
+import { DialogModule } from '@progress/kendo-angular-dialog';
 import { MarkdownComponent } from './markdown/markdown.component';
-
 
 import { Overview } from './overview/overview.component';
 import { Issues } from './issues/issues.component';
@@ -48,6 +49,8 @@ const APP_PROVIDERS = [
     FormsModule,
     HttpModule,
     GridModule,
+    InputsModule,
+    DialogModule,
     RouterModule.forRoot(ROUTES, { useHash: true })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

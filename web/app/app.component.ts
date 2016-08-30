@@ -11,42 +11,44 @@ import { Observable } from 'rxjs/Rx';
  */
 @Component({
   selector: 'app',
+  styles: ['.active {color: black; background-color: blue; display: block; width: 100px; height: 23px;}'],
   template: `
+    <div>
         <h1>Issues</h1>
         <h4>Sample Dashboard</h4>
+          Project
           <ul>
-              <li id="regional-sales-status">
-               <a [routerLink]=" ['./sales'] ">
-                <span class="icon icon-chart-column"></span>Regional Sales Status</a>
+              <li id="dashbaord">
+               <a [routerLink]=" ['./dashboard'] " routerLinkActive="active">
+                Dashboard</a>
               </li>
-              <li id="products-and-orders">
-              <a [routerLink]=" ['./orders'] ">
-                <span class="icon icon-star-empty"></span>Products &amp; Orders</a>
+              <li id="Issues">
+              <a [routerLink]=" ['./issues'] " routerLinkActive="active">
+                Issues</a>
               </li>
-              <li id="team-efficiency">
-              <a  [routerLink]=" ['./efficiency'] ">
-                <span class="icon icon-faves"></span>Team Efficiency</a>
+          </ul>
+          Account
+          <ul>
+              <li id="profile">
+               <a [routerLink]=" ['./profile'] " routerLinkActive="active">
+                My Profile</a>
               </li>
-              <li id="about">
-              <a  [routerLink]=" ['./about'] ">
-                <span class="icon icon-info"></span>About</a>
+              <li id="signout">
+               <a [routerLink]=" ['./signin'] " routerLinkActive="active">
+                Sign Out</a>
               </li>
-            </ul>
+          </ul>
             <div id="rights">
-              <p>Copyright &copy; 2016, Progress Software Corporation and/or its subsidiaries or affiliates. All Rights Reserved.</p>
+              <p>Copyright &copy; 2016, Progress Software Corporation and/or its subsidiaries or affiliates.</p>
+              <p>All Rights Reserved.</p>
             </div>
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
+      </div>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
   `
 })
 export class App {
-  angularclassLogo = 'assets/img/angularclass-avatar.png';
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
-  constructor(public appState: AppState) {
-  }
 }
 
 /*

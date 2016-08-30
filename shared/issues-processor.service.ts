@@ -91,18 +91,18 @@ export class IssuesProcessor {
       ]
     }
 
-    distribution(data) {
-        return data.map(item => ({
-                  created_at: new Date(item.created_at).setHours(0,0,0,0),
-                  label: this.cleanupLabels(item.labels)
-                }))
-                .reduce((agg, curr) => {
-                  agg[curr.label].push({
-                    date: new Date(curr.created_at),
-                    value: 1
-                  });
-                  return agg
-                }, { Others: [], Enhancement: [], 'SEV: Low': [] });
+  distribution(data) {
+  return data.map(item => ({
+              created_at: new Date(item.created_at).setHours(0,0,0,0),
+              label: this.cleanupLabels(item.labels)
+            }))
+            .reduce((agg, curr) => {
+              agg[curr.label].push({
+                date: new Date(curr.created_at),
+                value: 1
+              });
+              return agg
+            }, { Others: [], Enhancement: [], 'SEV: Low': [] });
   }
 
   cleanupLabels(labels) {
@@ -117,9 +117,9 @@ export class IssuesProcessor {
         })
     }
 
-    getMonthsRange(months) {
-        let since = new Date();
-        since.setMonth(since.getMonth() - months);
-        return since;
-    }
+  getMonthsRange(months) {
+    let since = new Date();
+    since.setMonth(since.getMonth() - months);
+    return since;
+  }
 }

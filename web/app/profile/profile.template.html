@@ -1,0 +1,54 @@
+<span class="title">Account</span>
+<span class="name">
+    {{user.login}} - {{user.name}}
+</span>
+<button>Sign out</button>
+
+<div id="profile" *ngIf="user.id" style="border: 1px solid black">
+    Public Profile
+    <img [src]="user.avatar_url" [ngStyle]="{'width': '60px', 'height': '60px'}" /> <br />
+    Username: <input type="text" id="username" [value]="user.login"><br />
+    Name: <input type="text" id="name" [value]="user.name"><br />
+    Email: <input type="text" id="email" [value]="user.email"><br />
+    <input type="checkbox"  checked> Keep my email address private <br />
+    Company: <input type="text" id="company" [value]="user.company"> <br />
+    Location: <input type="text" id="location" [value]="user.location"> <br />
+    <button (click)="onUpdateClick()">Update profile</button>
+</div>
+
+<div id="delete-account" style="border: 1px solid green">
+    Delete Account <br />
+    You will immediately lose access to your repositories and all other information associated with your account.
+    This cannot be undone
+    <button (click)="onDeleteClick()">Delete Account</button>
+</div>
+
+<div id="notifications" style="border: 1px solid red">
+    Notifications
+    Automatically watch repositories? <br>
+    When you are given push access to a repository, automatically receive notifications for it. <kendo-switch></kendo-switch> <br>
+    Receive updates to any conversations via email? <kendo-switch [checked]="true"></kendo-switch> <br>
+    Receive updated to any repositories via email? <kendo-switch [checked]="true"></kendo-switch> <br>
+</div>
+<div id="password" style="border: 1px solid blue">
+    Update password <br>
+    Old password <input type="text"> <br>
+    New passowrd <input type="text"> <br>
+    Confirm password <input type="text"> <br>
+    <button>Change password</button>
+</div>
+
+<kendo-dialog title="Thank you" *ngIf="profileDialogVisible" (onClose)="onProfileDialogClose()">
+    <p>Your profile has been successfully updated</p>
+    <kendo-dialog-actions>
+      <button kendoButton (click)="onProfileDialogClose()">OK</button>
+    </kendo-dialog-actions>
+</kendo-dialog>
+
+<kendo-dialog title="Are you sure you want to do this?" *ngIf="deleteDialogVisible" (onClose)="onDeleteDialogClose()">
+    <p>Account deletetion cannot be undone!</p>
+    <kendo-dialog-actions>
+      <button kendoButton (click)="onDeleteDialogClose()">Cancel</button>
+      <button kendoButton (click)="onDeleteDialogClose()" [primary]="true">Delete Account</button>
+    </kendo-dialog-actions>
+</kendo-dialog>

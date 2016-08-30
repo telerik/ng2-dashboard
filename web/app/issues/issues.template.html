@@ -1,8 +1,13 @@
-ISSUES
+<span class="title">
+    Project Issues
+</span>
+<span class="date-range">
+    {{range.from | date}} - {{range.to | date}}
+</span>
 <kendo-button-group [selection]="'single'">
-    <button kendoButton (click)="onFilterClick(1)" [togglable]="true">1 Month</button>
-    <button kendoButton (click)="onFilterClick(6)" [togglable]="true">6 Months</button>
-    <button kendoButton (click)="onFilterClick(12)" [togglable]="true">1 Year</button>
+    <button kendoButton (click)="onFilterClick(1)" [selected]="true">1 Month</button>
+    <button kendoButton (click)="onFilterClick(6)">6 Months</button>
+    <button kendoButton (click)="onFilterClick(12)">1 Year</button>
 </kendo-button-group>
 <kendo-grid
           [data]="view"
@@ -47,8 +52,8 @@ ISSUES
             <span>{{ dataItem.title }}</span> <br />
             <span>Created at: {{ dataItem.created_at | date }}</span>
             <span *ngIf="dataItem.closed_at">Closed at: {{ dataItem.closed_at | date }}</span> <br />
-            <span>Milestone: {{ dataItem.milestone ? dataItem.milestone.title : '' }}</span>
-            <span>Author: {{ dataItem.user.login }}</span>
+            <span>Milestone: {{ dataItem.milestone ? dataItem.milestone.title : '' }}</span> <br />
+            <span>Author: {{ dataItem.user.login }}</span> <br />
             <span>Assignee {{ dataItem.assignee ? dataItem.assignee.login : '' }}</span> <br>
             <h5>Labels</h5>
             <span *ngFor="let label of dataItem.labels" [ngStyle]="{'display': 'block', 'background-color': '#' + label.color}">

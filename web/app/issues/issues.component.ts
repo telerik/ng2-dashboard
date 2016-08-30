@@ -24,18 +24,22 @@ export class Issues {
   public total = 5;
   public pageSize = 5;
   public skip = 0;
-  localState = { value: '' };
+  public today = new Date();
+  public months = 1;
+  public range = this.dateRange();
 
   constructor(public http: Http, public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
-    githubService.getGithubIssues({pages: 4}).subscribe((data: any[]) => {
+    githubService.getGithubIssues({pages: 12}).subscribe((data: any[]) => {
       data = data.reduce((agg, curr) => [...agg, ...curr], []).filter(issue => issue.pull_request ? false : true);
       this.allIssues = data;
-      this.applyPaging(data)
+      this.applyPaging(this.issuesProcessor.filterByMonth(this.allIssues, 1))
     })
   }
 
   onFilterClick(e) {
     this.skip = 0;
+    this.months = e;
+    this.range = this.dateRange();
     this.applyPaging(this.issuesProcessor.filterByMonth(this.allIssues, e));
   }
 
@@ -53,6 +57,13 @@ export class Issues {
     return {
       data: this.issues.slice(skip, skip + take),
       total: this.issues.length
+    }
+  }
+
+  dateRange() {
+    return {
+      from: new Date(),
+      to: this.issuesProcessor.getMonthsRange(this.months)
     }
   }
 }
