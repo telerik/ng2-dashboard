@@ -1,1 +1,27 @@
-DASHBOARD COMPONENT
+<span>{{ rangeStart | date }} - {{ today | date }}</span>
+<kendo-button-group [selection]="'single'">
+    <button kendoButton (click)="onFilterClick(1)" [selected]="true">1 Month</button>
+    <button kendoButton (click)="onFilterClick(6)">6 Months</button>
+    <button kendoButton (click)="onFilterClick(12)">1 Year</button>
+</kendo-button-group>
+<kendo-tabstrip (select)="onTabSelect($event)">
+    <kendo-tabstrip-tab [title]="'All Issues'" [selected]="true">
+        Active Issues = {{ issues.open + issues.closed }}
+        Open Issues = {{ issues.open }}
+        Closed Issues = {{ issues.closed }}
+        Close rate = {{ issues.closeRate.average | percent:'2.0-0' }}
+        Highest: {{issues.closeRate.highest.close_rate | percent: '2.0-0' }} on {{issues.closeRate.highest.created_at | date}}
+        Lowest: {{issues.closeRate.lowest.close_rate | percent: '2.0-0' }} on {{issues.closeRate.lowest.created_at | date}}
+        <active-issues [data]="issues.groupedIssues" [active]="issues.active"></active-issues>
+        <!--<types-distribution [data]="issues.typesDistribution"></types-distribution>
+        <issue-types [data]="issues.issueTypes"></issue-types>-->
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab [title]="'Assigned to Me'">
+        Assigned to me
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab [title]="'Created by Me'">
+    Created
+    </kendo-tabstrip-tab>
+</kendo-tabstrip>

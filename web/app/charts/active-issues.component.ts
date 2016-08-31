@@ -3,7 +3,6 @@ import { CHART_DIRECTIVES } from '@progress/kendo-angular-charts/dist/npm/js/mai
 
 @Component({
   selector: 'active-issues',
-  directives: [CHART_DIRECTIVES],
   styles: [
       require("../app.style.scss").toString()
   ],
@@ -40,7 +39,7 @@ import { CHART_DIRECTIVES } from '@progress/kendo-angular-charts/dist/npm/js/mai
     </kendo-chart>
     <h3>All issues</h3>
     <kendo-chart renderAs="canvas">
-        <kendo-chart-series-defaults type="column" [stack]="true" [gap]="0" [overlay]="false" [tooltip]=""></kendo-chart-series-defaults>
+        <kendo-chart-series-defaults type="column" [stack]="true" [gap]="0" [overlay]="false"></kendo-chart-series-defaults>
         <kendo-chart-series>
             <kendo-chart-series-item [data]="data.open" field="count" categoryField="date" aggregate="count"></kendo-chart-series-item>
             <kendo-chart-series-item [data]="data.closed" field="count" categoryField="date" aggregate="count"></kendo-chart-series-item>

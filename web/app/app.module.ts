@@ -20,9 +20,12 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { DialogModule } from '@progress/kendo-angular-dialog';
-import { MarkdownComponent } from './markdown/markdown.component';
+import { ChartsModule } from '@progress/kendo-angular-charts';
+import { LayoutModule } from '@progress/kendo-angular-layout';
 
-import { Overview } from './overview/overview.component';
+import { ActiveIssuesComponent } from './charts/active-issues.component';
+
+import { MarkdownComponent } from './markdown/markdown.component';
 import { Issues } from './issues/issues.component';
 
 // Application wide providers
@@ -40,8 +43,8 @@ const APP_PROVIDERS = [
     App,
     MarkdownComponent,
     NoContent,
-    Overview,
-    Issues
+    Issues,
+    ActiveIssuesComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -51,6 +54,8 @@ const APP_PROVIDERS = [
     GridModule,
     InputsModule,
     DialogModule,
+    ChartsModule,
+    LayoutModule,
     RouterModule.forRoot(ROUTES, { useHash: true })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
