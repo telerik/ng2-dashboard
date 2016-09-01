@@ -8,6 +8,8 @@ import { Observable, Subscription } from 'rxjs/Rx';
     selector: "my-app",
     providers: [GithubService, IssuesProcessor],
     template: require("./app.component.html"),
+    styles: [require("./app.scss").toString()
+  ],
 })
 export class AppComponent {
     issues: IssuesModel;

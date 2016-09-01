@@ -10,17 +10,17 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 function FixJsonpPlugin(options) {
 }
 
-FixJsonpPlugin.prototype.apply = function(compiler) {
-    compiler.plugin('compilation', function(compilation, params) {
-        compilation.plugin("optimize-chunk-assets", function(chunks, callback) {
-            chunks.forEach(function(chunk) {
-                chunk.files.forEach(function(file) {
+FixJsonpPlugin.prototype.apply = function (compiler) {
+    compiler.plugin('compilation', function (compilation, params) {
+        compilation.plugin("optimize-chunk-assets", function (chunks, callback) {
+            chunks.forEach(function (chunk) {
+                chunk.files.forEach(function (file) {
                     if (file === "tns-java-classes.js") {
                         var src = compilation.assets[file];
                         var code = src.source();
                         var match = code.match(/window\["nativescriptJsonp"\]/);
                         if (match) {
-                            compilation.assets[file] = new ConcatSource(code.replace(/window\["nativescriptJsonp"\]/g,  "global[\"nativescriptJsonp\"]"));
+                            compilation.assets[file] = new ConcatSource(code.replace(/window\["nativescriptJsonp"\]/g, "global[\"nativescriptJsonp\"]"));
                         }
                     }
                 });
@@ -66,7 +66,16 @@ module.exports = {
             {
                 test: /\.ts$/,
                 loader: 'awesome-typescript-loader'
-            }
+            },
+            {
+                test: /\.scss$/,
+                loaders: [
+                    // 'css?sourceMap',
+                    // //'resolve-url',
+                    // 'sass?sourceMap'
+                    'raw', 'resolve-url', 'sass'
+                ]
+            },
         ]
     },
     plugins: [
@@ -75,7 +84,7 @@ module.exports = {
             name: ["tns-java-classes"]
         }),
         new CopyWebpackPlugin([
-            {from: "**/*.css"}
+            { from: "**/*.css" }
         ]),
         new FixJsonpPlugin(),
     ]
