@@ -1,4 +1,3 @@
-import { WebpackAsyncRoute } from '@angularclass/webpack-toolkit';
 import { Routes, RouterModule } from '@angular/router';
 import { NoContent } from './no-content';
 import { Issues } from './issues';
@@ -8,10 +7,10 @@ import { Signin } from './signin';
 
 export const ROUTES: Routes = [
   { path: '',      component: NoContent },
-  { path: 'issues',  component: Issues },
-  { path: 'dashboard',  component: Dashboard },
-  { path: 'profile',  component: Profile },
-  { path: 'signin',  component: Signin }
+  // { path: 'issues',  component: Issues },
+  // { path: 'dashboard',  component: Dashboard },
+  // { path: 'profile',  component: Profile },
+  // { path: 'signin',  component: Signin }
 ];
 
 export const ROUTING_PROVIDERS = [
