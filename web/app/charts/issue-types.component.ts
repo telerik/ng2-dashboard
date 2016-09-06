@@ -3,7 +3,6 @@ import { CHART_DIRECTIVES } from '@progress/kendo-angular-charts/dist/npm/js/mai
 
 @Component({
   selector: 'issue-types',
-  directives: [CHART_DIRECTIVES],
   styles: [
       require("../app.style.scss").toString()
   ],
