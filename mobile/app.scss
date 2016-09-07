@@ -1,0 +1,9 @@
+﻿// default vairalbes
+@import '~nativescript-theme-core/app/scss/variables';
+
+// variables overrides:
+@import '../shared/variables';
+
+// theme
+@import '~nativescript-theme-core/app/scss/index';
+@import '~nativescript-theme-core/app/scss/themes/core/platforms/index.android';

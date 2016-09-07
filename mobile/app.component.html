@@ -1,6 +1,12 @@
 <ActionBar title="Issues"></ActionBar>
-<GridLayout>
-    <ListView [items]="issues.active">
+<GridLayout rows="auto *">
+    <StackLayout>
+        <Button text="unstyled"></Button>
+        <Button text="btn" class="btn"></Button>
+        <Button text="btn btn-primary" class="btn btn-primary"></Button>
+        <Button text="btn btn-outline" class="btn btn-primary btn-outline"></Button>
+    </StackLayout>
+    <ListView [items]="issues.active" row="1">
         <template let-item="item" let-i="index">
             <StackLayout>
                 <Label [text]='item.title' margin="12"></Label>
