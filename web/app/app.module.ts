@@ -13,24 +13,16 @@ import { App } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState } from './app.service';
 import { NoContent } from './no-content';
-// import { ButtonsModule } from '@progress/kendo-angular-buttons';
-// import { GridModule } from '@progress/kendo-angular-grid';
-// import { InputsModule } from '@progress/kendo-angular-inputs';
-// import { DialogModule } from '@progress/kendo-angular-dialog';
-// import { ChartsModule } from '@progress/kendo-angular-charts';
-// import { LayoutModule } from '@progress/kendo-angular-layout';
-
-// import { ActiveIssuesComponent } from './charts/active-issues.component';
-
-// import { MarkdownComponent } from './markdown/markdown.component';
-// import { Issues } from './issues/issues.component';
+import { IssuesModule } from './issues';
+import { DashboardModule } from './dashboard'
+import { ProfileModule } from './profile'
+import { SigninModule } from './signin'
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState
 ];
-
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
@@ -38,24 +30,19 @@ const APP_PROVIDERS = [
   bootstrap: [ App ],
   declarations: [
     App,
-    NoContent,
-    // MarkdownComponent,
-    // Issues,
-    // ActiveIssuesComponent
+    NoContent
   ],
-  imports: [ // import Angular's modules
+  imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    // ButtonsModule,
-    // GridModule,
-    // InputsModule,
-    // DialogModule,
-    // ChartsModule,
-    // LayoutModule,
+    DashboardModule,
+    IssuesModule,
+    ProfileModule,
+    SigninModule,
     RouterModule.forRoot(ROUTES, { useHash: true })
   ],
-  providers: [ // expose our Services and Providers into Angular's dependency injection
+  providers: [
     ROUTING_PROVIDERS,
     APP_PROVIDERS
   ]

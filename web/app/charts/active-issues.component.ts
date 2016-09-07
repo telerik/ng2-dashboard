@@ -1,13 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { CHART_DIRECTIVES } from '@progress/kendo-angular-charts/dist/npm/js/main';
 
 @Component({
   selector: 'active-issues',
-  styles: [
-      require("../app.style.scss").toString()
-  ],
   template: `
-  <h3>All issues</h3>
+    <h3>Active issues</h3>
         <kendo-chart renderAs="canvas">
             <kendo-chart-series-defaults type="column" [stack]="true" [gap]="0.02" [overlay]="false"></kendo-chart-series-defaults>
             <kendo-chart-series>
@@ -54,3 +50,6 @@ export class ActiveIssuesComponent {
     @Input() public data;
     @Input() public active;
 }
+
+
+

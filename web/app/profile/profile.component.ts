@@ -1,16 +1,17 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { GithubService } from '../../../shared/github.service'
+import { Component, ViewEncapsulation, NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { GithubService } from '../../../shared/github.service';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { DialogModule } from '@progress/kendo-angular-dialog';
+import { InputsModule } from '@progress/kendo-angular-inputs';
 
 @Component({
   selector: 'profile',
   encapsulation: ViewEncapsulation.None,
-  styles: [
-      require("../app.style.scss").toString()
-  ],
   providers: [GithubService],
   templateUrl: './profile.template.html'
 })
-export class Profile {
+export class ProfileComponent {
   public user = {};
   private profileDialogVisible = false;
   private deleteDialogVisible = false;
@@ -36,3 +37,11 @@ export class Profile {
     this.deleteDialogVisible = false;
   }
 }
+
+
+@NgModule({
+  declarations: [ProfileComponent],
+  imports: [CommonModule, DialogModule, InputsModule, ButtonsModule]
+})
+
+export class ProfileModule {}

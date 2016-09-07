@@ -1,11 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { CHART_DIRECTIVES } from '@progress/kendo-angular-charts/dist/npm/js/main';
 
 @Component({
   selector: 'types-distribution',
-  styles: [
-      require("../app.style.scss").toString()
-  ],
   template: `
 <kendo-chart renderAs="canvas">
     <kendo-chart-series-defaults type="area"></kendo-chart-series-defaults>

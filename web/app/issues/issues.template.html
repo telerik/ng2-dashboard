@@ -1,4 +1,4 @@
-<!--<span class="title">
+<span class="title">
     Project Issues
 </span>
 <span class="date-range">
@@ -12,9 +12,11 @@
 <kendo-grid
           [data]="view"
           [pageSize]="pageSize"
+          [pageable]="{
+            pageSizes: true
+          }"
           [skip]="skip"
           [sortable]="true"
-          [pageable]="true"
           [scrollable]="'none'"
           (pageChange)='onPageChange($event)'
         >
@@ -25,13 +27,15 @@
         </kendo-grid-column>
         <kendo-grid-column field="title" title="Title">
             <template kendoCellTemplate let-dataItem>
-                <span [ngClass]="{'issue-open': dataItem.state === 'open', 'issue-closed': dataItem.state === 'closed', 'issue-status': true}"></span>
+                <span [ngClass]="{'issue-open': dataItem.state === 'open', 'issue-closed': dataItem.state === 'closed', 'issue-status': true}">
+                    {{ dataItem.state === 'open' ? '&#33;' : '&#10003;' }}
+                </span>
                 {{ dataItem.title }}
             </template>
         </kendo-grid-column>
         <kendo-grid-column field="labels" title="Labels" width="100">
             <template kendoCellTemplate let-dataItem>
-                <span *ngFor="let label of dataItem.labels" [ngStyle]="{'display': 'block', 'background-color': '#' + label.color}">
+                <span *ngFor="let label of dataItem.labels" [ngStyle]="{'display': 'block', 'color': 'white'}" [labelClass]="label.name">
                     {{ label.name }}
                 </span>
             </template>
@@ -48,19 +52,19 @@
             </template>
         </kendo-grid-column>
         <div *kendoDetailTemplate="let dataItem, let rowIndex = rowIndex">
-            <span>{{ dataItem.state }}</span> <br />
-            <span>{{ dataItem.title }}</span> <br />
+            <span [ngClass]="{detailStateOpen: dataItem.state === 'open', detailStateClosed: dataItem.state === 'closed'}">{{ dataItem.state }}</span> <br />
+            <span class="detailTitle">{{ dataItem.title }}</span>
+            <span class="detailNumber">#{{ dataItem.number }}</span> <br />
             <span>Created at: {{ dataItem.created_at | date }}</span>
             <span *ngIf="dataItem.closed_at">Closed at: {{ dataItem.closed_at | date }}</span> <br />
             <span>Milestone: {{ dataItem.milestone ? dataItem.milestone.title : '' }}</span> <br />
             <span>Author: {{ dataItem.user.login }}</span> <br />
             <span>Assignee {{ dataItem.assignee ? dataItem.assignee.login : '' }}</span> <br>
             <h5>Labels</h5>
-            <span *ngFor="let label of dataItem.labels" [ngStyle]="{'display': 'block', 'background-color': '#' + label.color}">
+            <span *ngFor="let label of dataItem.labels" [ngStyle]="{'display': 'block', 'color': 'white'}" [labelClass]="label.name">
                     {{ label.name }}
             </span>
             <h5>Description</h5>
             <markdown [data]="dataItem.body"></markdown>
-
         </div>
-</kendo-grid>-->
+</kendo-grid>
