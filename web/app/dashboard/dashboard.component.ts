@@ -3,9 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { GithubService } from '../../../shared/github.service'
 import { IssuesProcessor } from '../../../shared/issues-processor.service'
+
+
 import { IssueTypesComponent } from '../charts/issue-types.component';
 import { TypesDistributionComponent } from '../charts/types-distribution.component';
 import { ActiveIssuesComponent } from '../charts/active-issues.component';
+import { StatisticsComponent } from '../charts/statistics.component'
+
 import { IssuesModel } from '../../../shared/issues.model';
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
@@ -22,12 +26,12 @@ import { Observable, Subscription } from 'rxjs/Rx';
   templateUrl: './dashboard.template.html'
 })
 export class DashboardComponent {
-  issues: IssuesModel;
-  today: Date = new Date();
-  months: number = 12;
-  rangeStart: Date = this.issuesProcessor.getMonthsRange(this.months);
-  data: any;
-  subscription: Subscription;
+  private issues: IssuesModel;
+  private today: Date = new Date();
+  private months: number = 12;
+  private rangeStart: Date = this.issuesProcessor.getMonthsRange(this.months);
+  private data: any;
+  private subscription: Subscription;
 
   constructor(public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
     this.subscription = githubService
@@ -55,12 +59,25 @@ export class DashboardComponent {
   }
 
   onTabSelect(event) {
-    console.log(event);
+    switch (event.index) {
+        case 0 :
+          this.issues = this.issuesProcessor.process(this.data, this.months);
+          break;
+        case 1 :
+          const data = this.issuesProcessor.filterByUsername(this.issues, 'ggkrustev');
+          this.issues = this.issuesProcessor.process(data, this.months);
+          console.log(this.issues);
+          break;
+        case 2 :
+          this.issues = this.issuesProcessor.process(this.data, this.months);
+          break;
+      default : this.issues = this.issuesProcessor.process(this.data, this.months);;
+      }
   }
 }
 
 @NgModule({
-  declarations: [DashboardComponent, ActiveIssuesComponent, TypesDistributionComponent, IssueTypesComponent],
+  declarations: [DashboardComponent, ActiveIssuesComponent, TypesDistributionComponent, IssueTypesComponent, StatisticsComponent],
   imports: [ChartsModule, ButtonsModule, LayoutModule, CommonModule]
 })
 

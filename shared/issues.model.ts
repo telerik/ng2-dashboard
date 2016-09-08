@@ -11,7 +11,10 @@ export class IssuesModel {
         public typesDistribution = {
             Enhancement: [],
             Others: [],
-            'SEV: Low': []
+            'SEV: Low': [],
+            'SEV: Medium': [],
+            'SEV: High': [],
+            Feature: []
         },
         public closeRate = {
             lowest: {

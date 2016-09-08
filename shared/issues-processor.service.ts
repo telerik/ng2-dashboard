@@ -17,16 +17,17 @@ export class IssuesProcessor {
           this.closeRate(groupedIssues))
     }
     mapIssues(data) {
-        return data.reduce((agg, curr) => [...agg, ...curr], [])
-                   .filter(issue => !issue.pull_request)
-                   .map((item: any) => ({
-                        title: item.title,
-                        state: item.state,
-                        date: new Date(item.created_at),
-                        count: 1,
-                        labels: item.labels,
-                        created_at: item.created_at
-                    }));
+      return data.reduce((agg, curr) => [...agg, ...curr], [])
+                  .filter(issue => !issue.pull_request)
+                  .map((item: any) => ({
+                      title: item.title,
+                      state: item.state,
+                      date: new Date(item.created_at),
+                      count: 1,
+                      labels: item.labels,
+                      created_at: item.created_at,
+                      assignee: item.assignee ? item.assignee.login : 'none'
+                  }));
     }
 
     flatten(data) {
@@ -92,7 +93,7 @@ export class IssuesProcessor {
     }
 
   distribution(data) {
-  return data.map(item => ({
+    return data.map(item => ({
               created_at: new Date(item.created_at).setHours(0,0,0,0),
               label: this.cleanupLabels(item.labels)
             }))
@@ -102,20 +103,31 @@ export class IssuesProcessor {
                 value: 1
               });
               return agg
-            }, { Others: [], Enhancement: [], 'SEV: Low': [] });
+            }, { Others: [], Enhancement: [], 'SEV: Low': [], 'SEV: Medium': [], 'SEV: High': [], 'Feature': []  });
   }
 
   cleanupLabels(labels) {
-    let filtered = labels.filter(label => label.name === 'SEV: Low' || label.name === 'Enhancement')
+    let filtered = labels.filter(label =>
+                              label.name === 'SEV: Low' ||
+                              label.name === 'SEV: High' ||
+                              label.name === 'Feature' ||
+                              label.name === 'Enhancement' ||
+                              label.name === 'SEV: Medium')
                          .map(label => label.name)
     return filtered.length === 0 ? 'Others' : filtered[0];
   }
 
   filterByMonth(data, months) {
-        return data.filter(value => {
-          return new Date(value.created_at).getTime() > this.getMonthsRange(months).getTime();
-        })
-    }
+    return data.filter(value => {
+      return new Date(value.created_at).getTime() > this.getMonthsRange(months).getTime();
+    })
+  }
+
+  filterByUsername(data, username) {
+    return data.active.filter(value => {
+      return value.assignee === username
+    })
+  }
 
   getMonthsRange(months) {
     let since = new Date();
