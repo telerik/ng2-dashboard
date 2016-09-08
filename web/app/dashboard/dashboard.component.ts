@@ -26,7 +26,7 @@ import { Observable, Subscription } from 'rxjs/Rx';
   templateUrl: './dashboard.template.html'
 })
 export class DashboardComponent {
-  private issues: IssuesModel;
+  private issues: any;
   private today: Date = new Date();
   private months: number = 12;
   private rangeStart: Date = this.issuesProcessor.getMonthsRange(this.months);
@@ -64,12 +64,12 @@ export class DashboardComponent {
           this.issues = this.issuesProcessor.process(this.data, this.months);
           break;
         case 1 :
-          const data = this.issuesProcessor.filterByUsername(this.issues, 'ggkrustev');
-          this.issues = this.issuesProcessor.process(data, this.months);
-          console.log(this.issues);
+          const assigned = this.issuesProcessor.flatten(this.data).filter(item => item.assignee ? item.assignee.login === 'ggkrustev' : false)
+          this.issues = this.issuesProcessor.process(assigned, this.months)
           break;
         case 2 :
-          this.issues = this.issuesProcessor.process(this.data, this.months);
+          const created = this.issuesProcessor.flatten(this.data).filter(item => item.user.login === 'ggkrustev');
+          this.issues = this.issuesProcessor.process(created, this.months)
           break;
       default : this.issues = this.issuesProcessor.process(this.data, this.months);;
       }

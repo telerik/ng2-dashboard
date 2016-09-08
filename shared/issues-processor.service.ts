@@ -26,7 +26,8 @@ export class IssuesProcessor {
                       count: 1,
                       labels: item.labels,
                       created_at: item.created_at,
-                      assignee: item.assignee ? item.assignee.login : 'none'
+                      assignee: item.assignee ? item.assignee.login : 'none',
+                      created_by: item.user.login
                   }));
     }
 
@@ -124,7 +125,7 @@ export class IssuesProcessor {
   }
 
   filterByUsername(data, username) {
-    return data.active.filter(value => {
+    return this.process(data, 12).active.filter(value => {
       return value.assignee === username
     })
   }
