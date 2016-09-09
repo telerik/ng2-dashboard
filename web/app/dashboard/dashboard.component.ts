@@ -28,7 +28,7 @@ import { Observable, Subscription } from 'rxjs/Rx';
 export class DashboardComponent {
   private issues: any;
   private today: Date = new Date();
-  private months: number = 12;
+  private months: number = 3;
   private rangeStart: Date = this.issuesProcessor.getMonthsRange(this.months);
   private data: any;
   private subscription: Subscription;
@@ -36,7 +36,7 @@ export class DashboardComponent {
 
   constructor(public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
     this.subscription = githubService
-      .getGithubIssues({pages: 12})
+      .getGithubIssues({pages: 14})
       .map(data => {
         this.data = data;
         return this.issuesProcessor.process(data, this.months)
@@ -52,6 +52,7 @@ export class DashboardComponent {
       this.months = months;
       this.rangeStart = this.issuesProcessor.getMonthsRange(months);
       this.issues = this.issuesProcessor.process(this.data, months);
+      this.filterIssues(this.selectedIndex);
     }
   }
 
@@ -60,7 +61,11 @@ export class DashboardComponent {
   }
 
   onTabSelect(event) {
-    switch (event.index) {
+    this.filterIssues(event.index);
+  }
+
+  filterIssues(index) {
+    switch (index) {
         case 0 :
           this.issues = this.issuesProcessor.process(this.data, this.months);
           this.selectedIndex = 0;
@@ -76,7 +81,7 @@ export class DashboardComponent {
           this.selectedIndex = 2;
           break;
       default : this.issues = this.issuesProcessor.process(this.data, this.months);;
-      }
+    }
   }
 }
 

@@ -5,7 +5,7 @@
     {{range.from | date}} - {{range.to | date}}
 </span>
 <kendo-button-group [selection]="'single'">
-    <button kendoButton (click)="onFilterClick(1)" [selected]="true">1 Month</button>
+    <button kendoButton (click)="onFilterClick(3)" [selected]="true">3 Months</button>
     <button kendoButton (click)="onFilterClick(6)">6 Months</button>
     <button kendoButton (click)="onFilterClick(12)">1 Year</button>
 </kendo-button-group>

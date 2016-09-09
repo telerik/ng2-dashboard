@@ -40,7 +40,7 @@ export class TypesDistributionComponent implements AfterViewInit {
     private baseUnit;
     @Input() public data;
     @Input() public set months(months) {
-        months > 1 ? this.baseUnit = 'months' : this.baseUnit = 'days';
+        months > 3 ? this.baseUnit = 'months' : this.baseUnit = 'weeks';
     };
 
     private series = [];

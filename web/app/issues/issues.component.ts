@@ -29,14 +29,14 @@ export class IssuesComponent {
   public pageSize = 5;
   public skip = 0;
   public today = new Date();
-  public months = 1;
+  public months = 3;
   public range = this.dateRange();
 
   constructor(public http: Http, public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
     githubService.getGithubIssues({pages: 12}).subscribe((data: any[]) => {
       data = data.reduce((agg, curr) => [...agg, ...curr], []).filter(issue => issue.pull_request ? false : true);
       this.allIssues = data;
-      this.applyPaging(this.issuesProcessor.filterByMonth(this.allIssues, 1))
+      this.applyPaging(this.issuesProcessor.filterByMonth(this.allIssues, this.months))
     })
   }
 
