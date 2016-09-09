@@ -1,9 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'types-distribution',
   template: `
-    <a *ngFor="let button of seriesColors" (click)="onLegendClick($event, button)">{{data[button.label].length}} <span>{{button.label}}</span></a>
+    <a *ngFor="let button of seriesColors" (click)="addSeries(button)"
+        [ngStyle]="{'color': button.active ? button.value : '#A2ACAC' }"
+    >{{data[button.label].length}} <span>{{button.label}}</span></a>
+
     <kendo-chart style="height: 300px; width: 900px" [transitions]="false">
         <kendo-chart-series-defaults type="line" style="smooth" [overlay]="false"></kendo-chart-series-defaults>
         <kendo-chart-category-axis>
@@ -33,23 +36,28 @@ import { Component, Input } from '@angular/core';
     </kendo-chart>
   `
 })
-export class TypesDistributionComponent {
+export class TypesDistributionComponent implements AfterViewInit {
     @Input() public data;
 
     private series = [];
     private visibleSeries = [];
 
     private seriesColors = [
-        { label: "SEV: Low", value: "#FF9966" },
-        { label: "SEV: Medium", value: "#BB6ACB" },
-        { label: "SEV: High", value: "#52C3D3" },
-        { label: "Enhancement", value: "#22C85D" },
-        { label: "Feature", value: "#FF6358" },
-        { label: "Others", value: "#2BA7DA" }
+        { label: "SEV: Low", value: "#FF9966", active: false },
+        { label: "SEV: Medium", value: "#BB6ACB", active: false },
+        { label: "SEV: High", value: "#52C3D3", active: false },
+        { label: "Enhancement", value: "#22C85D", active: false },
+        { label: "Feature", value: "#FF6358", active: false },
+        { label: "Others", value: "#2BA7DA", active: false }
     ]
 
-    public onLegendClick(event, button) {
-        const legend = event.target.parentElement;
+    public addSeries(button) {
+        this.seriesColors.forEach(s => {
+            if (s.value === button.value) {
+                s.active = !s.active;
+            }
+        })
+
         const newSeries = {
             color: this.seriesColors.filter(color => color.label === button.label)[0].value,
             markers: { visible: false },
@@ -60,11 +68,15 @@ export class TypesDistributionComponent {
         if (present) {
             const removeIndex = this.visibleSeries.map(item => item.color).indexOf(newSeries.color);
             ~removeIndex && this.visibleSeries.splice(removeIndex, 1);
-            legend.style.color = "#A2ACAC";
         } else {
             this.visibleSeries.push(newSeries);
-            legend.style.color = newSeries.color;
         }
         this.series = this.visibleSeries;
+    }
+
+    public ngAfterViewInit() {
+        this.addSeries({ label: "SEV: Low", value: "#FF9966", active: false })
+        this.addSeries({ label: "Enhancement", value: "#22C85D", active: false })
+        this.addSeries({ label: "Others", value: "#2BA7DA", active: false })
     }
 }

@@ -6,14 +6,14 @@
 </kendo-button-group>
 <kendo-tabstrip (select)="onTabSelect($event)">
     <kendo-tabstrip-tab [title]="'All Issues'" [selected]="true">
-        <statistics [issues]="issues"></statistics>
+        <statistics [issues]="issues" *ngIf="issues.active.length"></statistics>
     </kendo-tabstrip-tab>
 
     <kendo-tabstrip-tab [title]="'Assigned to Me'">
-        <statistics [issues]="issues"></statistics>
+        <statistics [issues]="issues" *ngIf="issues.active.length"></statistics>
     </kendo-tabstrip-tab>
 
     <kendo-tabstrip-tab [title]="'Created by Me'">
-        <statistics [issues]="issues"></statistics>
+        <statistics [issues]="issues" *ngIf="issues.active.length"></statistics>
     </kendo-tabstrip-tab>
 </kendo-tabstrip>
