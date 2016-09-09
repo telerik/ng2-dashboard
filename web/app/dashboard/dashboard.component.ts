@@ -32,6 +32,7 @@ export class DashboardComponent {
   private rangeStart: Date = this.issuesProcessor.getMonthsRange(this.months);
   private data: any;
   private subscription: Subscription;
+  private selectedIndex: number = 0;
 
   constructor(public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
     this.subscription = githubService
@@ -62,14 +63,17 @@ export class DashboardComponent {
     switch (event.index) {
         case 0 :
           this.issues = this.issuesProcessor.process(this.data, this.months);
+          this.selectedIndex = 0;
           break;
         case 1 :
           const assigned = this.issuesProcessor.flatten(this.data).filter(item => item.assignee ? item.assignee.login === 'ggkrustev' : false)
           this.issues = this.issuesProcessor.process(assigned, this.months)
+          this.selectedIndex = 1;
           break;
         case 2 :
           const created = this.issuesProcessor.flatten(this.data).filter(item => item.user.login === 'ggkrustev');
           this.issues = this.issuesProcessor.process(created, this.months)
+          this.selectedIndex = 2;
           break;
       default : this.issues = this.issuesProcessor.process(this.data, this.months);;
       }

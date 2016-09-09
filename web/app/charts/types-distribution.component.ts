@@ -7,7 +7,7 @@ import { Component, Input, AfterViewInit } from '@angular/core';
         [ngStyle]="{'color': button.active ? button.value : '#A2ACAC' }"
     >{{data[button.label].length}} <span>{{button.label}}</span></a>
 
-    <kendo-chart style="height: 300px; width: 900px" [transitions]="false">
+    <kendo-chart renderAs="canvas" style="height: 300px; width: 900px" [transitions]="false">
         <kendo-chart-series-defaults type="line" style="smooth" [overlay]="false"></kendo-chart-series-defaults>
         <kendo-chart-category-axis>
             <kendo-chart-category-axis-item
@@ -37,7 +37,11 @@ import { Component, Input, AfterViewInit } from '@angular/core';
   `
 })
 export class TypesDistributionComponent implements AfterViewInit {
+    private baseUnit;
     @Input() public data;
+    @Input() public set months(months) {
+        months > 1 ? this.baseUnit = 'months' : this.baseUnit = 'days';
+    };
 
     private series = [];
     private visibleSeries = [];

@@ -12,11 +12,12 @@ import { ActiveIssuesComponent } from '../charts/active-issues.component';
     Close rate = {{ issues.closeRate.average | percent:'2.0-0' }}
     Highest: {{issues.closeRate.highest.close_rate | percent: '2.0-0' }} on {{issues.closeRate.highest.created_at | date}}
     Lowest: {{issues.closeRate.lowest.close_rate | percent: '2.0-0' }} on {{issues.closeRate.lowest.created_at | date}}
-    <active-issues [data]="issues.groupedIssues" [active]="issues.active"></active-issues>
-    <types-distribution [data]="issues.typesDistribution"></types-distribution>
+    <active-issues [data]="issues.groupedIssues" [months]="months" [closeRate]="issues.closeRate.average" [active]="issues.active"></active-issues>
+    <types-distribution [data]="issues.typesDistribution" [months]="months" *ngIf="issues.active.length"></types-distribution>
     <issue-types [data]="issues.issueTypes"></issue-types>
   `
 })
 export class StatisticsComponent {
     @Input() public issues;
+    @Input() public months;
 }
