@@ -83,6 +83,11 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: ["tns-java-classes"]
         }),
+        new webpack.DefinePlugin({
+            global: 'global',
+            __dirname: '__dirname',
+            "global.TNS_WEBPACK": 'true',
+        }),
         new CopyWebpackPlugin([
             { from: "**/*.css" }
         ]),
