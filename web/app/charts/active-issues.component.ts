@@ -4,7 +4,12 @@ import { Component, Input } from '@angular/core';
   selector: 'active-issues',
   template: `
     <div class="k-hbox">
-
+        Active Issues = {{ issues.open + issues.closed }}
+        Open Issues = {{ issues.open }}
+        Closed Issues = {{ issues.closed }}
+        Close rate = {{ issues.closeRate.average | percent:'2.0-0' }}
+        Highest: {{issues.closeRate.highest.close_rate | percent: '2.0-0' }} on {{issues.closeRate.highest.created_at | date}}
+        Lowest: {{issues.closeRate.lowest.close_rate | percent: '2.0-0' }} on {{issues.closeRate.lowest.created_at | date}}
         <div>
             Active issues
             <kendo-chart renderAs="canvas" style="height: 80px; width: 300px">
@@ -127,6 +132,7 @@ export class ActiveIssuesComponent {
     private bulletData;
     @Input() public data;
     @Input() public active;
+    @Input() public issues;
     @Input() public set months(months) {
         months > 3 ? this.baseUnit = 'months' : this.baseUnit = 'weeks';
     }
