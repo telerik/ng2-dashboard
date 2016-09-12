@@ -23,6 +23,15 @@
 
 
 
+// Ng
+kendo-tabstrip {
+	position: relative;
+	display: block;
+}
+
+
+
+
 // App
 #app {
 	width: 100vw;
@@ -92,4 +101,27 @@ main {
 	// Cards
 	.card {}
 	.card .card-header {}
+}
+
+
+
+
+// Dashboard
+.dashboard {
+	position: relative;
+
+
+	.k-tabstrip {}
+	.k-tabstrip .k-tabstrip-items {
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 2;
+	}
+	.k-tabstrip .k-content {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		background: none;
+	}
 }

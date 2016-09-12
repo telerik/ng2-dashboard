@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, NgModule } from '@angular/core';
+import { Component, ViewEncapsulation, NgModule, HostBinding } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { GithubService } from '../../../shared/github.service'
@@ -17,80 +17,80 @@ import { LayoutModule } from '@progress/kendo-angular-layout';
 import { Observable, Subscription } from 'rxjs/Rx';
 
 @Component({
-  selector: 'dashboard',
-  providers: [GithubService, IssuesProcessor],
-  encapsulation: ViewEncapsulation.None,
-  styles: [
-      require("../app.style.scss").toString()
-  ],
-  templateUrl: './dashboard.template.html'
+    selector: 'dashboard',
+    providers: [GithubService, IssuesProcessor],
+    encapsulation: ViewEncapsulation.None,
+    styles: [
+        require("../app.style.scss").toString()
+    ],
+    templateUrl: './dashboard.template.html'
 })
 export class DashboardComponent {
-  private issues: any;
-  private today: Date = new Date();
-  private months: number = 3;
-  private rangeStart: Date = this.issuesProcessor.getMonthsRange(this.months);
-  private data: any;
-  private subscription: Subscription;
-  private selectedIndex: number = 0;
+    private issues: any;
+    private today: Date = new Date();
+    private months: number = 3;
+    private rangeStart: Date = this.issuesProcessor.getMonthsRange(this.months);
+    private data: any;
+    private subscription: Subscription;
+    private selectedIndex: number = 0;
 
-  constructor(public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
-    this.subscription = githubService
-      .getGithubIssues({pages: 14})
-      .map(data => {
-        this.data = data;
-        return this.issuesProcessor.process(data, this.months)
-      })
-      .merge(Observable.of(new IssuesModel()))
-      .subscribe((data: IssuesModel) => {
-        this.issues = data
-      })
-  }
-
-  onFilterClick(months) {
-    if (this.months !== months) {
-      this.months = months;
-      this.rangeStart = this.issuesProcessor.getMonthsRange(months);
-      this.issues = this.issuesProcessor.process(this.data, months);
-      this.filterIssues(this.selectedIndex);
+    constructor(public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
+        this.subscription = githubService
+            .getGithubIssues({pages: 14})
+            .map(data => {
+                this.data = data;
+                return this.issuesProcessor.process(data, this.months)
+            })
+            .merge(Observable.of(new IssuesModel()))
+            .subscribe((data: IssuesModel) => {
+                this.issues = data
+            });
     }
-  }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
-  onTabSelect(event) {
-    this.filterIssues(event.index);
-  }
-
-  filterIssues(index) {
-    switch (index) {
-        case 0 :
-          this.issues = this.issuesProcessor.process(this.data, this.months);
-          this.selectedIndex = 0;
-          break;
-        case 1 :
-          const assigned = this.issuesProcessor.flatten(this.data).filter(item => item.assignee ? item.assignee.login === 'ggkrustev' : false)
-          this.issues = this.issuesProcessor.process(assigned, this.months)
-          this.selectedIndex = 1;
-          break;
-        case 2 :
-          const created = this.issuesProcessor.flatten(this.data).filter(item => item.user.login === 'ggkrustev');
-          this.issues = this.issuesProcessor.process(created, this.months)
-          this.selectedIndex = 2;
-          break;
-      default : this.issues = this.issuesProcessor.process(this.data, this.months);;
+    onFilterClick(months) {
+        if (this.months !== months) {
+            this.months = months;
+            this.rangeStart = this.issuesProcessor.getMonthsRange(months);
+            this.issues = this.issuesProcessor.process(this.data, months);
+            this.filterIssues(this.selectedIndex);
+        }
     }
-  }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
+
+    onTabSelect(event) {
+        this.filterIssues(event.index);
+    }
+
+    filterIssues(index) {
+        switch (index) {
+            case 0 :
+                this.issues = this.issuesProcessor.process(this.data, this.months);
+                this.selectedIndex = 0;
+                break;
+            case 1 :
+                const assigned = this.issuesProcessor.flatten(this.data).filter(item => item.assignee ? item.assignee.login === 'ggkrustev' : false)
+                this.issues = this.issuesProcessor.process(assigned, this.months)
+                this.selectedIndex = 1;
+                break;
+            case 2 :
+                const created = this.issuesProcessor.flatten(this.data).filter(item => item.user.login === 'ggkrustev');
+                this.issues = this.issuesProcessor.process(created, this.months)
+                this.selectedIndex = 2;
+                break;
+          default : this.issues = this.issuesProcessor.process(this.data, this.months);;
+        }
+    }
 }
 
 @NgModule({
-  declarations: [DashboardComponent, ActiveIssuesComponent, TypesDistributionComponent, IssueTypesComponent, StatisticsComponent],
-  imports: [ChartsModule, ButtonsModule, LayoutModule, CommonModule]
+    declarations: [DashboardComponent, ActiveIssuesComponent, TypesDistributionComponent, IssueTypesComponent, StatisticsComponent],
+    imports: [ChartsModule, ButtonsModule, LayoutModule, CommonModule]
 })
 
-export class DashboardModule {}
-
-
-
+export class DashboardModule {
+    @HostBinding('attr.id') get get_id() { return "dashboard"; }
+    @HostBinding('class') get get_class() { return "dashboard"; }
+}
