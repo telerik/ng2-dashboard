@@ -50,9 +50,15 @@
 	}
 
 	.nav-pills {
+		margin-left: -( $spacer * 1.5 );
+		margin-right: -( $spacer * 1.5 );
 		font-size: 1.125rem;
 	}
-	.nav-pills a:not(.active) {
+	.nav-pills .nav-link {
+		padding-left: $spacer * 1.5;
+		padding-right: $spacer * 1.5;
+	}
+	.nav-pills .nav-link:not(.active) {
 		color: inherit;
 	}
 }
