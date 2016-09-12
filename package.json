@@ -86,17 +86,18 @@
     "@progress/kendo-angular-grid": "^0.2.0",
     "@progress/kendo-angular-inputs": "^0.9.0",
     "@progress/kendo-angular-layout": "^0.9.0",
+    "@telerik/kendo-theme-bootstrap": "^0.1.1",
     "@telerik/kendo-theme-default": "^1.14.5",
     "bootstrap": "git://github.com/twbs/bootstrap.git#v4-dev",
     "core-js": "^2.4.0",
     "http-server": "^0.9.0",
-    "nativescript-angular": "0.5.0",
-    "tns-core-modules": "next",
     "ie-shim": "^0.1.0",
-    "reflect-metadata": "^0.1.5",
-    "zone.js": "0.6.17",
+    "nativescript-angular": "0.5.0",
     "nativescript-theme": "git+https://github.com/NativeScript/theme.git",
-    "rxjs": "5.0.0-beta.11"
+    "reflect-metadata": "^0.1.5",
+    "rxjs": "5.0.0-beta.11",
+    "tns-core-modules": "next",
+    "zone.js": "0.6.17"
   },
   "devDependencies": {
     "angular2-hmr": "~0.8.0",
