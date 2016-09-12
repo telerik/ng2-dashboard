@@ -15,7 +15,8 @@
 .k-ivbox {
 	flex-direction: column;
 }
-.k-flex {
+.k-flex,
+.k-spacer {
 	flex: 1;
 }
 
@@ -23,7 +24,7 @@
 
 
 // App
-app {
+#app {
 	width: 100vw;
 	height: 100vh;
 	overflow: hidden;
@@ -39,8 +40,37 @@ app {
 	padding: $spacer * 1.5;
 	width: 320px;
 	box-sizing: border-box;
-	color: #ffffff;
-	background: $brand-inverse;
+
+	hr { border: 0; }
+	.h4 {
+		font-size: $font-size-xs;
+		font-weight: 400;
+		text-transform: uppercase;
+		opacity: .3;
+	}
+
+	.nav-pills {
+		font-size: 1.125rem;
+	}
+	.nav-pills a:not(.active) {
+		color: inherit;
+	}
+}
+#app-title {
+	margin: 0;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+#app-subtitle {
+	margin: 0;
+	font-size: $font-size-xs;
+	font-weight: 100;
+	text-transform: uppercase;
+	opacity: .75;
+}
+#copy {
+	color: #9195a2;
+	font-size: $font-size-sm;
 }
 
 

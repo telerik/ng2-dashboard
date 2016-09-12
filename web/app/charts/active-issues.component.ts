@@ -4,13 +4,9 @@ import { Component, Input } from '@angular/core';
   selector: 'active-issues',
   template: `
     <div class="k-hbox">
-        Active Issues = {{ issues.open + issues.closed }}
-        Open Issues = {{ issues.open }}
-        Closed Issues = {{ issues.closed }}
-        Close rate = {{ issues.closeRate.average | percent:'2.0-0' }}
-        Highest: {{issues.closeRate.highest.close_rate | percent: '2.0-0' }} on {{issues.closeRate.highest.created_at | date}}
-        Lowest: {{issues.closeRate.lowest.close_rate | percent: '2.0-0' }} on {{issues.closeRate.lowest.created_at | date}}
-        <div>
+
+        <div class="k-flex">
+            {{ issues.open + issues.closed }}
             Active issues
             <kendo-chart renderAs="canvas" style="height: 80px; width: 300px">
                 <kendo-chart-series-defaults type="column" [stack]="true" [gap]="2" [overlay]="false"></kendo-chart-series-defaults>
@@ -33,7 +29,8 @@ import { Component, Input } from '@angular/core';
             </kendo-chart>
         </div>
 
-        <div>
+        <div class="k-flex">
+            {{ issues.closed }}
             Closed issues
             <kendo-chart renderAs="canvas" style="height: 80px; width: 300px">
                 <kendo-chart-series-defaults type="column" [stack]="true" [gap]="2" [overlay]="false"></kendo-chart-series-defaults>
@@ -56,7 +53,8 @@ import { Component, Input } from '@angular/core';
             </kendo-chart>
         </div>
 
-        <div>
+        <div class="k-flex">
+            {{ issues.open }}
             Open issues
             <kendo-chart renderAs="canvas" style="height: 80px; width: 300px">
                 <kendo-chart-series-defaults type="column" [stack]="true" [gap]="2" [overlay]="false"></kendo-chart-series-defaults>
@@ -79,8 +77,20 @@ import { Component, Input } from '@angular/core';
             </kendo-chart>
         </div>
 
-        <div>
+        <div class="k-flex">
+            {{ issues.closeRate.average | percent:'2.0-0' }}
             Close rate
+            <p>
+                Highest:
+                {{issues.closeRate.highest.close_rate | percent: '2.0-0' }}
+                on {{issues.closeRate.highest.created_at | date}}
+            </p>
+            <p>
+                Lowest:
+                {{issues.closeRate.lowest.close_rate | percent: '2.0-0' }}
+                on {{issues.closeRate.lowest.created_at | date}}
+            </p>
+
             <kendo-chart style="height: 20px; width: 300px" [chartArea]="{margin: -20}">
                 <kendo-chart-series>
                     <kendo-chart-series-item type="bullet"
