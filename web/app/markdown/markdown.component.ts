@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-// const marked = require('marked');
+const marked = require('marked');
 
 @Component({
   selector: 'markdown',
@@ -10,7 +10,7 @@ export class MarkdownComponent {
   public convertedData: string;
 
   ngOnChanges() {
-    // const md = marked.setOptions({});
-    // this.convertedData = md.parse(this.data);
+    const md = marked.setOptions({});
+    this.convertedData = md.parse(this.data);
   }
 }
