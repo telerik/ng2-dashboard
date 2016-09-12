@@ -2,7 +2,6 @@
  * Angular bootstraping
  */
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { decorateComponentRef } from './platform/environment';
 
 /*
  * App Module
@@ -13,11 +12,10 @@ import { AppModule } from './app';
 /*
  * Bootstrap our Angular app with a top level NgModule
  */
-export function main(initialHmrState?: any): Promise<any> {
+export function main(initialHmrState?: any): any {
 
   return platformBrowserDynamic()
     .bootstrapModule(AppModule)
-    .then(decorateComponentRef)
     .catch(err => console.error(err));
 
 }

@@ -1,27 +1,19 @@
 <span>{{ rangeStart | date }} - {{ today | date }}</span>
 <kendo-button-group [selection]="'single'">
-    <button kendoButton (click)="onFilterClick(1)" [selected]="true">1 Month</button>
+    <button kendoButton (click)="onFilterClick(3)" [selected]="true">3 Months</button>
     <button kendoButton (click)="onFilterClick(6)">6 Months</button>
     <button kendoButton (click)="onFilterClick(12)">1 Year</button>
 </kendo-button-group>
 <kendo-tabstrip (select)="onTabSelect($event)">
     <kendo-tabstrip-tab [title]="'All Issues'" [selected]="true">
-        Active Issues = {{ issues.open + issues.closed }}
-        Open Issues = {{ issues.open }}
-        Closed Issues = {{ issues.closed }}
-        Close rate = {{ issues.closeRate.average | percent:'2.0-0' }}
-        Highest: {{issues.closeRate.highest.close_rate | percent: '2.0-0' }} on {{issues.closeRate.highest.created_at | date}}
-        Lowest: {{issues.closeRate.lowest.close_rate | percent: '2.0-0' }} on {{issues.closeRate.lowest.created_at | date}}
-        <active-issues [data]="issues.groupedIssues" [active]="issues.active"></active-issues>
-        <!--<types-distribution [data]="issues.typesDistribution"></types-distribution>
-        <issue-types [data]="issues.issueTypes"></issue-types>-->
+        <statistics [issues]="issues" [months]="months" *ngIf="selectedIndex === 0"></statistics>
     </kendo-tabstrip-tab>
 
     <kendo-tabstrip-tab [title]="'Assigned to Me'">
-        Assigned to me
+        <statistics [issues]="issues" [months]="months" *ngIf="selectedIndex === 1"></statistics>
     </kendo-tabstrip-tab>
 
     <kendo-tabstrip-tab [title]="'Created by Me'">
-    Created
+        <statistics [issues]="issues" [months]="months" *ngIf="selectedIndex === 2"></statistics>
     </kendo-tabstrip-tab>
 </kendo-tabstrip>

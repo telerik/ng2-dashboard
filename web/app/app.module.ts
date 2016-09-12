@@ -4,63 +4,39 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
-/*
- * Platform and Environment providers/directives/pipes
- */
-import { PLATFORM_PROVIDERS } from '../platform/browser';
-import { ENV_PROVIDERS } from '../platform/environment';
 import { ROUTES, ROUTING_PROVIDERS } from './app.routes';
 
-// App is our top level component
 import { App } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState } from './app.service';
 import { NoContent } from './no-content';
-import { ButtonsModule } from '@progress/kendo-angular-buttons';
-import { GridModule } from '@progress/kendo-angular-grid';
-import { InputsModule } from '@progress/kendo-angular-inputs';
-import { DialogModule } from '@progress/kendo-angular-dialog';
-import { ChartsModule } from '@progress/kendo-angular-charts';
-import { LayoutModule } from '@progress/kendo-angular-layout';
+import { IssuesModule } from './issues';
+import { DashboardModule } from './dashboard'
+import { ProfileModule } from './profile'
+import { SigninModule } from './signin'
 
-import { ActiveIssuesComponent } from './charts/active-issues.component';
-
-import { MarkdownComponent } from './markdown/markdown.component';
-import { Issues } from './issues/issues.component';
-
-// Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState
 ];
 
-/**
- * `AppModule` is the main entry point into Angular2's bootstraping process
- */
 @NgModule({
   bootstrap: [ App ],
   declarations: [
     App,
-    MarkdownComponent,
-    NoContent,
-    Issues,
-    ActiveIssuesComponent
+    NoContent
   ],
-  imports: [ // import Angular's modules
+  imports: [
     BrowserModule,
-    ButtonsModule,
     FormsModule,
     HttpModule,
-    GridModule,
-    InputsModule,
-    DialogModule,
-    ChartsModule,
-    LayoutModule,
+    DashboardModule,
+    IssuesModule,
+    ProfileModule,
+    SigninModule,
     RouterModule.forRoot(ROUTES, { useHash: true })
   ],
-  providers: [ // expose our Services and Providers into Angular's dependency injection
-    PLATFORM_PROVIDERS,
-    ENV_PROVIDERS,
+  providers: [
     ROUTING_PROVIDERS,
     APP_PROVIDERS
   ]

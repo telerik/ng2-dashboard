@@ -1,23 +1,27 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MarkdownComponent } from '../markdown/markdown.component';
 import { Http, Headers } from '@angular/http';
 import { Observable, Subject } from 'rxjs/Rx';
 import { GithubService } from '../../../shared/github.service'
 import { IssuesProcessor } from '../../../shared/issues-processor.service';
+import { GridModule } from '@progress/kendo-angular-grid';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { LabelClass } from './label.directive';
 
 @Component({
   selector: 'issues',
   encapsulation: ViewEncapsulation.None,
+  styles: [
+      require("../app.style.scss").toString()
+  ],
   providers: [
     GithubService,
     IssuesProcessor
   ],
-  styles: [
-      require("../app.style.scss").toString()
-  ],
   templateUrl: './issues.template.html'
 })
-export class Issues {
+export class IssuesComponent {
   public issues: any;
   public allIssues: any;
   public view: any;
@@ -25,14 +29,14 @@ export class Issues {
   public pageSize = 5;
   public skip = 0;
   public today = new Date();
-  public months = 1;
+  public months = 3;
   public range = this.dateRange();
 
   constructor(public http: Http, public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
     githubService.getGithubIssues({pages: 12}).subscribe((data: any[]) => {
       data = data.reduce((agg, curr) => [...agg, ...curr], []).filter(issue => issue.pull_request ? false : true);
       this.allIssues = data;
-      this.applyPaging(this.issuesProcessor.filterByMonth(this.allIssues, 1))
+      this.applyPaging(this.issuesProcessor.filterByMonth(this.allIssues, this.months))
     })
   }
 
@@ -62,8 +66,15 @@ export class Issues {
 
   dateRange() {
     return {
-      from: new Date(),
-      to: this.issuesProcessor.getMonthsRange(this.months)
+      to: new Date(),
+      from: this.issuesProcessor.getMonthsRange(this.months)
     }
   }
 }
+
+@NgModule({
+  declarations: [IssuesComponent, MarkdownComponent, LabelClass],
+  imports: [GridModule, ButtonsModule, CommonModule]
+})
+
+export class IssuesModule {}
