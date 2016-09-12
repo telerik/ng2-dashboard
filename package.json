@@ -123,7 +123,6 @@
     "karma-mocha-reporter": "^2.0.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "1.7.0",
-    "kendo-bootstrap": "git+https://github.com/telerik/kendo-bootstrap.git",
     "node-sass": "^3.8.0",
     "parse5": "^1.5.1",
     "protractor": "^3.2.2",

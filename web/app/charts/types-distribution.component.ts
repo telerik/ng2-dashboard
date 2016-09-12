@@ -3,37 +3,42 @@ import { Component, Input, AfterViewInit } from '@angular/core';
 @Component({
   selector: 'types-distribution',
   template: `
-    <a *ngFor="let button of seriesColors" (click)="addSeries(button)"
-        [ngStyle]="{'color': button.active ? button.value : '#A2ACAC' }"
-    >{{data[button.label].length}} <span>{{button.label}}</span></a>
+    <div class="card">
+        <h4 class="card-header">Types Distribution</h4>
+        <div class="card-block">
+            <a *ngFor="let button of seriesColors" (click)="addSeries(button)"
+                [ngStyle]="{'color': button.active ? button.value : '#A2ACAC' }"
+            >{{data[button.label].length}} <span>{{button.label}}</span></a>
 
-    <kendo-chart renderAs="canvas" style="height: 300px; width: 900px" [transitions]="false">
-        <kendo-chart-series-defaults type="line" style="smooth" [overlay]="false"></kendo-chart-series-defaults>
-        <kendo-chart-category-axis>
-            <kendo-chart-category-axis-item
-                [crosshair]="{visible: true}"
-                baseUnit="months"
-                [majorTicks]="{visible: false}"
-                [labels]="{step: 4, skip: 2}"
-                [majorGridLines]="{visible: false}"
-                [line]="{visible: false}"
-            ></kendo-chart-category-axis-item>
-        </kendo-chart-category-axis>
-        <kendo-chart-series>
-            <kendo-chart-series-item *ngFor="let series of visibleSeries"
-                [data]="series.data"
-                [markers]="series.markers"
-                [color]="series.color"
-                style="smooth"
-                aggregate="count"
-                categoryField="date"
-            ></kendo-chart-series-item>
-        </kendo-chart-series>
-        <kendo-chart-value-axis>
-            <kendo-chart-value-axis-item [line]="{visible: false}" [labels]="{step: 2, skip: 2}" [majorGridLines]="{step: 2, skip: 2, color: '#F0F2F2'}">
-            </kendo-chart-value-axis-item>
-        </kendo-chart-value-axis>
-    </kendo-chart>
+            <kendo-chart renderAs="canvas" style="height: 300px; width: 900px" [transitions]="false">
+                <kendo-chart-series-defaults type="line" style="smooth" [overlay]="false"></kendo-chart-series-defaults>
+                <kendo-chart-category-axis>
+                    <kendo-chart-category-axis-item
+                        [crosshair]="{visible: true}"
+                        baseUnit="months"
+                        [majorTicks]="{visible: false}"
+                        [labels]="{step: 4, skip: 2}"
+                        [majorGridLines]="{visible: false}"
+                        [line]="{visible: false}"
+                    ></kendo-chart-category-axis-item>
+                </kendo-chart-category-axis>
+                <kendo-chart-series>
+                    <kendo-chart-series-item *ngFor="let series of visibleSeries"
+                        [data]="series.data"
+                        [markers]="series.markers"
+                        [color]="series.color"
+                        style="smooth"
+                        aggregate="count"
+                        categoryField="date"
+                    ></kendo-chart-series-item>
+                </kendo-chart-series>
+                <kendo-chart-value-axis>
+                    <kendo-chart-value-axis-item [line]="{visible: false}" [labels]="{step: 2, skip: 2}" [majorGridLines]="{step: 2, skip: 2, color: '#F0F2F2'}">
+                    </kendo-chart-value-axis-item>
+                </kendo-chart-value-axis>
+            </kendo-chart>
+        </div>
+    </div>
   `
 })
 export class TypesDistributionComponent implements AfterViewInit {

@@ -3,22 +3,26 @@ import { Component, Input, ViewChild } from '@angular/core';
 @Component({
   selector: 'issue-types',
   template: `
-    Issue Types
-    <kendo-chart (seriesHover)="onHover($event)">
-        <kendo-chart-series>
-            <kendo-chart-series-item
-                [holeSize]="100"
-                [data]="issues"
-                type="donut"
-                field="value"
-                categoryField="type"
-                [overlay]="false"
-            ></kendo-chart-series-item>
-        </kendo-chart-series>
-    </kendo-chart>
-    <div>
-        <span>{{donutPercent}}</span>
-        <span>{{donutLabel}}</span>
+    <div class="card">
+        <h4 class="card-header">Issue Types</h4>
+        <div class="card-block">
+            <kendo-chart (seriesHover)="onHover($event)">
+                <kendo-chart-series>
+                    <kendo-chart-series-item
+                        [holeSize]="100"
+                        [data]="issues"
+                        type="donut"
+                        field="value"
+                        categoryField="type"
+                        [overlay]="false"
+                    ></kendo-chart-series-item>
+                </kendo-chart-series>
+            </kendo-chart>
+            <div>
+                <span>{{donutPercent}}</span>
+                <span>{{donutLabel}}</span>
+            </div>
+        </div>
     </div>
   `
 })

@@ -1,7 +1,59 @@
-.active-link {
-    color: black;
-    background-color: blue;
-    display: block;
-    width: 100px;
-    height: 23px;
+// Common
+.k-hbox,
+.k-vbox {
+	display: flex;
+}
+.k-ihbox,
+.k-ivbox {
+	display: inline-flex;
+}
+.k-hbox,
+.k-ihbox {
+	flex-direction: row;
+}
+.k-vbox,
+.k-ivbox {
+	flex-direction: column;
+}
+.k-flex {
+	flex: 1;
+}
+
+
+
+
+// App
+app {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	display: flex;
+	flex-direction: row;
+}
+
+
+
+
+// Nav
+#nav {
+	padding: $spacer * 1.5;
+	width: 320px;
+	box-sizing: border-box;
+	color: #ffffff;
+	background: $brand-inverse;
+}
+
+
+
+
+// Main
+main {
+	padding: $spacer * 1.5;
+	flex: 1;
+	overflow: auto;
+
+
+	// Cards
+	.card {}
+	.card .card-header {}
 }
