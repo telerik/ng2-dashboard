@@ -34,6 +34,9 @@ export class DashboardComponent {
     private subscription: Subscription;
     private selectedIndex: number = 0;
 
+    @HostBinding('attr.id') get get_id() { return "dashboard"; }
+    @HostBinding('class') get get_class() { return "dashboard"; }
+
     constructor(public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
         this.subscription = githubService
             .getGithubIssues({pages: 14})
@@ -80,7 +83,7 @@ export class DashboardComponent {
                 this.issues = this.issuesProcessor.process(created, this.months)
                 this.selectedIndex = 2;
                 break;
-          default : this.issues = this.issuesProcessor.process(this.data, this.months);;
+            default : this.issues = this.issuesProcessor.process(this.data, this.months);;
         }
     }
 }
@@ -90,7 +93,4 @@ export class DashboardComponent {
     imports: [ChartsModule, ButtonsModule, LayoutModule, CommonModule]
 })
 
-export class DashboardModule {
-    @HostBinding('attr.id') get get_id() { return "dashboard"; }
-    @HostBinding('class') get get_class() { return "dashboard"; }
-}
+export class DashboardModule {}
