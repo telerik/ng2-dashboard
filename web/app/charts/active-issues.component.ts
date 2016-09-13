@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 
                 <div class="row">
 
-                    <div class="col-xs">
+                    <div class="col-xs active-issues">
                         <span class="comp-label">
                             <strong>{{ issues.open + issues.closed }}</strong>
                             <small>Active issues</small>
@@ -35,7 +35,7 @@ import { Component, Input } from '@angular/core';
                         </kendo-chart>
                     </div>
 
-                    <div class="col-xs">
+                    <div class="col-xs text-success closed-issues">
                         <span class="comp-label">
                             <strong>{{ issues.closed }}</strong>
                             <small>Closed issues</small>
@@ -61,7 +61,7 @@ import { Component, Input } from '@angular/core';
                         </kendo-chart>
                     </div>
 
-                    <div class="col-xs">
+                    <div class="col-xs text-danger open-issues">
                         <span class="comp-label">
                             <strong>{{ issues.open }}</strong>
                             <small>Open issues</small>
@@ -87,17 +87,17 @@ import { Component, Input } from '@angular/core';
                         </kendo-chart>
                     </div>
 
-                    <div class="col-xs">
+                    <div class="col-xs close-rate">
                         <span class="comp-label">
                             <strong>{{ issues.closeRate.average | percent:'2.0-0' }}</strong>
                             <small>Close rate</small>
                         </span>
-                        <p class="m-a-0 small">
+                        <p class="m-a-0 small text-uppercase text-muted">
                             Highest:
                             {{issues.closeRate.highest.close_rate | percent: '2.0-0' }}
                             on {{issues.closeRate.highest.created_at | date}}
                         </p>
-                        <p class="m-a-0 small">
+                        <p class="m-a-0 small text-uppercase text-muted">
                             Lowest:
                             {{issues.closeRate.lowest.close_rate | percent: '2.0-0' }}
                             on {{issues.closeRate.lowest.created_at | date}}

@@ -21,10 +21,14 @@
 }
 
 
-// Undo box-sizing
+// Undo
 .k-widget .row,
 .k-widget [class^="col-"] {
 	box-sizing: border-box;
+}
+html .k-widget,
+html .k-tabstrip .k-content {
+	color: inherit;
 }
 
 
@@ -151,4 +155,10 @@ main {
 			display: block;
 		}
 	}
+
+
+	.active-issues {}
+	.closed-issues {}
+	.open-issues {}
+	.close-rate {}
 }
