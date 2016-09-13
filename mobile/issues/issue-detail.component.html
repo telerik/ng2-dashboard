@@ -17,7 +17,7 @@
 
       <ns-section title="Labels">
         <WrapLayout orientation="horizontal" col="1" row="2" margin="6 0">
-          <Label *ngFor="let label of issue?.labels" [text]="label.name" [style.backgroundColor]=" '#' + label.color" class="tag"></Label>
+          <Label *ngFor="let label of issue?.labels" [text]="label.name" [style.backgroundColor]="label.color" class="tag"></Label>
         </WrapLayout>
       </ns-section>
 

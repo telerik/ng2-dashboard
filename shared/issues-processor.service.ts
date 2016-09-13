@@ -1,6 +1,22 @@
 import { Injectable } from '@angular/core';
 import { IssuesModel, Issue, Label, User } from './issues.model';
 
+const colors = {
+  'SEV: LOW': '#ff9800',
+  'SEV: MEDIUM': '#ff5d2a',
+  'SEV: HIGH': '#d50000',
+  'ENHANCEMENT': '#00c853',
+  'FEATURE': '#2e7d32',
+  'OTHER': '#1ca8dd',
+  'PASSED QA': '#57b45b',
+  'BUG': '#cf3257',
+  'NEEDS QA': '#bc007c',
+  'DOCUMENTATION': '#455a64',
+  'DEMO': '#673ab7',
+  'DELETED': '#f44336',
+  'IN PROGRESS': '#ffd600'
+};
+
 @Injectable()
 export class IssuesProcessor {
   static mapIssues(data: Array<any>): Array<Issue> {
@@ -21,13 +37,23 @@ export class IssuesProcessor {
       date: new Date(issue.created_at),
       dateClosed: (issue.closed_at ? new Date(issue.closed_at) : undefined),
       count: 1,
-      labels: issue.labels,
+      labels: issue.labels.map(IssuesProcessor.mapLabels),
       milestone: issue.milestone,
       created_at: issue.created_at,
 
       assignee: issue.assignee ? issue.assignee.login : 'none',
       created_by: issue.user.login
     };
+  }
+
+  static mapLabels(label: Label) {
+    const name = label.name.toUpperCase();
+    if (name in colors) {
+      label.color = colors[name];
+    } else {
+      label.color = colors["OTHER"];
+    }
+    return label;
   }
 
   static mapUser(user: any): User {

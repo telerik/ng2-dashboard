@@ -24,7 +24,7 @@
         <WrapLayout orientation="horizontal" col="1" row="2" margin="6 0">
           <Image [src]="item.author.avatarUrlThumb" class="avatar-small"></Image>
 
-          <Label *ngFor="let label of item.labels" [text]="label.name" [style.backgroundColor]="'#' + label.color" class="tag"></Label>
+          <Label *ngFor="let label of item.labels" [text]="label.name" [style.backgroundColor]="label.color" class="tag"></Label>
         </WrapLayout>
         <!--<Label [text]='item | json' margin="12" textWrap="true"></Label>-->
 
