@@ -35,11 +35,6 @@ export class GithubService {
     }
 
     handleResponse(res: Response): any {
-        // console.log("----- Response -----");
-        // console.log("res.url: " + res.url);
-        // console.log("res.status: " + res.status);
-        // console.log("res.json(): " + res.json());
-        // console.log("----- Response End-----");
         return res.json();
     }
 }

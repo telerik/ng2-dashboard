@@ -40,9 +40,7 @@ export class IssuesProcessor {
       labels: issue.labels.map(IssuesProcessor.mapLabels),
       milestone: issue.milestone,
       created_at: issue.created_at,
-
-      assignee: issue.assignee ? issue.assignee.login : 'none',
-      created_by: issue.user.login
+      assignee: issue.assignee ? issue.assignee.login : 'none'
     };
   }
 

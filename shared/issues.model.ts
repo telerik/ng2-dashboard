@@ -57,5 +57,4 @@ export interface Issue {
     created_at: string;
     labels: Array<Label>;
     assignee: string;
-    created_by: string;
 }
