@@ -130,7 +130,9 @@ main {
 	}
 
 
-	.k-tabstrip {}
+	.k-tabstrip {
+		background: none;
+	}
 	.k-tabstrip .k-tabstrip-items {
 		position: absolute;
 		right: 0;
