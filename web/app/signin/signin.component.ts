@@ -4,22 +4,22 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'signin',
-  encapsulation: ViewEncapsulation.None,
-  templateUrl: './signin.template.html'
+    selector: 'signin',
+    encapsulation: ViewEncapsulation.None,
+    templateUrl: './signin.template.html'
 })
 export class SigninComponent {
-  constructor(private router: Router) {}
+    constructor(private router: Router) {}
 
-  public onLoginClick() {
-    this.router.navigate(['/dashboard']);
-  }
+    public onLoginClick() {
+        this.router.navigate(['/dashboard']);
+    }
 }
 
 
 @NgModule({
-  declarations: [SigninComponent],
-  imports: [CommonModule]
+    declarations: [SigninComponent],
+    imports: [CommonModule]
 })
 
 export class SigninModule {}

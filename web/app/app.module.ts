@@ -16,30 +16,29 @@ import { ProfileModule } from './profile'
 import { SigninModule } from './signin'
 
 const APP_PROVIDERS = [
-  ...APP_RESOLVER_PROVIDERS,
-  AppState
+    ...APP_RESOLVER_PROVIDERS,
+    AppState
 ];
 
 @NgModule({
-  bootstrap: [ App ],
-  declarations: [
-    App,
-    NoContent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    DashboardModule,
-    IssuesModule,
-    ProfileModule,
-    SigninModule,
-    RouterModule.forRoot(ROUTES, { useHash: true })
-  ],
-  providers: [
-    ROUTING_PROVIDERS,
-    APP_PROVIDERS
-  ]
+    bootstrap: [ App ],
+    declarations: [
+        App,
+        NoContent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        DashboardModule,
+        IssuesModule,
+        ProfileModule,
+        SigninModule,
+        RouterModule.forRoot(ROUTES, { useHash: true })
+    ],
+    providers: [
+        ROUTING_PROVIDERS,
+        APP_PROVIDERS
+    ]
 })
-export class AppModule {
-}
+export class AppModule {}

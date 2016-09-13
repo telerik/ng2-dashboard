@@ -1,6 +1,7 @@
 import { Directive, ElementRef, Renderer, Input } from '@angular/core';
 
 @Directive({ selector: '[labelClass]' })
+
 export class LabelClass {
     @Input() set labelClass(text: string) {
         const color = this.matchColor(text);

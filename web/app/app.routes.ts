@@ -6,11 +6,11 @@ import { ProfileComponent } from './profile';
 import { SigninComponent } from './signin';
 
 export const ROUTES: Routes = [
-  { path: '',      component: NoContent },
-  { path: 'issues',  component: IssuesComponent },
-  { path: 'dashboard',  component: DashboardComponent },
-  { path: 'profile',  component: ProfileComponent },
-  { path: 'signin',  component: SigninComponent }
+    { path: '',      component: NoContent },
+    { path: 'issues',  component: IssuesComponent },
+    { path: 'dashboard',  component: DashboardComponent },
+    { path: 'profile',  component: ProfileComponent },
+    { path: 'signin',  component: SigninComponent }
 ];
 
 export const ROUTING_PROVIDERS = [

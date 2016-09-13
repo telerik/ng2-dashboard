@@ -154,6 +154,7 @@ import { Component, Input } from '@angular/core';
 export class ActiveIssuesComponent {
     private baseUnit;
     private bulletData;
+
     @Input() public data;
     @Input() public active;
     @Input() public issues;
@@ -165,6 +166,3 @@ export class ActiveIssuesComponent {
         this.bulletData = [{target: 70, current: Math.round(rate * 100)}]
     };
 }
-
-
-
