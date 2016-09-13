@@ -1,70 +1,103 @@
-<span class="title">
-    Project Issues
-</span>
-<span class="date-range">
-    {{range.from | date}} - {{range.to | date}}
-</span>
-<kendo-button-group [selection]="'single'">
-    <button kendoButton (click)="onFilterClick(3)" [selected]="true">3 Months</button>
-    <button kendoButton (click)="onFilterClick(6)">6 Months</button>
-    <button kendoButton (click)="onFilterClick(12)">1 Year</button>
-</kendo-button-group>
+<div class="row m-b-2">
+    <div class="col-xs">
+        <h2>
+            <span class="small text-uppercase text-muted d-block">Issues</span>
+            {{range.from | date}} - {{range.to | date}}
+        </h2>
+    </div>
+    <span class="col-xs"></span>
+    <div class="col-xs text-xs-right">
+        <kendo-button-group [selection]="'single'">
+            <button kendoButton (click)="onFilterClick(3)" [selected]="true">3 Months</button>
+            <button kendoButton (click)="onFilterClick(6)">6 Months</button>
+            <button kendoButton (click)="onFilterClick(12)">1 Year</button>
+        </kendo-button-group>
+    </div>
+</div>
 <kendo-grid
-          [data]="view"
-          [pageSize]="pageSize"
-          [pageable]="{
-            pageSizes: true
-          }"
-          [skip]="skip"
-          [sortable]="true"
-          [scrollable]="'none'"
-          (pageChange)='onPageChange($event)'
-        >
-        <kendo-grid-column field="number" title="ID" width="80">
-            <template kendoCellTemplate let-dataItem>
-                 #{{ dataItem.number }}
-            </template>
-        </kendo-grid-column>
-        <kendo-grid-column field="title" title="Title">
-            <template kendoCellTemplate let-dataItem>
-                <span [ngClass]="{'issue-open': dataItem.state === 'open', 'issue-closed': dataItem.state === 'closed', 'issue-status': true}">
-                    {{ dataItem.state === 'open' ? '&#33;' : '&#10003;' }}
-                </span>
-                {{ dataItem.title }}
-            </template>
-        </kendo-grid-column>
-        <kendo-grid-column field="labels" title="Labels" width="100">
-            <template kendoCellTemplate let-dataItem>
-                <span *ngFor="let label of dataItem.labels" [ngStyle]="{'display': 'block', 'color': 'white'}" [labelClass]="label.name">
-                    {{ label.name }}
-                </span>
-            </template>
-        </kendo-grid-column>
-         <kendo-grid-column field="milestone" title="Milestone" width="150">
-            <template kendoCellTemplate let-dataItem>
-                 {{ dataItem.milestone ? dataItem.milestone.title : '' }}
-            </template>
-        </kendo-grid-column>
-        <kendo-grid-column field="assignee" title="Assignee" width="150">
-             <template kendoCellTemplate let-dataItem>
-                 <img *ngIf="dataItem.assignee" [src]="dataItem.assignee? dataItem.assignee.avatar_url : undefined" [ngStyle]="{'width': '30px', 'height': '30px'}" />
-                {{ dataItem.assignee ? dataItem.assignee.login : '' }}
-            </template>
-        </kendo-grid-column>
-        <div *kendoDetailTemplate="let dataItem, let rowIndex = rowIndex">
-            <span [ngClass]="{detailStateOpen: dataItem.state === 'open', detailStateClosed: dataItem.state === 'closed'}">{{ dataItem.state }}</span> <br />
-            <span class="detailTitle">{{ dataItem.title }}</span>
-            <span class="detailNumber">#{{ dataItem.number }}</span> <br />
-            <span>Created at: {{ dataItem.created_at | date }}</span>
-            <span *ngIf="dataItem.closed_at">Closed at: {{ dataItem.closed_at | date }}</span> <br />
-            <span>Milestone: {{ dataItem.milestone ? dataItem.milestone.title : '' }}</span> <br />
-            <span>Author: {{ dataItem.user.login }}</span> <br />
-            <span>Assignee {{ dataItem.assignee ? dataItem.assignee.login : '' }}</span> <br>
-            <h5>Labels</h5>
-            <span *ngFor="let label of dataItem.labels" [ngStyle]="{'display': 'block', 'color': 'white'}" [labelClass]="label.name">
-                    {{ label.name }}
+    [data]="view"
+    [pageSize]="pageSize"
+    [pageable]="{ pageSizes: true }"
+    [skip]="skip"
+    [sortable]="true"
+    [scrollable]="'none'"
+    (pageChange)='onPageChange($event)'
+    >
+    <kendo-grid-column field="number" title="ID" width="80">
+        <template kendoCellTemplate let-dataItem>
+             #{{ dataItem.number }}
+        </template>
+    </kendo-grid-column>
+    <kendo-grid-column field="title" title="Title">
+        <template kendoCellTemplate let-dataItem>
+            <span class="tag tag-pill" [ngClass]="{'tag-success': dataItem.state === 'open', 'tag-danger': dataItem.state === 'closed'}">
+                {{ dataItem.state === 'open' ? '&#33;' : '&#10003;' }}
             </span>
-            <h5>Description</h5>
-            <markdown [data]="dataItem.body"></markdown>
+            {{ dataItem.title }}
+        </template>
+    </kendo-grid-column>
+    <kendo-grid-column field="labels" title="Labels" width="100">
+        <template kendoCellTemplate let-dataItem>
+            <span *ngFor="let label of dataItem.labels" class="tag" [labelClass]="label.name">
+                {{ label.name }}
+            </span>
+        </template>
+    </kendo-grid-column>
+     <kendo-grid-column field="milestone" title="Milestone" width="150">
+        <template kendoCellTemplate let-dataItem>
+             {{ dataItem.milestone ? dataItem.milestone.title : '' }}
+        </template>
+    </kendo-grid-column>
+    <kendo-grid-column field="assignee" title="Assignee" width="150">
+         <template kendoCellTemplate let-dataItem>
+             <img *ngIf="dataItem.assignee" [src]="dataItem.assignee? dataItem.assignee.avatar_url : undefined" [ngStyle]="{'width': '30px', 'height': '30px'}" class="img-circle" />
+            {{ dataItem.assignee ? dataItem.assignee.login : '' }}
+        </template>
+    </kendo-grid-column>
+    <div *kendoDetailTemplate="let dataItem, let rowIndex = rowIndex">
+        <div class="row m-y-2">
+            <div class="col-xs">
+                <span class="tag" [ngClass]="{'tag-success': dataItem.state === 'open', 'tag-danger': dataItem.state === 'closed'}">{{ dataItem.state }}</span>
+                <h3 class="h1">
+                    {{ dataItem.title }}
+                    <span class="text-muted">#{{ dataItem.number }}</span>
+                </h3>
+            </div>
         </div>
+        <div class="row m-y-2">
+            <div class="col-sm-2">
+                <span class="small d-block text-muted">Created on</span>
+                {{ dataItem.created_at | date }}
+            </div>
+            <div *ngIf="dataItem.closed_at" class="col-sm-2">
+                <span class="small d-block text-muted">Closed on</span>
+                {{ dataItem.closed_at | date }}
+            </div>
+            <div class="col-sm-2">
+                <span class="small d-block text-muted">Milestone</span>
+                {{ dataItem.milestone ? dataItem.milestone.title : '' }}
+            </div>
+            <div class="col-sm-2">
+                <span class="small d-block text-muted">Author</span>
+                {{ dataItem.user.login }}
+            </div>
+            <div *ngIf="dataItem.assignee" class="col-sm-2">
+                <span class="small d-block text-muted">Assignee</span>
+                <img [src]="dataItem.assignee? dataItem.assignee.avatar_url : undefined" [ngStyle]="{'width': '30px', 'height': '30px'}" class="img-circle" />
+                {{ dataItem.assignee ? dataItem.assignee.login : '' }}
+            </div>
+        </div>
+        <div class="row m-y-2">
+            <div class="col-sm-2">
+                <h4 class="small text-muted">Labels</h4>
+                <span *ngFor="let label of dataItem.labels" class="tag" [labelClass]="label.name">
+                    {{ label.name }}
+                </span>
+            </div>
+            <div class="col-sm-8">
+                <h4 class="small text-muted">Description</h4>
+                <markdown [data]="dataItem.body"></markdown>
+            </div>
+        </div>
+    </div>
 </kendo-grid>
