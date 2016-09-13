@@ -183,3 +183,30 @@ main {
 	}
 
 }
+
+
+
+
+// Signin
+.signin {
+	margin: -( $spacer * 1.5 );
+	padding: $spacer * 1.5;
+	width: 100vw;
+	height: 100vh;
+	box-sizing: border-box;
+	color: #ffffff;
+	background-color: #111111;
+	background-image: url( "/assets/images/login-left-bg.png" ), url( "/assets/images/login-right-bg.png" );
+	background-position: left center, right bottom;
+	background-repeat: no-repeat;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	#app-title { font-size: 4em; }
+	#app-subtitle { font-size: 1em; }
+}
+.signin-form {
+	width: 360px;
+	background-color: inherit;
+}

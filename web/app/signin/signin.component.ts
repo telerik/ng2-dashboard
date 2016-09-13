@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, NgModule } from '@angular/core';
+import { Component, ViewEncapsulation, NgModule, HostBinding } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { Router } from '@angular/router';
@@ -10,6 +10,14 @@ import { Router } from '@angular/router';
 })
 export class SigninComponent {
     constructor(private router: Router) {}
+
+    @HostBinding('attr.id') protected get id(): string {
+        return 'signin';
+    }
+
+    @HostBinding('class') protected get appClass(): string {
+        return 'signin'
+    }
 
     public onLoginClick() {
         this.router.navigate(['/dashboard']);
