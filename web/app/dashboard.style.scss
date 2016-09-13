@@ -135,8 +135,8 @@ main {
 	}
 	.k-tabstrip .k-tabstrip-items {
 		position: absolute;
+		top: calc( 1.75em + 1px );
 		right: 0;
-		top: 0;
 		z-index: 2;
 	}
 	.k-tabstrip .k-content {
