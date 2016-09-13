@@ -47,7 +47,7 @@ export class IssueTypesComponent {
     }
 
     private setDonutLegend(series) {
-        this.donutPercent = series.value + '%';
+        this.donutPercent = Math.round(series.value * 100) + '%';
         this.donutLabel = series.category;
     }
 }
