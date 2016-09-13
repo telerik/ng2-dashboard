@@ -4,6 +4,7 @@ import { GithubService } from '../../../shared/github.service';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { InputsModule } from '@progress/kendo-angular-inputs';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'profile',
@@ -16,7 +17,7 @@ export class ProfileComponent {
     private profileDialogVisible = false;
     private deleteDialogVisible = false;
 
-    constructor(public githubService: GithubService) {
+    constructor(public githubService: GithubService, private router: Router) {
         githubService.getGithubUser('kirilnn').subscribe(data => {
             this.user = data;
         });
@@ -24,6 +25,10 @@ export class ProfileComponent {
 
     public onProfileDialogClose() {
         this.profileDialogVisible = false;
+    }
+
+    private onSignOutClick() {
+        this.router.navigate(['/signin']);
     }
 
     public onUpdateClick() {

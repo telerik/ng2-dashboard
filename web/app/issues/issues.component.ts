@@ -23,7 +23,7 @@ export class IssuesComponent {
     public allIssues: any;
     public view: any;
     public total = 5;
-    public pageSize = 5;
+    public pageSize = 10;
     public skip = 0;
     public today = new Date();
     public months = 3;

@@ -1,3 +1,8 @@
+<span class="title">Account</span>
+<span class="name">
+    {{user.login}} - {{user.name}}
+</span>
+<button (click)="onSignOutClick()">Sign out</button>
 <div *ngIf="user.id" >
 
     <div class="row m-b-2">

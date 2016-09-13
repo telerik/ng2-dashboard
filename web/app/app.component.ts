@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, HostBinding } from '@angular/core';
 import { AppState } from './app.service';
 import { Observable } from 'rxjs/Rx';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app',
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs/Rx';
     ],
     template: `
         <div class="row">
-            <div id="nav" class="col-xs-2 bg-inverse p-y-2 k-vbox">
+            <div id="nav" class="col-xs-3 bg-inverse p-y-2 k-vbox" *ngIf="showNav()">
                 <h1 id="app-title">Issues</h1>
                 <p id="app-subtitle">Sample Dashboard</p>
                 <hr />
@@ -46,6 +47,17 @@ import { Observable } from 'rxjs/Rx';
     `
 })
 export class App {
-    @HostBinding('attr.id') get get_id() { return "app"; }
-    @HostBinding('class') get get_class() { return "app container-fluid"; }
+    constructor(private router: Router) {}
+
+    @HostBinding('attr.id') protected get id(): string {
+        return 'app';
+    }
+
+    @HostBinding('class') protected get appClass(): string {
+        return 'app container-fluid'
+    }
+
+    private showNav() {
+        return this.router.url === '/signin' ? false : true;
+    }
 }
