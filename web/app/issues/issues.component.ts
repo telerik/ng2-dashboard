@@ -10,16 +10,13 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { LabelClass } from './label.directive';
 
 @Component({
-    selector: 'issues',
-    encapsulation: ViewEncapsulation.None,
-    styles: [
-        require("../app.style.scss").toString()
-    ],
-    providers: [
-        GithubService,
-        IssuesProcessor
-    ],
-    templateUrl: './issues.template.html'
+  selector: 'issues',
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    GithubService,
+    IssuesProcessor
+  ],
+  templateUrl: './issues.template.html'
 })
 export class IssuesComponent {
     public issues: any;

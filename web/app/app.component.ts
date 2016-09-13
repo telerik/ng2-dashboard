@@ -5,6 +5,9 @@ import { Observable } from 'rxjs/Rx';
 @Component({
     selector: 'app',
     encapsulation: ViewEncapsulation.None,
+    styles: [
+        require("./app.style.scss").toString()
+    ],
     template: `
         <div class="row">
             <div id="nav" class="col-xs-3 bg-inverse p-y-2 k-vbox">

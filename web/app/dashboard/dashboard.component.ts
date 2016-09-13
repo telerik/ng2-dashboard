@@ -20,9 +20,6 @@ import { Observable, Subscription } from 'rxjs/Rx';
     selector: 'dashboard',
     providers: [GithubService, IssuesProcessor],
     encapsulation: ViewEncapsulation.None,
-    styles: [
-        require("../app.style.scss").toString()
-    ],
     templateUrl: './dashboard.template.html'
 })
 export class DashboardComponent {
