@@ -61,7 +61,10 @@ kendo-tabstrip {
 
 // Nav
 #nav {
+	width: 320px;
 	box-sizing: border-box;
+	flex-basis: auto;
+	flex-grow: 0;
 
 	hr { border: 0; }
 	.h4 {
@@ -173,6 +176,10 @@ main {
 
 	.tag {
 		margin-right: .2ex;
+	}
+
+	img {
+		max-width: 100%;
 	}
 
 }

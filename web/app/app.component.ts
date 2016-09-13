@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Rx';
     ],
     template: `
         <div class="row">
-            <div id="nav" class="col-xs-3 bg-inverse p-y-2 k-vbox">
+            <div id="nav" class="col-xs-2 bg-inverse p-y-2 k-vbox">
                 <h1 id="app-title">Issues</h1>
                 <p id="app-subtitle">Sample Dashboard</p>
                 <hr />
@@ -39,7 +39,7 @@ import { Observable } from 'rxjs/Rx';
                     <p>All Rights Reserved.</p>
                 </div>
             </div>
-            <main class="col-xs p-y-2">
+            <main class="col-xs p-a-2">
                 <router-outlet></router-outlet>
             </main>
         </div>

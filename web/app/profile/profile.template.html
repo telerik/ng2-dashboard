@@ -1,56 +1,121 @@
-<span class="title">Account</span>
-<span class="name">
-    {{user.login}} - {{user.name}}
-</span>
-<button>Sign out</button>
-
 <div *ngIf="user.id" >
-    <div id="profile" style="border: 1px solid black">
-        Public Profile
-        <img [src]="user.avatar_url" [ngStyle]="{'width': '60px', 'height': '60px'}" /> <br />
-        Username: <input type="text" id="username" [value]="user.login"><br />
-        Name: <input type="text" id="name" [value]="user.name"><br />
-        Email: <input type="text" id="email" [value]="user.email"><br />
-        <input type="checkbox"  checked> Keep my email address private <br />
-        Company: <input type="text" id="company" [value]="user.company"> <br />
-        Location: <input type="text" id="location" [value]="user.location"> <br />
-        <button (click)="onUpdateClick()">Update profile</button>
+
+    <div class="row m-b-2">
+        <div class="col-xs">
+            <h2>
+                <span class="small text-uppercase text-muted d-block">Account</span>
+                {{user.login}} - {{user.name}}
+            </h2>
+        </div>
+        <span class="col-xs"></span>
+        <div class="col-xs text-xs-right">
+            <button class="btn btn-secondary">Sign out</button>
+        </div>
     </div>
 
-    <div id="delete-account" style="border: 1px solid green">
-        Delete Account <br />
-        You will immediately lose access to your repositories and all other information associated with your account.
-        This cannot be undone
-        <button (click)="onDeleteClick()">Delete Account</button>
+    <div class="row">
+        <div class="col-sm-7">
+
+            <div class="card" id="profile">
+                <h3 class="card-header">Public Profile</h3>
+                <div class="card-block">
+
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img [src]="user.avatar_url" [ngStyle]="{'max-width': '100%'}" class="img-circle" />
+                        </div>
+                        <div class="col-xs-9">
+                            <div class="form-group">
+                                <label class="h6">Username</label>
+                                <input type="text" id="username" class="form-control" [value]="user.login" />
+                            </div>
+                            <div class="form-group">
+                                <label class="h6">Name</label>
+                                <input type="text" id="name" class="form-control" [value]="user.name" />
+                            </div>
+                            <div class="form-group">
+                                <label class="h6">Email</label>
+                                <input type="email" id="email" class="form-control" [value]="user.email" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-check-label h6">
+                                    <input type="checkbox" class="form-check-input" checked /> Keep my email address private
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="h6">Company</label>
+                                <input type="text" id="company" class="form-control" [value]="user.company" />
+                            </div>
+                            <div class="form-group">
+                                <label class="h6">Location</label>
+                                <input type="text" id="location" class="form-control" [value]="user.location" />
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" (click)="onUpdateClick()">Update profile</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" id="delete-account">
+                <h3 class="card-header">Delete Account</h3>
+                <div class="card-block">
+                    <p>You will immediately lose access to your repositories and all other information associated with your account. <strong>This cannot be undone!</strong></p>
+                    <button class="btn btn-danger" (click)="onDeleteClick()">Delete Account</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+
+            <div class="card" id="notifications">
+                <h3 class="card-header">Notifications</h3>
+                <div class="card-block">
+                    <h4 class="h6">Automatically watch repositories?</h4>
+                    <p class="text-muted">When you are given push access to a repository, automatically receive notifications for it.</p>
+                    <p><kendo-switch></kendo-switch></p>
+                    <h4 class="h6">Receive updates to any conversations via email?</h4>
+                    <p><kendo-switch [checked]="true"></kendo-switch></p>
+                    <h4 class="h6">Receive updated to any repositories via email?</h4>
+                    <p><kendo-switch [checked]="true"></kendo-switch></p>
+                </div>
+            </div>
+            <div class="card" id="password">
+                <h3 class="card-header">Update password</h3>
+                <div class="card-block">
+                    <div class="form-group">
+                        <label class="h6">Old password</label>
+                        <input type="password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="h6">New password</label>
+                        <input type="password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="h6">Confirm password</label>
+                        <input type="password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                       <button class="btn btn-secondary">Change password</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="notifications" style="border: 1px solid red">
-        Notifications
-        Automatically watch repositories? <br>
-        When you are given push access to a repository, automatically receive notifications for it. <kendo-switch></kendo-switch> <br>
-        Receive updates to any conversations via email? <kendo-switch [checked]="true"></kendo-switch> <br>
-        Receive updated to any repositories via email? <kendo-switch [checked]="true"></kendo-switch> <br>
-    </div>
-    <div id="password" style="border: 1px solid blue">
-        Update password <br>
-        Old password <input type="text"> <br>
-        New passowrd <input type="text"> <br>
-        Confirm password <input type="text"> <br>
-        <button>Change password</button>
-    </div>
+    <kendo-dialog title="Thank you" *ngIf="profileDialogVisible" (onClose)="onProfileDialogClose()">
+        <p>Your profile has been successfully updated</p>
+        <kendo-dialog-actions>
+            <button kendoButton (click)="onProfileDialogClose()">OK</button>
+        </kendo-dialog-actions>
+    </kendo-dialog>
+
+    <kendo-dialog title="Are you sure you want to do this?" *ngIf="deleteDialogVisible" (onClose)="onDeleteDialogClose()">
+        <p>Account deletetion cannot be undone!</p>
+        <kendo-dialog-actions>
+            <button kendoButton (click)="onDeleteDialogClose()">Cancel</button>
+            <button kendoButton (click)="onDeleteDialogClose()" [primary]="true">Delete Account</button>
+        </kendo-dialog-actions>
+    </kendo-dialog>
+
 </div>
-
-<kendo-dialog title="Thank you" *ngIf="profileDialogVisible" (onClose)="onProfileDialogClose()">
-    <p>Your profile has been successfully updated</p>
-    <kendo-dialog-actions>
-      <button kendoButton (click)="onProfileDialogClose()">OK</button>
-    </kendo-dialog-actions>
-</kendo-dialog>
-
-<kendo-dialog title="Are you sure you want to do this?" *ngIf="deleteDialogVisible" (onClose)="onDeleteDialogClose()">
-    <p>Account deletetion cannot be undone!</p>
-    <kendo-dialog-actions>
-      <button kendoButton (click)="onDeleteDialogClose()">Cancel</button>
-      <button kendoButton (click)="onDeleteDialogClose()" [primary]="true">Delete Account</button>
-    </kendo-dialog-actions>
-</kendo-dialog>
