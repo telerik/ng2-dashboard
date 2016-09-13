@@ -1,6 +1,6 @@
 export class IssuesModel {
     constructor(
-        public active = [],
+        public active: Array<Issue> = [],
         public open = 0,
         public closed = 0,
         public groupedIssues = {
@@ -26,5 +26,36 @@ export class IssuesModel {
                 created_at: new Date().toISOString()
             },
             average: 0
-        }){}
+        }) { }
+}
+
+export interface Label {
+    name: string;
+    color: string;
+}
+
+export interface User {
+    id: string;
+    name: string;
+    avatarUrl: string;
+    avatarUrlThumb: string;
+}
+export interface Milestone {
+    title: string;
+}
+export interface Issue {
+    id: string;
+    title: string;
+    body: string;
+    author: User;
+    assignees: Array<User>;
+    milestone?: Milestone;
+    state: string;
+    date: Date;
+    dateClosed?: Date;
+    count: number;
+    created_at: string;
+    labels: Array<Label>;
+    assignee: string;
+    created_by: string;
 }
