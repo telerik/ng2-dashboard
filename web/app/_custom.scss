@@ -1,3 +1,25 @@
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-flex:               true;
+// $enable-rounded:            true;
+// $enable-shadows:            false;
+// $enable-gradients:          false;
+// $enable-transitions:        false;
+// $enable-hover-media-query:  false;
+// $enable-grid-classes:       true;
+// $enable-print-styles:       true;
+
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+// $grid-columns:      12;
+$grid-gutter-width: 60px;
+
+
 // Colors
 //
 // Grayscale and brand colors for use across Bootstrap.

@@ -21,6 +21,13 @@
 }
 
 
+// Undo box-sizing
+.k-widget .row,
+.k-widget [class^="col-"] {
+	box-sizing: border-box;
+}
+
+
 
 
 // Ng
@@ -36,9 +43,13 @@ kendo-tabstrip {
 #app {
 	width: 100vw;
 	height: 100vh;
+	display: block;
 	overflow: hidden;
-	display: flex;
-	flex-direction: row;
+
+	> .row {
+		height: 100%;
+		align-items: stretch;
+	}
 }
 
 
@@ -46,8 +57,6 @@ kendo-tabstrip {
 
 // Nav
 #nav {
-	padding: $spacer * 1.5;
-	width: 320px;
 	box-sizing: border-box;
 
 	hr { border: 0; }
@@ -59,13 +68,13 @@ kendo-tabstrip {
 	}
 
 	.nav-pills {
-		margin-left: -( $spacer * 1.5 );
-		margin-right: -( $spacer * 1.5 );
+		margin-left: -( $grid-gutter-width / 2 );
+		margin-right: -( $grid-gutter-width / 2 );
 		font-size: 1.125rem;
 	}
 	.nav-pills .nav-link {
-		padding-left: $spacer * 1.5;
-		padding-right: $spacer * 1.5;
+		padding-left: $grid-gutter-width / 2;
+		padding-right: $grid-gutter-width / 2;
 	}
 	.nav-pills .nav-link:not(.active) {
 		color: inherit;
@@ -93,8 +102,6 @@ kendo-tabstrip {
 
 // Main
 main {
-	padding: $spacer * 1.5;
-	flex: 1;
 	overflow: auto;
 
 
@@ -108,7 +115,12 @@ main {
 
 // Dashboard
 .dashboard {
-	position: relative;
+	display: block;
+
+
+	.card {
+		margin-top: $spacer * 1.5;
+	}
 
 
 	.k-tabstrip {}
@@ -123,5 +135,20 @@ main {
 		padding: 0;
 		border: 0;
 		background: none;
+		overflow: hidden;
+	}
+
+
+	.comp-label {
+		strong {
+			font-size: 4em;
+			font-weight: 100;
+			display: block;
+		}
+		small {
+			font-size: .875em;
+			text-transform: uppercase;
+			display: block;
+		}
 	}
 }

@@ -7,11 +7,13 @@ import { Component, Input } from '@angular/core';
             <h3 class="card-header">Active Issues</h3>
             <div class="card-block">
 
-                <div class="k-hbox">
+                <div class="row">
 
-                    <div class="k-flex">
-                        {{ issues.open + issues.closed }}
-                        Active issues
+                    <div class="col-xs">
+                        <span class="comp-label">
+                            <strong>{{ issues.open + issues.closed }}</strong>
+                            <small>Active issues</small>
+                        </span>
                         <kendo-chart renderAs="canvas" style="height: 80px;">
                             <kendo-chart-series-defaults type="column" [stack]="true" [gap]="2" [overlay]="false"></kendo-chart-series-defaults>
                             <kendo-chart-series>
@@ -33,9 +35,11 @@ import { Component, Input } from '@angular/core';
                         </kendo-chart>
                     </div>
 
-                    <div class="k-flex">
-                        {{ issues.closed }}
-                        Closed issues
+                    <div class="col-xs">
+                        <span class="comp-label">
+                            <strong>{{ issues.closed }}</strong>
+                            <small>Closed issues</small>
+                        </span>
                         <kendo-chart renderAs="canvas" style="height: 80px;">
                             <kendo-chart-series-defaults type="column" [stack]="true" [gap]="2" [overlay]="false"></kendo-chart-series-defaults>
                             <kendo-chart-series>
@@ -57,9 +61,11 @@ import { Component, Input } from '@angular/core';
                         </kendo-chart>
                     </div>
 
-                    <div class="k-flex">
-                        {{ issues.open }}
-                        Open issues
+                    <div class="col-xs">
+                        <span class="comp-label">
+                            <strong>{{ issues.open }}</strong>
+                            <small>Open issues</small>
+                        </span>
                         <kendo-chart renderAs="canvas" style="height: 80px;">
                             <kendo-chart-series-defaults type="column" [stack]="true" [gap]="2" [overlay]="false"></kendo-chart-series-defaults>
                             <kendo-chart-series>
@@ -81,15 +87,17 @@ import { Component, Input } from '@angular/core';
                         </kendo-chart>
                     </div>
 
-                    <div class="k-flex">
-                        {{ issues.closeRate.average | percent:'2.0-0' }}
-                        Close rate
-                        <p>
+                    <div class="col-xs">
+                        <span class="comp-label">
+                            <strong>{{ issues.closeRate.average | percent:'2.0-0' }}</strong>
+                            <small>Close rate</small>
+                        </span>
+                        <p class="m-a-0 small">
                             Highest:
                             {{issues.closeRate.highest.close_rate | percent: '2.0-0' }}
                             on {{issues.closeRate.highest.created_at | date}}
                         </p>
-                        <p>
+                        <p class="m-a-0 small">
                             Lowest:
                             {{issues.closeRate.lowest.close_rate | percent: '2.0-0' }}
                             on {{issues.closeRate.lowest.created_at | date}}

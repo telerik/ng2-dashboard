@@ -5,12 +5,16 @@ import { Component, Input, AfterViewInit } from '@angular/core';
   template: `
     <div class="card">
         <h4 class="card-header">Types Distribution</h4>
-        <div class="card-block">
+        <div class="row card-block small">
             <a *ngFor="let button of seriesColors" (click)="addSeries(button)"
                 [ngStyle]="{'color': button.active ? button.value : '#A2ACAC' }"
-            >{{data[button.label].length}} <span>{{button.label}}</span></a>
-
-            <kendo-chart renderAs="canvas" style="height: 300px; width: 900px" [transitions]="false">
+                class="col-xs comp-label">
+                <strong>{{data[button.label].length}}</strong>
+                <small>{{button.label}}</small>
+            </a>
+        </div>
+        <div class="card-block">
+            <kendo-chart renderAs="canvas" style="height: 300px;" [transitions]="false">
                 <kendo-chart-series-defaults type="line" style="smooth" [overlay]="false"></kendo-chart-series-defaults>
                 <kendo-chart-category-axis>
                     <kendo-chart-category-axis-item

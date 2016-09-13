@@ -1,12 +1,15 @@
-<div class="dashboard">
-<div class="k-hbox">
-    <h2>{{ rangeStart | date }} - {{ today | date }}</h2>
-    <span class="k-spacer"></span>
-    <kendo-button-group [selection]="'single'">
-        <button kendoButton (click)="onFilterClick(3)" [selected]="true">3 Months</button>
-        <button kendoButton (click)="onFilterClick(6)">6 Months</button>
-        <button kendoButton (click)="onFilterClick(12)">1 Year</button>
-    </kendo-button-group>
+<div class="row">
+    <div class="col-xs">
+        <h2>{{ rangeStart | date }} - {{ today | date }}</h2>
+    </div>
+    <span class="col-xs"></span>
+    <div class="col-xs text-xs-right">
+        <kendo-button-group [selection]="'single'">
+            <button kendoButton (click)="onFilterClick(3)" [selected]="true">3 Months</button>
+            <button kendoButton (click)="onFilterClick(6)">6 Months</button>
+            <button kendoButton (click)="onFilterClick(12)">1 Year</button>
+        </kendo-button-group>
+    </div>
 </div>
 <kendo-tabstrip (select)="onTabSelect($event)">
     <kendo-tabstrip-tab [title]="'All Issues'" [selected]="true">
@@ -21,4 +24,3 @@
         <statistics [issues]="issues" [months]="months" *ngIf="selectedIndex === 2"></statistics>
     </kendo-tabstrip-tab>
 </kendo-tabstrip>
-</div>
