@@ -12,12 +12,16 @@ $enable-flex:               true;
 // $enable-print-styles:       true;
 
 
+
+
 // Grid columns
 //
 // Set the number of columns and specify the width of the gutters.
 
 // $grid-columns:      12;
 $grid-gutter-width: 60px;
+
+
 
 
 // Colors
@@ -36,6 +40,8 @@ $brand-info:                #52c3d3;
 $brand-warning:             #ff9966;
 $brand-danger:              #cf3257;
 // $brand-inverse:             $gray-dark;
+
+
 
 
 // Typography
@@ -107,6 +113,8 @@ $font-size-h5: 1.25rem;
 // $list-inline-padding: 5px;
 
 
+
+
 // Body
 //
 // Settings for the `<body>` element.
@@ -123,8 +131,31 @@ $body-bg:    #fbfbfb;
 // $component-active-bg:    $brand-primary;
 
 
+
+
 // Navs
 
 $nav-pills-border-radius:     0;
 $nav-pills-active-link-color: #111111;
 // $nav-pills-active-link-bg:    $component-active-bg;
+
+
+
+
+// Cards
+// $card-spacer-x:            1.25rem;
+// $card-spacer-y:            .75rem;
+// $card-border-width:        1px;
+// $card-border-radius:       $border-radius;
+$card-border-color:        #e8e8e8;
+// $card-border-radius-inner: calc(#{$card-border-radius} - #{$card-border-width});
+$card-cap-bg:              #ffffff;
+$card-bg:                  #fff;
+
+// $card-link-hover-color:    #fff;
+
+// $card-img-overlay-padding: 1.25rem;
+
+// $card-deck-margin:         .625rem;
+
+// $card-columns-sm-up-column-gap: 1.25rem;
