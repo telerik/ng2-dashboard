@@ -86,7 +86,7 @@
     "@progress/kendo-angular-grid": "^0.2.0",
     "@progress/kendo-angular-inputs": "^0.9.0",
     "@progress/kendo-angular-layout": "^0.9.0",
-    "@telerik/kendo-theme-bootstrap": "^0.1.1",
+    "@telerik/kendo-theme-bootstrap": "^0.x",
     "@telerik/kendo-theme-default": "^1.14.5",
     "bootstrap": "git://github.com/twbs/bootstrap.git#v4-dev",
     "core-js": "^2.4.0",
