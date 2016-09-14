@@ -14,6 +14,9 @@
     "id": "org.nativescript.ngrc5",
     "tns-android": {
       "version": "2.3.0"
+    },
+    "tns-ios": {
+      "version": "2.3.0"
     }
   },
   "scripts": {
@@ -64,10 +67,15 @@
     "preversion": "npm test",
     "version": "npm run build",
     "postversion": "git push && git push --tags",
-    "ns-clean": "shx rm -rf app/**/*.css app/**/*.js",
+    "ns-clean": "shx rm -rf app/**/*.css app/**/*.js platforms",
     "ns-webpack-android": "webpack --config=config/mobile/webpack.android.js",
-    "ns-livesync-android": "tns livesync android --watch --bundle",
-    "start-android": "nf start",
+    "ns-webpack-ios": "webpack --config=config/mobile/webpack.ios.js",
+    "ns-livesync-android": "tns livesync android --watch --bundle --disable-npm-install",
+    "ns-livesync-ios": "tns livesync ios --watch --bundle --disable-npm-install",
+    "prestart-android": "npm run ns-clean",
+    "start-android": "nf -j Procfile.android start",
+    "prestart-ios": "npm run ns-clean",
+    "start-ios": "nf -j Procfile.ios start",
     "ns-lint": "npm run tslint \"mobile/**/*.ts\""
   },
   "dependencies": {
@@ -93,7 +101,7 @@
     "ie-shim": "^0.1.0",
     "nativescript-angular": "1.0.0",
     "nativescript-telerik-ui": "^1.3.1",
-    "nativescript-theme": "git+https://github.com/NativeScript/theme.git",
+    "nativescript-theme-core": "0.0.9",
     "reflect-metadata": "^0.1.5",
     "rxjs": "5.0.0-beta.12",
     "tns-core-modules": "2.3.0",
@@ -148,7 +156,7 @@
     "babel-traverse": "6.13.0",
     "babel-types": "6.13.0",
     "babylon": "6.9.0",
-    "foreman": "^1.4.1",
+    "foreman": "2.0.0",
     "html-loader": "^0.4.3",
     "lazy": "1.0.11",
     "shx": "^0.1.4",

@@ -1,4 +1,3 @@
-
 //Resolve JavaScript classes that extend a Java class, and need to resolve
 //their JavaScript module from a bundled script. For example:
 //NativeScriptApplication, NativeScriptActivity, etc.
@@ -24,16 +23,3 @@ if ((<any>global).TNS_WEBPACK) {
         }
     };
 }
-
-require('reflect-metadata');
-require('@angular/platform-browser');
-require('@angular/platform-browser-dynamic');
-require('@angular/core');
-require('@angular/common');
-require('@angular/forms');
-require('@angular/http');
-require('@angular/router');
-
-require('nativescript-angular/platform');
-require('nativescript-angular/forms');
-require('nativescript-angular/router');

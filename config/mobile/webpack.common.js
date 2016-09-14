@@ -15,7 +15,7 @@ FixJsonpPlugin.prototype.apply = function (compiler) {
         compilation.plugin("optimize-chunk-assets", function (chunks, callback) {
             chunks.forEach(function (chunk) {
                 chunk.files.forEach(function (file) {
-                    if (file === "tns-java-classes.js") {
+                    if (file === "vendor.android.js" || file === "vendor.ios.js") {
                         var src = compilation.assets[file];
                         var code = src.source();
                         var match = code.match(/window\["nativescriptJsonp"\]/);
@@ -30,67 +30,73 @@ FixJsonpPlugin.prototype.apply = function (compiler) {
     });
 };
 
-module.exports = {
-    context: path.resolve("./mobile"),
-    entry: {
-        "bundle": "./main",
-        "tns-java-classes": "./tns-java-classes"
-    },
-    output: {
-        pathinfo: true,
-        path: path.resolve("./app"),
-        libraryTarget: "commonjs2",
-        filename: "[name].js",
-        jsonpFunction: "nativescriptJsonp"
-    },
-    resolve: {
-        extensions: [
-            ".ts",
-            "",
-            ".js",
-        ],
-        modulesDirectories: [
-            "node_modules/tns-core-modules",
-            "node_modules"
+module.exports = function(platform) {
+    var entry = {};
+    entry["bundle." + platform] = "./main";
+    entry["vendor." + platform] = "./vendor";
+
+    return {
+        context: path.resolve("./mobile"),
+        entry: entry,
+        output: {
+            pathinfo: true,
+            path: path.resolve("./app"),
+            libraryTarget: "commonjs2",
+            filename: "[name].js",
+            jsonpFunction: "nativescriptJsonp"
+        },
+        resolve: {
+            extensions: [
+                ".ts",
+                "",
+                ".js",
+                "." + platform + ".ts",
+                "." + platform + ".js",
+            ],
+            modulesDirectories: [
+                "node_modules/tns-core-modules",
+                "node_modules"
+            ]
+        },
+        resolveLoader: {
+            root: path.join(__dirname, "..", "node_modules")
+        },
+        module: {
+            loaders: [
+                {
+                    test: /\.html$/,
+                    loader: "html"
+                },
+                {
+                    test: /\.ts$/,
+                    loader: 'awesome-typescript-loader'
+                },
+                {
+                    test: /\.scss$/,
+                    loaders: [
+                        // 'css?sourceMap',
+                        // //'resolve-url',
+                        // 'sass?sourceMap'
+                        'raw', 'resolve-url', 'sass'
+                    ]
+                },
+            ]
+        },
+        plugins: [
+            failPlugin,
+            new webpack.optimize.CommonsChunkPlugin({
+                name: ["vendor." + platform]
+            }),
+            new webpack.DefinePlugin({
+                global: 'global',
+                __dirname: '__dirname',
+                "global.TNS_WEBPACK": 'true',
+            }),
+            new CopyWebpackPlugin([
+                { from: "starter*.js" },
+                { from: "**/*.css" },
+            ]),
+            new FixJsonpPlugin(),
         ]
-    },
-    resolveLoader: {
-        root: path.join(__dirname, "..", "node_modules")
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.html$/,
-                loader: "html"
-            },
-            {
-                test: /\.ts$/,
-                loader: 'awesome-typescript-loader'
-            },
-            {
-                test: /\.scss$/,
-                loaders: [
-                    // 'css?sourceMap',
-                    // //'resolve-url',
-                    // 'sass?sourceMap'
-                    'raw', 'resolve-url', 'sass'
-                ]
-            },
-        ]
-    },
-    plugins: [
-        failPlugin,
-        new webpack.optimize.CommonsChunkPlugin({
-            name: ["tns-java-classes"]
-        }),
-        new webpack.DefinePlugin({
-            global: 'global',
-            __dirname: '__dirname',
-            "global.TNS_WEBPACK": 'true',
-        }),
-        new CopyWebpackPlugin([
-            { from: "**/*.css" }
-        ]),
-        new FixJsonpPlugin(),
-    ]
-};
+    };
+}
