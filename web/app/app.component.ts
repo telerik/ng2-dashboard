@@ -36,7 +36,7 @@ import { Router } from '@angular/router';
                 </ul>
                 <hr class="k-flex" />
                 <div id="copy">
-                    <p>Copyright &copy; 2016, <a href="http://www.progress.com">Progress Software Corporation</a> and/or its subsidiaries or affiliates.</p>
+                    <p>Copyright &copy; {{year}}, <a href="http://www.progress.com">Progress Software Corporation</a> and/or its subsidiaries or affiliates.</p>
                     <p>All Rights Reserved.</p>
                 </div>
             </div>
@@ -47,6 +47,7 @@ import { Router } from '@angular/router';
     `
 })
 export class App {
+    private year = new Date().getFullYear();
     constructor(private router: Router) {}
 
     @HostBinding('attr.id') protected get id(): string {
