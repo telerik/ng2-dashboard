@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 
                 <div class="row">
 
-                    <div class="col-xs active-issues">
+                    <div class="col-sm-12 col-md-6 col-lg active-issues">
                         <span class="comp-label">
                             <strong>{{ issues.open + issues.closed }}</strong>
                             <small>Active issues</small>
@@ -35,7 +35,7 @@ import { Component, Input } from '@angular/core';
                         </kendo-chart>
                     </div>
 
-                    <div class="col-xs text-success closed-issues">
+                    <div class="col-sm-12 col-md-6 col-lg text-success closed-issues">
                         <span class="comp-label">
                             <strong>{{ issues.closed }}</strong>
                             <small>Closed issues</small>
@@ -61,7 +61,7 @@ import { Component, Input } from '@angular/core';
                         </kendo-chart>
                     </div>
 
-                    <div class="col-xs text-danger open-issues">
+                    <div class="col-sm-12 col-md-6 col-lg text-danger open-issues">
                         <span class="comp-label">
                             <strong>{{ issues.open }}</strong>
                             <small>Open issues</small>
@@ -87,7 +87,7 @@ import { Component, Input } from '@angular/core';
                         </kendo-chart>
                     </div>
 
-                    <div class="col-xs close-rate">
+                    <div class="col-sm-12 col-md-6 col-lg close-rate">
                         <span class="comp-label">
                             <strong>{{ issues.closeRate.average | percent:'2.0-0' }}</strong>
                             <small>Close rate</small>
