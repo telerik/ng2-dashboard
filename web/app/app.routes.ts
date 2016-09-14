@@ -6,7 +6,7 @@ import { ProfileComponent } from './profile';
 import { SigninComponent } from './signin';
 
 export const ROUTES: Routes = [
-    { path: '',      component: NoContent },
+    { path: '',      component: DashboardComponent },
     { path: 'issues',  component: IssuesComponent },
     { path: 'dashboard',  component: DashboardComponent },
     { path: 'profile',  component: ProfileComponent },
