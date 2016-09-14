@@ -30,9 +30,7 @@
     </kendo-grid-column>
     <kendo-grid-column field="title" title="Title">
         <template kendoCellTemplate let-dataItem>
-            <span class="tag tag-pill" [ngClass]="{'tag-success': dataItem.state === 'open', 'tag-danger': dataItem.state === 'closed'}">
-                {{ dataItem.state === 'open' ? '&#33;' : '&#10003;' }}
-            </span>
+            <img [src]="dataItem.state === 'open' ? '/assets/images/issue-open.png' : '/assets/images/issue-closed.png' " />
             {{ dataItem.title }}
         </template>
     </kendo-grid-column>
