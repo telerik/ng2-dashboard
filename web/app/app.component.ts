@@ -11,11 +11,11 @@ import { Router } from '@angular/router';
     ],
     template: `
         <div class="row">
-            <div id="nav" class="col-xs-3 bg-inverse p-y-2 k-vbox" *ngIf="showNav()">
+            <div id="nav" class="col-xs-3 bg-inverse p-y-3 k-vbox" *ngIf="showNav()">
                 <h1 id="app-title">Issues</h1>
                 <p id="app-subtitle">Sample Dashboard</p>
                 <hr />
-                <p class="h4">Project</p>
+                <p class="h4 m-t-3">Project</p>
                 <ul class="nav nav-pills nav-stacked">
                     <li class="nav-item" id="dashbaord">
                         <a [routerLink]=" ['./dashboard'] " class="nav-link" routerLinkActive="active">Dashboard</a>
@@ -24,8 +24,7 @@ import { Router } from '@angular/router';
                         <a [routerLink]=" ['./issues'] " class="nav-link" routerLinkActive="active">Issues</a>
                     </li>
                 </ul>
-                <hr />
-                <p class="h4">Account</p>
+                <p class="h4 m-t-3">Account</p>
                 <ul class="nav nav-pills nav-stacked">
                     <li class="nav-item" id="profile">
                         <a [routerLink]=" ['./profile'] " class="nav-link" routerLinkActive="active">My Profile</a>
@@ -36,7 +35,7 @@ import { Router } from '@angular/router';
                 </ul>
                 <hr class="k-flex" />
                 <div id="copy">
-                    <p>Copyright &copy; {{year}}, <a href="http://www.progress.com">Progress Software Corporation</a> and/or its subsidiaries or affiliates.</p>
+                    <p>Copyright &copy; {{year}},<br /><a href="http://www.progress.com">Progress Software Corporation</a> and/or its subsidiaries or affiliates.</p>
                     <p>All Rights Reserved.</p>
                 </div>
             </div>
