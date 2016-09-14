@@ -7,13 +7,13 @@ import { ActiveIssuesComponent } from '../charts/active-issues.component';
     selector: 'statistics',
     template: `
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-md-12">
                 <active-issues [data]="issues.groupedIssues" [months]="months" [issues]="issues" [closeRate]="issues.closeRate.average" [active]="issues.active"></active-issues>
             </div>
-            <div class="col-xs-12 col-sm-4">
+            <div class="col-md-4">
                 <issue-types [data]="issues.issueTypes"></issue-types>
             </div>
-            <div class="col-xs-12 col-sm-8">
+            <div class="col-md-8">
                 <types-distribution [data]="issues.typesDistribution" [months]="months" *ngIf="issues.active.length"></types-distribution>
             </div>
         </div>
