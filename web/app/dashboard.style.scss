@@ -70,6 +70,9 @@ kendo-chart {
 	box-sizing: border-box;
 	flex-basis: auto;
 	flex-grow: 0;
+	position: relative;
+	z-index: 2;
+	transform: translateX(0);
 
 	#app-title { position: relative; }
 	#app-title::after {
@@ -128,12 +131,50 @@ kendo-chart {
 	top: -( $spacer * 1.5 );
 }
 
+.top-bar {
+	padding: .25em;
+	font-size: 32px;
+	line-height: 1;
+
+	&:before { content: "."; display: block; }
+}
+.nav-toggle {
+	padding: .25em;
+	background: inherit;
+	font-size: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	z-index: 1000;
+	top: 0;
+	left: 100%;
+	cursor: pointer;
+}
+
+
+
+@media (max-width: map-get($grid-breakpoints, md) ) {
+	#nav {
+		width: 320px;
+		max-width: none;
+		transform: translateX(-100%);
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		box-shadow: 0 $spacer $spacer rgba( $brand-inverse, .5 );
+	}
+}
+
 
 
 
 // Main
 main {
 	overflow: auto;
+	position: relative;
+	z-index: 1;
 
 
 	// Cards
