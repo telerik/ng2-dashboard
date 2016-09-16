@@ -5,7 +5,7 @@ import { Component, Input, ViewChild } from '@angular/core';
     template: `
         <div class="card issue-types">
             <h4 class="card-header">Issue Types</h4>
-            <div class="card-block" style="margin: auto; width: 320px">
+            <div class="card-block" style="margin: auto;">
                 <kendo-chart (seriesHover)="onHover($event)">
                     <kendo-chart-series>
                         <kendo-chart-series-item
@@ -17,8 +17,10 @@ import { Component, Input, ViewChild } from '@angular/core';
                             [overlay]="false"
                         ></kendo-chart-series-item>
                     </kendo-chart-series>
+                    <kendo-chart-legend [labels]="{font: '0.65em Roboto, Arial, sans-serif'}">
+                    </kendo-chart-legend>
                 </kendo-chart>
-                <div class="comp-label chart-label">
+                <div class="comp-label chart-label" [style.color]="hoverColor">
                     <strong>{{donutPercent}}</strong>
                     <small>{{donutLabel}}</small>
                 </div>
@@ -30,6 +32,7 @@ export class IssueTypesComponent {
     public donutPercent: string;
     public donutLabel: string;
     public issues;
+    public hoverColor: string = 'rgb(170, 70, 190)';
 
     @Input() public set data(data) {
         this.issues = data;
@@ -37,7 +40,12 @@ export class IssueTypesComponent {
             if (series.type === 'OTHER') {
                 this.setDonutLegend({
                     value: series.value,
-                    category: series.type
+                    category: series.type,
+                    point: {
+                        options: {
+                            color: this.hoverColor
+                        }
+                    }
                 });
             }
         })
@@ -48,6 +56,7 @@ export class IssueTypesComponent {
     }
 
     private setDonutLegend(series) {
+        this.hoverColor = series.point.options.color;
         this.donutPercent = Math.round(series.value * 100) + '%';
         this.donutLabel = series.category;
     }
