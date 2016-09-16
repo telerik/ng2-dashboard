@@ -6,7 +6,7 @@ import { ProfileComponent } from './profile';
 import { SigninComponent } from './signin';
 
 export const ROUTES: Routes = [
-    { path: '',      component: DashboardComponent },
+    { path: '',   redirectTo: '/dashboard', pathMatch: 'full' },
     { path: 'issues',  component: IssuesComponent },
     { path: 'dashboard',  component: DashboardComponent },
     { path: 'profile',  component: ProfileComponent },
