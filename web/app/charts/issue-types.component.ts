@@ -3,9 +3,9 @@ import { Component, Input, ViewChild } from '@angular/core';
 @Component({
     selector: 'issue-types',
     template: `
-        <div class="card">
+        <div class="card issue-types">
             <h4 class="card-header">Issue Types</h4>
-            <div class="card-block">
+            <div class="card-block" style="margin: auto; width: 320px">
                 <kendo-chart (seriesHover)="onHover($event)">
                     <kendo-chart-series>
                         <kendo-chart-series-item
@@ -18,9 +18,9 @@ import { Component, Input, ViewChild } from '@angular/core';
                         ></kendo-chart-series-item>
                     </kendo-chart-series>
                 </kendo-chart>
-                <div>
-                    <span>{{donutPercent}}</span>
-                    <span>{{donutLabel}}</span>
+                <div class="comp-label chart-label">
+                    <strong>{{donutPercent}}</strong>
+                    <small>{{donutLabel}}</small>
                 </div>
             </div>
         </div>
