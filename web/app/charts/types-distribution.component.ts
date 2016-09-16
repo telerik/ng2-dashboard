@@ -15,10 +15,9 @@ import { Component, Input, AfterViewInit } from '@angular/core';
             </div>
             <div class="card-block">
                 <kendo-chart renderAs="canvas" style="height: 300px;" [transitions]="false">
-                    <kendo-chart-series-defaults type="line" style="smooth" [overlay]="false"></kendo-chart-series-defaults>
+                    <kendo-chart-series-defaults type="line" [overlay]="false"></kendo-chart-series-defaults>
                     <kendo-chart-category-axis>
                         <kendo-chart-category-axis-item
-                            [crosshair]="{visible: true}"
                             baseUnit="months"
                             [majorTicks]="{visible: false}"
                             [labels]="{step: 4, skip: 2}"
