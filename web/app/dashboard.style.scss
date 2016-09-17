@@ -39,7 +39,8 @@ kendo-tabstrip {
 	position: relative;
 	display: block;
 }
-kendo-chart {
+kendo-chart,
+issue-types {
 	display: block;
 }
 
@@ -240,7 +241,10 @@ main {
 	.close-rate {}
 
 	.issue-types {
+	}
+	.issue-types .card-block {
 		width: 320px;
+		margin: auto;
 	}
 	.issue-types .chart-label {
 		width: 6em;

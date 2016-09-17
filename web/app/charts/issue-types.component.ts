@@ -5,7 +5,7 @@ import { Component, Input, ViewChild } from '@angular/core';
     template: `
         <div class="card issue-types">
             <h4 class="card-header">Issue Types</h4>
-            <div class="card-block" style="margin: auto;">
+            <div class="card-block">
                 <kendo-chart (seriesHover)="onHover($event)">
                     <kendo-chart-series>
                         <kendo-chart-series-item
