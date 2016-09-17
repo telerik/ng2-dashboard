@@ -63,12 +63,14 @@ export class TypesDistributionComponent implements AfterViewInit {
         { label: "Others", value: "#2BA7DA", active: false }
     ]
 
-    public addSeries(button) {
-        this.seriesColors.forEach(s => {
-            if (s.value === button.value) {
-                s.active = !s.active;
-            }
-        })
+    public addSeries(button, toggleLabels) {
+        if (toggleLabels) {
+            this.seriesColors.forEach(s => {
+                if (s.value === button.value) {
+                    s.active = !s.active;
+                }
+            })
+        }
 
         const newSeries = {
             color: this.seriesColors.filter(color => color.label === button.label)[0].value,
@@ -87,8 +89,17 @@ export class TypesDistributionComponent implements AfterViewInit {
     }
 
     public ngAfterViewInit() {
-        this.addSeries({ label: "SEV: Low", value: "#FF9966", active: false })
-        this.addSeries({ label: "Enhancement", value: "#22C85D", active: false })
-        this.addSeries({ label: "Others", value: "#2BA7DA", active: false })
+        this.addSeries({ label: "SEV: Low", value: "#FF9966", active: false }, true);
+        this.addSeries({ label: "Enhancement", value: "#22C85D", active: false }, true);
+        this.addSeries({ label: "Others", value: "#2BA7DA", active: false }, true);
+    }
+
+    public ngOnChanges(changes) {
+        if (changes.data.previousValue.hasOwnProperty('Others')) {
+            this.visibleSeries = [];
+            this.addSeries({ label: "SEV: Low", value: "#FF9966", active: false }, false);
+            this.addSeries({ label: "Enhancement", value: "#22C85D", active: false }, false);
+            this.addSeries({ label: "Others", value: "#2BA7DA", active: false }, false);
+        }
     }
 }
