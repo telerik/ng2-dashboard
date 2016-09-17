@@ -11,7 +11,7 @@ import { Component, Input } from '@angular/core';
             <ng-content></ng-content>
         </StackLayout>
 
-        <StackLayout height="1" row="2" backgroundColor="#E0E0E0"></StackLayout>
+        <StackLayout row="2" class="hr-light"></StackLayout>
     </GridLayout>
   `
 })

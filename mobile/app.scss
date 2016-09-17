@@ -1,16 +1,29 @@
-﻿// // default vairalbes
-// @import '~nativescript-theme-core/app/scss/variables';
-
-// // variables overrides:
+﻿
+// variables overrides:
 @import '../shared/custom';
 
-// // theme
-// @import '~nativescript-theme-core/app/scss/index';
-// @import '~nativescript-theme-core/app/scss/themes/core/platforms/index.android';
+// bootstrap variables
+@import '~bootstrap/scss/variables';
+
+// Bootstrap map
+@import '~nativescript-theme-core/app/scss/bootstrap-map';
+
+@import '~nativescript-theme-core/app/scss/themes/core/light';
+// @import '~nativescript-theme-core/app/scss/themes/core/dark';
+@import '~nativescript-theme-core/app/scss/themes/core/platforms/index.android';
+
 
 SegmentedBar, ActionBar {
-  background-color: $primary;
+  background-color: $brand-primary;
   color: white;
+}
+
+.issue-open {
+  background-color:  $brand-success; // #2AC46D;
+}
+
+.issue-closed {
+  background-color: $brand-danger; //#CF3257;
 }
 
 .tag,.avatar-small {
@@ -18,6 +31,7 @@ SegmentedBar, ActionBar {
   border-width: 0;
   margin: 2;
 }
+
 .tag {
   height: 24;
   padding: 2 4;
@@ -59,14 +73,6 @@ SegmentedBar, ActionBar {
 
 .autor {
   color: #888888;  
-}
-
-.issue-open {
-  background-color: #2AC46D;
-}
-
-.issue-closed {
-  background-color: #CF3257;
 }
 
 .status-tag {
