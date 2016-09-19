@@ -50,7 +50,7 @@ export class IssuesComponent {
 
   constructor(public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
     const activeIssues = githubService
-      .getGithubIssues({ pages: 12 })
+      .getGithubIssues({ pages: 2 })
       .map(data => this.issuesProcessor.process(data, 1).active);
 
     activeIssues.toPromise().then(() => this.loading = false);

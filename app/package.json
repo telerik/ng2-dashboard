@@ -4,7 +4,7 @@
         "id": "org.nativescript.helloworldng"
     },
     "name": "tns-template-hello-world-ng",
-    "main": "bundle.js",
+    "main": "starter",
     "version": "2.2.1",
     "author": "Telerik <support@telerik.com>",
     "description": "Nativescript Angular Hello World template",

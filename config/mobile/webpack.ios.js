@@ -1,2 +1,2 @@
 var makeConfig = require("./webpack.common");
-module.exports = makeConfig("android");
+module.exports = makeConfig("ios");
