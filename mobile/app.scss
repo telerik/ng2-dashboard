@@ -1,4 +1,4 @@
-﻿
+
 // variables overrides:
 @import '../shared/custom';
 
@@ -6,7 +6,7 @@
 @import '~bootstrap/scss/variables';
 
 // Bootstrap map
-@import '~nativescript-theme-core/app/scss/bootstrap-map';
+@import '~nativescript-theme-core/app/bootstrap-map';
 
 @import '~nativescript-theme-core/app/scss/themes/core/light';
 // @import '~nativescript-theme-core/app/scss/themes/core/dark';
@@ -72,7 +72,7 @@ SegmentedBar, ActionBar {
 }
 
 .autor {
-  color: #888888;  
+  color: #888888;
 }
 
 .status-tag {
