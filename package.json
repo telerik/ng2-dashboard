@@ -164,10 +164,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
+    "url": "https://github.com/telerik/ng2-dashboard.git"
   },
   "bugs": {
-    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
+    "url": "https://github.com/telerik/ng2-dashboard/issues"
   },
   "engines": {
     "node": ">= 4.2.1",
