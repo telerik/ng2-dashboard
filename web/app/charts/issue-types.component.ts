@@ -1,29 +1,27 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, HostBinding } from '@angular/core';
 
 @Component({
     selector: 'issue-types',
     template: `
-        <div class="card issue-types">
-            <h4 class="card-header">Issue Types</h4>
-            <div class="card-block">
-                <kendo-chart (seriesHover)="onHover($event)">
-                    <kendo-chart-series>
-                        <kendo-chart-series-item
-                            [holeSize]="100"
-                            [data]="issues"
-                            type="donut"
-                            field="value"
-                            categoryField="type"
-                            [overlay]="false"
-                        ></kendo-chart-series-item>
-                    </kendo-chart-series>
-                    <kendo-chart-legend [labels]="{font: '0.65em Roboto, Arial, sans-serif'}">
-                    </kendo-chart-legend>
-                </kendo-chart>
-                <div class="comp-label chart-label" [style.color]="hoverColor">
-                    <strong>{{donutPercent}}</strong>
-                    <small>{{donutLabel}}</small>
-                </div>
+        <h4 class="card-header">Issue Types</h4>
+        <div class="card-block">
+            <kendo-chart (seriesHover)="onHover($event)">
+                <kendo-chart-series>
+                    <kendo-chart-series-item
+                        [holeSize]="100"
+                        [data]="issues"
+                        type="donut"
+                        field="value"
+                        categoryField="type"
+                        [overlay]="false"
+                    ></kendo-chart-series-item>
+                </kendo-chart-series>
+                <kendo-chart-legend position="bottom" [labels]="{font: '0.65em Roboto, Arial, sans-serif'}">
+                </kendo-chart-legend>
+            </kendo-chart>
+            <div class="comp-label chart-label" [style.color]="hoverColor">
+                <strong>{{donutPercent}}</strong>
+                <small>{{donutLabel}}</small>
             </div>
         </div>
     `
@@ -50,6 +48,10 @@ export class IssueTypesComponent {
             }
         })
     };
+
+    @HostBinding('class') get className() {
+        return 'card issue-types';
+    }
 
     public onHover(event) {
         this.setDonutLegend(event);
