@@ -231,12 +231,20 @@ main {
 			display: block;
 		}
 	}
+	a {
+		-webkit-user-select: none;
+		cursor: pointer;
+	}
 
 
 	.active-issues {}
 	.closed-issues {}
 	.open-issues {}
-	.close-rate {}
+	.close-rate {
+		.k-chart {
+			padding-top: 6px;
+		}
+	}
 
 	.issue-types {
 	}
