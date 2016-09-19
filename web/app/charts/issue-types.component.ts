@@ -32,12 +32,12 @@ export class IssueTypesComponent {
     public donutPercent: string;
     public donutLabel: string;
     public issues;
-    public hoverColor: string = 'rgb(170, 70, 190)';
+    public hoverColor: string = 'rgb(255, 99, 88)';
 
     @Input() public set data(data) {
         this.issues = data;
         data.forEach(series =>  {
-            if (series.type === 'OTHER') {
+            if (series.type === 'SEV: LOW') {
                 this.setDonutLegend({
                     value: series.value,
                     category: series.type,
@@ -57,7 +57,7 @@ export class IssueTypesComponent {
 
     private setDonutLegend(series) {
         this.hoverColor = series.point.options.color;
-        this.donutPercent = Math.round(series.value * 100) + '%';
+        this.donutPercent = Math.round(series.value * 100 || 0) + '%';
         this.donutLabel = series.category;
     }
 }
