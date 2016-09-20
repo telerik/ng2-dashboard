@@ -6,7 +6,7 @@ import { Component, Input, AfterViewInit } from '@angular/core';
         <div class="card">
             <h4 class="card-header">Types Distribution</h4>
             <div class="row card-block small">
-                <a *ngFor="let button of seriesColors" (click)="addSeries(button)"
+                <a *ngFor="let button of seriesColors" (click)="addSeries(button, true)"
                     [ngStyle]="{'color': button.active ? button.value : '#A2ACAC' }"
                     class="col-xs-4 col-sm-3 col-md comp-label">
                     <strong>{{data[button.label].length}}</strong>
