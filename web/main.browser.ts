@@ -2,6 +2,7 @@
  * Angular bootstraping
  */
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { enableProdMode } from '@angular/core';
 
 /*
  * App Module
@@ -13,6 +14,7 @@ import { AppModule } from './app';
  * Bootstrap our Angular app with a top level NgModule
  */
 export function main(initialHmrState?: any): any {
+  enableProdMode();
 
   return platformBrowserDynamic()
     .bootstrapModule(AppModule)
