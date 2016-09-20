@@ -12,10 +12,10 @@
   "license": "MIT",
   "nativescript": {
     "id": "org.nativescript.ngrc5",
-    "tns-android": {
+    "tns-ios": {
       "version": "2.3.0"
     },
-    "tns-ios": {
+    "tns-android": {
       "version": "2.3.0"
     }
   },
@@ -67,12 +67,14 @@
     "preversion": "npm test",
     "version": "npm run build",
     "postversion": "git push && git push --tags",
-    "ns-clean": "shx rm -rf app/**/*.css app/**/*.js platforms",
+    "ns-clean": "shx rm -rf app/**/*.css app/**/*.js",
     "ns-webpack-android": "webpack --config=config/mobile/webpack.android.js",
     "ns-webpack-ios": "webpack --config=config/mobile/webpack.ios.js",
     "ns-livesync-android": "tns livesync android --watch --bundle --disable-npm-install",
     "ns-livesync-ios": "tns livesync ios --watch --bundle --disable-npm-install",
-    "prestart-android": "npm run ns-clean",
+    "prestart-android": "npm run ns-webpack-android",
+    "prepare-android": "npm run ns-clean && shx rm -rf platforms/android && tns prepare android --disable-npm-install",
+    "prepare-ios": "npm run ns-clean && shx rm -rf platforms/ios && tns prepare ios --disable-npm-install",
     "start-android": "nf -j Procfile.android start",
     "prestart-ios": "npm run ns-clean",
     "start-ios": "nf -j Procfile.ios start",
