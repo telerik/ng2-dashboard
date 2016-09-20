@@ -45,13 +45,10 @@ kendo-tabstrip {
 
 // App
 #app {
-	width: 100vw;
-	min-height: 100vh;
 	display: block;
-	overflow: hidden;
 
 	> .row {
-		height: 100%;
+		min-height: 100vh;
 		align-items: stretch;
 	}
 }
@@ -277,6 +274,14 @@ main {
 		max-width: 100%;
 	}
 
+	.issue-status {
+		display: inline-block;
+		vertical-align: middle;
+		width: 16px;
+		height: 16px;
+	}
+	.issue-open { background-image: url( "assets/issue-open.png" ) }
+	.issue-closed { background-image: url( "assets/issue-closed.png" ) }
 }
 
 
@@ -291,7 +296,7 @@ main {
 	box-sizing: border-box;
 	color: #ffffff;
 	background-color: #111111;
-	background-image: url( "/assets/images/login-left-bg.png" ), url( "/assets/images/login-right-bg.png" );
+	background-image: url( "assets/login-left-bg.png" ), url( "assets/login-right-bg.png" );
 	background-position: left center, right bottom;
 	background-repeat: no-repeat;
 	display: flex;

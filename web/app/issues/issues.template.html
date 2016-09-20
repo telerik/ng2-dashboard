@@ -24,12 +24,15 @@
     >
     <kendo-grid-column field="number" title="ID" width="80">
         <template kendoCellTemplate let-dataItem>
-             #{{ dataItem.number }}
+          <a href="{{ dataItem.html_url }}">#{{ dataItem.number }}</a>
         </template>
     </kendo-grid-column>
     <kendo-grid-column field="title" title="Title">
         <template kendoCellTemplate let-dataItem>
-            <img [src]="dataItem.state === 'open' ? '/assets/images/issue-open.png' : '/assets/images/issue-closed.png' " />
+          <span [ngClass]="{
+              'issue-status': true,
+              'issue-open': dataItem.state === 'open',
+              'issue-closed': dataItem.state !== 'open' }"></span>
             {{ dataItem.title }}
         </template>
     </kendo-grid-column>
