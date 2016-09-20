@@ -15,6 +15,7 @@ import { UserComponent } from "./issues/user.component";
 import { StatusImagePipe } from "./issues/status-image.pipe";
 import { TruncatePipe } from "./issues/truncate.pipe";
 import { SegmentedBarDirective } from "./segmented-bar.directive";
+import { ActionBarDirective } from "./action-bar.directive";
 
 import { GithubService } from '../shared/github.service';
 import { IssuesProcessor } from '../shared/issues-processor.service';
@@ -29,6 +30,7 @@ import { IssuesProcessor } from '../shared/issues-processor.service';
     StatusImagePipe,
     TruncatePipe,
     SegmentedBarDirective,
+    ActionBarDirective,
   ],
   providers: [
     GithubService,
