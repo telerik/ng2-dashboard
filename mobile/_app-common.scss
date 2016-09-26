@@ -74,8 +74,10 @@ SegmentedBar, ActionBar {
 
 .status-tag {
   padding: 2 6;
+  font-size: 10;
+  font-weight: bold;
   color: white;
-  margin: 16;
+  margin: 20 16;
   border-radius: 2;
   border-width: 0;
   background-color: rgba(100, 100, 100, 0.3);

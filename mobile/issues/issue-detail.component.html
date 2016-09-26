@@ -2,7 +2,7 @@
 
 <GridLayout rows="auto *">
   <!-- Header -->
-  <StackLayout *ngIf="issue" [class.issue-open]="issue?.state === 'open'" [class.issue-closed]="issue?.state === 'closed'">
+  <StackLayout *ngIf="issue" class="issue-detail-title" [class.issue-open]="issue?.state === 'open'" [class.issue-closed]="issue?.state === 'closed'">
     <Label [text]="issue?.title" textWrap="true" class="title"></Label>
     <Label [text]="issue?.state | uppercase" class="status-tag"></Label>
   </StackLayout>
