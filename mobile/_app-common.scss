@@ -19,14 +19,20 @@ SegmentedBar, ActionBar {
 }
 
 .tag {
-  height: 24;
+  height: 16;
   padding: 2 4;
   color: white;
+  font-weight: bold;
+  font-size: 10;
+  margin-top: 12;
+  margin-bottom: 16;
 }
 
 .avatar-small {
-  height: 24;
-  width: 24;
+  height: 16;
+  width: 16;
+  margin-top: 12;
+  margin-bottom: 16;
 }
 
 .avatar-big {
@@ -44,7 +50,7 @@ SegmentedBar, ActionBar {
 }
 
 .status-image {
-  margin: 12;
+  margin: 16;
   width: 20;
   height: 20;
   vertical-align: top;
@@ -57,8 +63,13 @@ SegmentedBar, ActionBar {
   color: #888888;
 }
 
-.autor {
+.issue-title {
+  margin-top: 16;
+}
+
+.author {
   color: #888888;
+  font-size: 12;
 }
 
 .status-tag {

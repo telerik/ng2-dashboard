@@ -18,7 +18,7 @@
         <Image [src]='item.state | satusImage' col="0" rowSpan="3" class="status-image"></Image>
         <Label [text]='"#" + item.id' col="2" rowSpan="3" class="issue-number"></Label>
 
-        <Label [text]='item.title' col="1" row="0" textWrap="true"></Label>
+        <Label class="issue-title" [text]='item.title' col="1" row="0" textWrap="true"></Label>
         <Label [text]='"by " + item.author.name + " on " + (item.date | date)' col="1" row="1" textWrap="true" class="author"></Label>
 
         <WrapLayout orientation="horizontal" col="1" row="2" margin="6 0">
