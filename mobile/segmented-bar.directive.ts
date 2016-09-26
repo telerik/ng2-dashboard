@@ -8,7 +8,7 @@ export class SegmentedBarDirective {
     constructor(private element: ElementRef) {
         const bar = element.nativeElement;
         if (bar.ios) {
-            const c = new Color("transparent");
+            const c = new Color("white");
             bar.ios.tintColor = c.ios;
         }
     }

@@ -1,0 +1,20 @@
+// theme setup
+@import './theme.android';
+@import './app-common';
+
+//iOS specific styling
+.issue-container {
+  background-color: $brand-primary;
+}
+
+SegmentedBar {
+  background-color: $brand-primary;
+  color: white;
+  border-color: white;
+  border-width: 2;
+  /*
+  border-radius: 5;
+  margin-left: 5;
+  margin-right: 5;
+  */
+}

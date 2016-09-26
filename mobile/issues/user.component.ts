@@ -3,7 +3,7 @@ import { User } from '../../shared/issues.model';
 
 @Component({
   selector: 'ns-user',
-  styles: [require("../app.scss").toString()],
+  styles: [require("../app-styles").all],
   template: `
     <StackLayout orientation="horizontal">
       <Image [src]="user?.avatarUrl" class="avatar-big"></Image>

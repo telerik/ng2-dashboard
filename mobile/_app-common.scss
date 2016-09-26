@@ -1,19 +1,5 @@
-
-// variables overrides:
-@import '../shared/custom';
-
-// bootstrap variables
-@import '~bootstrap/scss/variables';
-
-// Bootstrap map
-@import '~nativescript-theme-core/app/bootstrap-map';
-
-@import '~nativescript-theme-core/app/scss/themes/core/light';
-// @import '~nativescript-theme-core/app/scss/themes/core/dark';
-@import '~nativescript-theme-core/app/scss/themes/core/platforms/index.android';
-
-
 SegmentedBar, ActionBar {
+  border-color: transparent;
   background-color: $brand-primary;
   color: white;
 }

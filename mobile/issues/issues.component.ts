@@ -9,7 +9,7 @@ import { prompt } from "ui/dialogs";
 
 @Component({
   selector: "ns-issues",
-  styles: [require("../app.scss").toString()],
+  styles: [require("../app-styles").all],
   template: require("./issues.component.html"),
 })
 export class IssuesComponent {

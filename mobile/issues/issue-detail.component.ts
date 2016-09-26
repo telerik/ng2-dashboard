@@ -7,7 +7,7 @@ import { Page } from "ui/page";
 
 @Component({
   selector: "ns-issue-detail",
-  styles: [require("../app.scss").toString()],
+  styles: [require("../app-styles").all],
   template: require("./issue-detail.component.html")
 })
 export class IssueDetail implements OnInit {

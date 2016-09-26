@@ -1,5 +1,5 @@
 <ActionBar title="Issues"></ActionBar>
-<GridLayout rows="auto auto auto *">
+<GridLayout class="issue-container" rows="auto auto auto *">
   <SegmentedBar [items]='filters' [(ngModel)]='selectedFilter'></SegmentedBar>
 
   <SearchBar [(ngModel)]='search' row="1"></SearchBar>
