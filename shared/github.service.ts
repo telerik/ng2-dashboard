@@ -6,7 +6,7 @@ const baseUrl = "https://api.github.com/repos/telerik/kendo-ui-core/issues";
 
 @Injectable()
 export class GithubService {
-    private headers = new Headers({ 'Authorization': "token 2cb9882957c42b20158794596e09bb002dcb18f4" });
+    private headers = new Headers({ 'Authorization': "token b913cbec8699a2e888d0df11cd6dcf111cc2c4d9" });
     constructor(public http: Http) { }
 
     getGithubIssues(pages) {
