@@ -8,6 +8,7 @@ const baseUrl = "https://api.github.com/repos/telerik/kendo-ui-core/issues";
 export class GithubService {
     private headers = new Headers({
         //'Authorization': "USE YOUR OWN"
+        'Authorization': "token 877651d1bdee782d5a53717d240e5817389551a8"
     });
     constructor(public http: Http) { }
 
