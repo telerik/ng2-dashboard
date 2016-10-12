@@ -17,12 +17,16 @@ It includes a web interface and a set of two mobile applications for iOS and And
 
 ## Getting Started
 
+1. Set up access to the [Progress NPM registry](http://www.telerik.com/kendo-angular-ui/getting-started/#installation)
+
 For the web application, run:
+
 1. Run `npm install`
 1. Run `npm start`
 1. Load the application at [http://localhost:3000](http://localhost:3000)
 
 For the native applications:
+
 1. Install and [set up NativeScript](http://localhost:3000)
 1. Run `npm install`
 1. Run `npm run prepare-ios` or `npm run prepare-android`
