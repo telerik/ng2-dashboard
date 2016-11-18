@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
     template: `
         <div class="row">
             <div id="top-bar" class="top-bar col-xs-12 bg-inverse hidden-md-up"></div>
-            <div id="nav" class="col-xs-3 bg-inverse p-y-3 k-vbox"
+            <div id="nav" class="col-xs-3 bg-inverse text-white py-5 k-vbox"
                 [@toggleNav]="navState" *ngIf="showNav()">
                 <span id="nav-toggle" class="nav-toggle hidden-md-up"
                     (click)="toggleNav()">
@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
                 <h1 id="app-title">Issues</h1>
                 <p id="app-subtitle">Sample Dashboard</p>
                 <hr />
-                <p class="h4 m-t-3">Project</p>
+                <p class="h4 mt-5">Project</p>
                 <ul class="nav nav-pills nav-stacked">
                     <li class="nav-item" id="dashbaord">
                         <a [routerLink]=" ['./dashboard'] " class="nav-link" routerLinkActive="active">Dashboard</a>
@@ -30,7 +30,7 @@ import { Router } from '@angular/router';
                         <a [routerLink]=" ['./issues'] " class="nav-link" routerLinkActive="active">Issues</a>
                     </li>
                 </ul>
-                <p class="h4 m-t-3">Account</p>
+                <p class="h4 mt-5">Account</p>
                 <ul class="nav nav-pills nav-stacked">
                     <li class="nav-item" id="profile">
                         <a [routerLink]=" ['./profile'] " class="nav-link" routerLinkActive="active">My Profile</a>
@@ -45,7 +45,7 @@ import { Router } from '@angular/router';
                     <p>All Rights Reserved.</p>
                 </div>
             </div>
-            <main class="col-xs p-a-2">
+            <main class="col-xs p-4">
                 <router-outlet></router-outlet>
             </main>
         </div>

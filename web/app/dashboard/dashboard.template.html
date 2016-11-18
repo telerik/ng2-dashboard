@@ -1,4 +1,4 @@
-<div class="row m-b-2">
+<div class="row mb-4">
     <div class="col-sm">
         <h2>
             <span class="small text-uppercase text-muted d-block">Statistics</span>
@@ -16,14 +16,20 @@
 </div>
 <kendo-tabstrip (select)="onTabSelect($event)">
     <kendo-tabstrip-tab [title]="'All Issues'" [selected]="true">
-        <statistics [issues]="issues" [months]="months" *ngIf="selectedIndex === 0"></statistics>
+        <template kendoTabContent>
+            <statistics [issues]="issues" [months]="months"></statistics>
+        </template>
     </kendo-tabstrip-tab>
 
     <kendo-tabstrip-tab [title]="'Assigned to Me'">
-        <statistics [issues]="issues" [months]="months" *ngIf="selectedIndex === 1"></statistics>
+        <template kendoTabContent>
+            <statistics [issues]="issues" [months]="months"></statistics>
+        </template>
     </kendo-tabstrip-tab>
 
     <kendo-tabstrip-tab [title]="'Created by Me'">
-        <statistics [issues]="issues" [months]="months" *ngIf="selectedIndex === 2"></statistics>
+        <template kendoTabContent>
+            <statistics [issues]="issues" [months]="months"></statistics>
+        </template>
     </kendo-tabstrip-tab>
 </kendo-tabstrip>
