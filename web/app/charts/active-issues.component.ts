@@ -92,12 +92,12 @@ import { Component, Input } from '@angular/core';
                             <strong>{{ issues.closeRate.average | percent:'2.0-0' }}</strong>
                             <small>Close rate</small>
                         </span>
-                        <p class="m-a-0 small text-uppercase text-muted">
+                        <p class="m-0 small text-uppercase text-muted">
                             Highest:
                             {{issues.closeRate.highest.close_rate | percent: '2.0-0' }}
                             on {{issues.closeRate.highest.created_at | date}}
                         </p>
-                        <p class="m-a-0 small text-uppercase text-muted">
+                        <p class="m-0 small text-uppercase text-muted">
                             Lowest:
                             {{issues.closeRate.lowest.close_rate | percent: '2.0-0' }}
                             on {{issues.closeRate.lowest.created_at | date}}
