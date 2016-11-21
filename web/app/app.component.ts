@@ -45,7 +45,7 @@ import { Router } from '@angular/router';
                     <p>All Rights Reserved.</p>
                 </div>
             </div>
-            <main class="col-xs p-4">
+            <main class="col-xs p-4 py-5">
                 <router-outlet></router-outlet>
             </main>
         </div>
