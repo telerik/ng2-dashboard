@@ -61,6 +61,7 @@ module.exports = webpackMerge(webpackConfig, {
 
         const options = {
           logger: logger,
+          dotfiles: true,
           remote: GIT_REMOTE_NAME,
           message: COMMIT_MESSAGE
         };

@@ -16,6 +16,7 @@ const IgnorePlugin = require('webpack/lib/IgnorePlugin');
 const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 /**
  * Webpack Constants
@@ -94,6 +95,15 @@ module.exports = webpackMerge(commonConfig, {
    */
   plugins: [
 
+    /**
+     * Plugin: CopyWebpackPlugin
+     * Description: Plugin to copy static files
+     *
+     * See: https://www.npmjs.com/package/copy-webpack-plugin
+     */
+    new CopyWebpackPlugin([
+      { from: './.nojekyll' }
+    ]),
     /**
      * Plugin: WebpackMd5Hash
      * Description: Plugin to replace a standard webpack chunkhash with md5.
