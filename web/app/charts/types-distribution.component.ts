@@ -14,7 +14,7 @@ import { Component, Input, AfterViewInit } from '@angular/core';
                 </a>
             </div>
             <div class="card-block">
-                <kendo-chart renderAs="canvas" style="height: 300px;" [transitions]="false">
+                <kendo-chart style="height: 300px;" [transitions]="false">
                     <kendo-chart-series-defaults type="line" [overlay]="false"></kendo-chart-series-defaults>
                     <kendo-chart-category-axis>
                         <kendo-chart-category-axis-item

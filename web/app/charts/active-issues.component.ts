@@ -14,7 +14,7 @@ import { Component, Input } from '@angular/core';
                             <strong>{{ issues.open + issues.closed }}</strong>
                             <small>Active issues</small>
                         </span>
-                        <kendo-chart renderAs="canvas" style="height: 80px;">
+                        <kendo-chart style="height: 80px;">
                             <kendo-chart-series-defaults type="column" [stack]="true" [gap]="0.5" [overlay]="false"></kendo-chart-series-defaults>
                             <kendo-chart-series>
                                 <kendo-chart-series-item [color]="'#888'" [data]="active" field="count" categoryField="date" aggregate="count"></kendo-chart-series-item>
@@ -40,7 +40,7 @@ import { Component, Input } from '@angular/core';
                             <strong>{{ issues.closed }}</strong>
                             <small>Closed issues</small>
                         </span>
-                        <kendo-chart renderAs="canvas" style="height: 80px;">
+                        <kendo-chart style="height: 80px;">
                             <kendo-chart-series-defaults type="column" [stack]="true" [gap]="0.5" [overlay]="false"></kendo-chart-series-defaults>
                             <kendo-chart-series>
                                 <kendo-chart-series-item [color]="'#35C473'" [data]="data.closed" field="count" categoryField="date" aggregate="count"></kendo-chart-series-item>
@@ -66,7 +66,7 @@ import { Component, Input } from '@angular/core';
                             <strong>{{ issues.open }}</strong>
                             <small>Open issues</small>
                         </span>
-                        <kendo-chart renderAs="canvas" style="height: 80px;">
+                        <kendo-chart style="height: 80px;">
                             <kendo-chart-series-defaults type="column" [stack]="true" [gap]="0.5" [overlay]="false"></kendo-chart-series-defaults>
                             <kendo-chart-series>
                                 <kendo-chart-series-item [color]="'#CC3458'" [data]="data.open" field="count" categoryField="date" aggregate="count"></kendo-chart-series-item>
@@ -126,7 +126,7 @@ import { Component, Input } from '@angular/core';
 
 
                 <h3>All issues</h3>
-                <kendo-chart renderAs="canvas">
+                <kendo-chart>
                     <kendo-chart-series-defaults type="column" [stack]="true" [gap]="0.06" [overlay]="false"></kendo-chart-series-defaults>
                     <kendo-chart-series>
                         <kendo-chart-series-item [opacity]="0.3" [border]="{color: '#35C473', opacity: 0.3}" [color]="'#35C473'" [data]="data.open" field="count" categoryField="date" aggregate="count"></kendo-chart-series-item>
