@@ -40,7 +40,7 @@ For the original instructions, refer to the [ng-class-readme](https://github.com
 
 ## Contribution
 
-We accept contributions from the public.
+This package is distributed under a permissive [MIT License](https://github.com/telerik/ng2-dashboard/blob/master/LICENSE). We accept contributions from the public.
 
 Before you pose your suggestions, please make sure that you:
 
