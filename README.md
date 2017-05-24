@@ -9,6 +9,15 @@ The goal of this project is to build a dashboard application with the following 
 
 The project includes a web interface and a set of two mobile applications for iOS and Android.
 
+## Table of Contents
+
+* [Goals](#goals)
+* [Getting Started](#getting-started)
+    * [Web Applications](#web-applications)
+    * [Native Applications](#native-applications)
+* [Credits](#credits)
+* [Contribution](#contribution)
+
 ## Goals
 
 - To share business logic through services.
@@ -34,13 +43,11 @@ Set up access to the [Progress NPM registry](http://www.telerik.com/kendo-angula
 
 ## Credits
 
-This project is based on the [Angular2 Webpack Starter](https://github.com/AngularClass/angular2-webpack-starter) by AngularClass.
-
-For the original instructions, refer to the [ng-class-readme](https://github.com/telerik/ng2-dashboard/blob/master/ng-class-readme.md) file.
+This project is based on the [Angular2 Webpack Starter](https://github.com/AngularClass/angular2-webpack-starter) by AngularClass. For the original instructions, refer to the [ng-class-readme](https://github.com/telerik/ng2-dashboard/blob/master/ng-class-readme.md) file.
 
 ## Contribution
 
-This package is distributed under a permissive [MIT License](https://github.com/telerik/ng2-dashboard/blob/master/LICENSE). We accept contributions from the public.
+We accept contributions from the public.
 
 Before you pose your suggestions, please make sure that you:
 
