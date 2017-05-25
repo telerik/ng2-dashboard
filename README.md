@@ -16,7 +16,6 @@ The project includes a web interface and a set of two mobile applications for iO
     * [Web Applications](#web-applications)
     * [Native Applications](#native-applications)
 * [Credits](#credits)
-* [Contribution](#contribution)
 
 ## Goals
 
@@ -44,12 +43,3 @@ Set up access to the [Progress NPM registry](http://www.telerik.com/kendo-angula
 ## Credits
 
 This project is based on the [Angular2 Webpack Starter](https://github.com/AngularClass/angular2-webpack-starter) by AngularClass. For the original instructions, refer to the [ng-class-readme](https://github.com/telerik/ng2-dashboard/blob/master/ng-class-readme.md) file.
-
-## Contribution
-
-We accept contributions from the public.
-
-Before you pose your suggestions, please make sure that you:
-
-1. Read and sign the [Kendo UI for Angular Contribution License Agreement (CLA)](goo.gl/forms/dXc1RaE8le6rVZ0h1). The CLA confirms that you acknowledge the legal aspects of your contributions.
-2. Submit a Pull Request.
