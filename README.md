@@ -13,7 +13,6 @@ The project includes a web interface and a set of two mobile applications for iO
 
 1. Clone this repository by using your favorite Git client or by executing `git clone https://github.com/telerik/ng2-dashboard.git`.
 1. Enter the project directory by running `cd ng2-dashboard`.
-1. Run `npm install` to install the project dependencies.
 
 ## Table of Contents
 
