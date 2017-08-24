@@ -1,6 +1,6 @@
-# Kendo UI for Angular: Northwind Dashboard, Proof of Concept
+# Kendo UI for Angular: NativeScript
 
-This repository contains a sample application which demonstrates how to use Kendo UI for Angular and NativeScript.
+This repository contains sample applications which demonstrate how to use Kendo UI for Angular and NativeScript.
 
 The project includes a web interface and a set of two mobile applications for iOS and Android. It aims to build a dashboard application by utilizing:
 
@@ -11,8 +11,8 @@ The project includes a web interface and a set of two mobile applications for iO
 
 ## Get Started
 
-1. Clone this repository by using your favorite Git client or by executing `git clone https://github.com/telerik/kendo-angular-quickstart-cli.git`.
-1. Enter the project directory by running `cd kendo-angular-quickstart-cli`.
+1. Clone this repository by using your favorite Git client or by executing `git clone https://github.com/telerik/ng2-dashboard.git`.
+1. Enter the project directory by running `cd ng2-dashboard`.
 1. Run `npm install` to install the project dependencies.
 
 ## Table of Contents
