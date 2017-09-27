@@ -1,60 +1,45 @@
-# Kendo UI for Angular: NativeScript
+# Angular NativeScript Seed
 
-This repository contains sample applications which demonstrate how to use Kendo UI for Angular and NativeScript.
+Build truly web and native applications using NativeScript and Angular. This seed allows your project to share code between the environments; having complete control over dependencies.
 
-The project includes a web interface and a set of two mobile applications for iOS and Android. It aims to build a dashboard application by utilizing:
+## Highlights
+- i18n Translations
+- Lazy Loaded Modules
+- Angular CLI // Webpack // Testing
+- Target Phone and Tablet Templates Individually
+- Docker build provided using NGINX to serve web content and load balance reverse proxied backends. (See nginx folder for setup instructions)
 
-* Angular
-* NativeScript
-* Kendo UI for Angular
-* [Kendo UI Bootstrap Theme](https://github.com/telerik/kendo-bootstrap)
+## Getting Started
 
-## Get Started
+Web is setup from the root.
 
-1. Clone this repository by using your favorite Git client or by executing `git clone https://github.com/telerik/ng2-dashboard.git`.
-1. Enter the project directory by running `cd ng2-dashboard`.
+```
+npm i
+```
 
-## Table of Contents
+Mobile is setup from the `nativescript` folder.
 
-* [Goals](#goals)
-* [Running the Applications](#running-the-applications)
-    * [Web Applications](#web-applications)
-    * [Native Applications](#nativescript-applications)
-* [Credits](#credits)
-* [Other Kendo UI Sample Projects for Angular](#other-kendo-ui-sample-projects-for-angular)
+```
+cd nativescript
+npm i
+```
 
-## Goals
+Each platform is run respective to it's folder. View available commands here:
 
-- To share business logic through services.
-- To provide consistency in the data binding for web and mobile.
-- To provide consistent looks that share a common color scheme through the Bootstrap Sass variables.
+- [Seed Commands](https://github.com/TeamMaestro/angular-native-seed/wiki/Seed-Commands)
 
-## Running the Applications
+## How To's
+- [Integrating Angular Material (`@angular/material`)](https://github.com/TeamMaestro/angular-native-seed/wiki/Integrating-Material-for-Web)
 
-### Web Applications
+## Workspace Options
+- [VSCode WorkSpace Settings](https://github.com/TeamMaestro/angular-native-seed/wiki/Optional:-VSCode-WorkSpace-Settings)
 
-1. Run `npm install`.
-1. Run `npm start`.
-1. Load the application at [http://localhost:3000](http://localhost:3000).
+| | |
+|:---: |:---:|
+|![Web Preview](https://i.gyazo.com/1ba4d3be7b7332ce91bd6715dc752d8b.gif)|![Native Preview](https://i.gyazo.com/0a88b56cff9af632f618e5b123502f5f.gif)|
 
-### NativeScript Applications
+# Contributors 
 
-1. Install and [set up NativeScript](http://localhost:3000).
-1. Run `npm install`.
-1. Run `npm run prepare-ios` or `npm run prepare-android`.
-1. Run `npm run start-ios` or `npm run start-android`.
-
-## Credits
-
-This project is based on the [Angular2 Webpack Starter](https://github.com/AngularClass/angular2-webpack-starter) by AngularClass. For the original instructions, refer to the [ng-class-readme](https://github.com/telerik/ng2-dashboard/blob/master/ng-class-readme.md) file.
-
-## Other Kendo UI Sample Projects for Angular
-
-|Sample Project Repository                                        |Sample Project Documentation |
-|:---                                                             |:---                         |
-|[Using Kendo UI with the Angular CLI](https://github.com/telerik/kendo-angular-quickstart-cli) |[Get Started](http://www.telerik.com/kendo-angular-ui/getting-started/)|
-|[Using Kendo UI for Angular with Angular QuickStart](https://github.com/telerik/kendo-angular-quickstart) |[Using with SystemJS](http://www.telerik.com/kendo-angular-ui/components/installation/system-js/)|
-|[Using Kendo UI for Angular with Angular Seed](https://github.com/telerik/kendo-angular-quickstart-seed)  |Not documented        |
-|[Using Kendo UI for Angular with Angular Universal](https://github.com/telerik/kendo-angular-universal-demo) |[Universal Rendering](http://www.telerik.com/kendo-angular-ui/components/framework/universal/)|
-|[Using Kendo UI for Angular with UI for ASP.NET Core](https://github.com/telerik/kendo-angular-demo-aspnetcore-data/tree/master) |[UI for ASP.NET Core Integration](http://www.telerik.com/kendo-angular-ui/components/dataquery/mvc-integration/)|
-|[Translating the custom messages of the Kendo UI components for Angular](https://github.com/telerik/kendo-angular-i18n-sample) |[Translation of Messages](http://www.telerik.com/kendo-angular-ui/components/localization/messages/)|
+[<img alt="Don Burgess" src="https://avatars1.githubusercontent.com/u/7612751?v=3&s=117" width="117">](https://github.com/db3dev) | [<img alt="Sean perkins" src="https://avatars1.githubusercontent.com/u/13732623?v=3&s=117" width="117">](https://github.com/sean-perkins) |
+:---: |:---: |
+[Don Burgess](https://github.com/db3dev) |[Sean Perkins](https://github.com/sean-perkins)|
