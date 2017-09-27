@@ -1,3 +1,7 @@
+# Kendo UI for Angular + NativeScript DashBoard app
+
+This project includes a web application, built with Kendo UI for Angular components, and a NativeScript app that shares the data service with the web app. It is built on top of TeamMaestro's `angular-native-seed` template:
+
 # Angular NativeScript Seed
 
 Build truly web and native applications using NativeScript and Angular. This seed allows your project to share code between the environments; having complete control over dependencies.
