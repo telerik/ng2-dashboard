@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 @Component({
     moduleId: module.id,
-    selector: 'seed-main-menu',
+    selector: 'main-menu',
     templateUrl: './main-menu.component.html',
     animations: [trigger(
         'toggleNav',
@@ -27,7 +27,7 @@ import { Router } from '@angular/router';
 })
 export class MainMenuComponent {
     private year = new Date().getFullYear();
-    private navState: string;
+    public navState: string;
     constructor(private router: Router) {
         if ( window.innerWidth < 768 ) {
             this.navState = 'collapsed';
@@ -53,15 +53,15 @@ export class MainMenuComponent {
         }
     }
 
-    private showNav() {
-        return this.router.url === '/signin' ? false : true;
+    public showNav() {
+        return this.router.url !== '/signin';
     }
 
-    private toggleNav() {
+    public toggleNav() {
         if ( this.navState === 'expanded' ) {
-            this.navState = 'collapsed'
+            this.navState = 'collapsed';
         } else {
-            this.navState = 'expanded'
+            this.navState = 'expanded';
         }
     }
 }

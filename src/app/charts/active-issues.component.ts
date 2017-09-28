@@ -152,8 +152,8 @@ import { Component, Input } from '@angular/core';
     `
 })
 export class ActiveIssuesComponent {
-    private baseUnit;
-    private bulletData;
+    public baseUnit;
+    public bulletData;
 
     @Input() public data;
     @Input() public active;
