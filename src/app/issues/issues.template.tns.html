@@ -6,7 +6,7 @@
 
       <GridLayout rows="auto auto auto" columns="auto * auto" [nsRouterLink]="['/detail', item.id]">
 
-        <Image ng-src='item.state | statusImage' col="0" rowSpan="3" class="status-image"></Image>
+        <Image [src]='item.state | statusImage' col="0" rowSpan="3" class="status-image"></Image>
         <Label [text]='"#" + item.id' col="2" rowSpan="3" class="issue-number"></Label>
 
         <Label class="issue-title" [text]='item.title' col="1" row="0" textWrap="true"></Label>
