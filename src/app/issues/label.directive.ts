@@ -14,6 +14,7 @@ export class LabelClass {
         const color = this.colors[text.toUpperCase()];
         return color ? color : this.colors.OTHER;
     }
+    // tslint:disable-next-line:member-ordering
     private colors = {
         'SEV: LOW' : '#ff9800',
         'SEV: MEDIUM' : '#ff5d2a',
@@ -28,5 +29,5 @@ export class LabelClass {
         'DEMO' : '#673ab7',
         'DELETED' : '#f44336',
         'IN PROGRESS' : '#ffd600'
-    }
+    };
 }

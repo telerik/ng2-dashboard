@@ -8,7 +8,12 @@ import { ActiveIssuesComponent } from '../charts/active-issues.component';
     template: `
         <div class="row">
             <div class="col-md-12">
-                <active-issues [data]="issues.groupedIssues" [months]="months" [issues]="issues" [closeRate]="issues.closeRate.average" [active]="issues.active"></active-issues>
+                <active-issues 
+                    [data]="issues.groupedIssues" 
+                    [months]="months" 
+                    [issues]="issues" 
+                    [closeRate]="issues.closeRate.average" 
+                    [active]="issues.active"></active-issues>
             </div>
             <div class="col-md-4">
                 <issue-types [data]="issues.issueTypes"></issue-types>
@@ -22,4 +27,4 @@ import { ActiveIssuesComponent } from '../charts/active-issues.component';
 export class StatisticsComponent {
     @Input() public issues;
     @Input() public months;
-}
+};

@@ -30,7 +30,7 @@ export class IssueTypesComponent {
     public donutPercent: string;
     public donutLabel: string;
     public issues;
-    public hoverColor: string = 'rgb(255, 99, 88)';
+    public hoverColor = 'rgb(255, 99, 88)';
 
     @Input() public set data(data) {
         this.issues = data;
@@ -51,15 +51,15 @@ export class IssueTypesComponent {
 
     @HostBinding('class') get className() {
         return 'card issue-types';
-    }
+    };
 
     public onHover(event) {
         this.setDonutLegend(event);
-    }
+    };
 
     private setDonutLegend(series) {
         this.hoverColor = series.point.options.color;
         this.donutPercent = Math.round(series.value * 100 || 0) + '%';
         this.donutLabel = series.category;
-    }
+    };
 }

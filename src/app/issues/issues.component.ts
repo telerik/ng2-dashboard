@@ -28,10 +28,13 @@ export class IssuesComponent {
     public skip = 0;
     public today = new Date();
     public months = 3;
-    public range = this.dateRange();
+    public range: {
+        to: Date,
+        from: Date
+    } = this.dateRange();
 
-    @HostBinding('attr.id') get get_id() { return "issues"; }
-    @HostBinding('class') get get_class() { return "issues"; }
+    @HostBinding('attr.id') get get_id() { return 'issues'; }
+    @HostBinding('class') get get_class() { return 'issues'; }
 
     constructor(public http: Http, public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
         githubService.getGithubIssues({pages: 12}).subscribe((data: any[]) => {
@@ -55,7 +58,6 @@ export class IssuesComponent {
 
     applyPaging(data) {
         this.issues = data;
-        console.log(this.issues[0]);
         this.view = this.getView(this.skip, this.pageSize);
     }
 
