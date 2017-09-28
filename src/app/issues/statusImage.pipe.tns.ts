@@ -5,9 +5,9 @@ export class StatusImagePipe implements PipeTransform {
   transform(v: string, args: any[]) {
     switch (v.toLocaleLowerCase()) {
       case 'open':
-        return 'res://status_open';
+        return '../../assets/issue-open.png';
       case 'closed':
-        return 'res://status_closed';
+        return '../../assets/issue-closed.png';
       default:
         return '';
     }
