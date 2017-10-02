@@ -9,5 +9,5 @@ import { IssueDetailComponent } from './issues/issue-detail.component';
 export const AppRoutes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: '/issues' },
     { path: 'issues', pathMatch: 'full', component: IssuesComponent },
-    { path: "detail/:id", component: IssueDetailComponent }
+    { path: 'detail/:id', component: IssueDetailComponent }
 ];
