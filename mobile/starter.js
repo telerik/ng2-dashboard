@@ -1,2 +1,0 @@
-require("./vendor");
-require("./bundle");

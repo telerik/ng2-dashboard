@@ -1,2 +1,0 @@
-webpack: npm run ns-webpack-ios -- --watch
-tns-sync: npm run ns-start-sync-ios
