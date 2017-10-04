@@ -13,7 +13,10 @@ Build truly web and native applications using NativeScript and Angular. This see
 - Target Phone and Tablet Templates Individually
 - Docker build provided using NGINX to serve web content and load balance reverse proxied backends. (See nginx folder for setup instructions)
 
-## Getting Started
+## Get Started
+
+1. Clone this repository by using your favorite Git client or by executing `git clone https://github.com/telerik/ng2-dashboard.git`.
+1. Enter the project directory by running `cd ng2-dashboard`.
 
 Web is setup from the root.
 
