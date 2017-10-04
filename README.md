@@ -32,18 +32,6 @@ Each platform is run respective to it's folder. View available commands here:
 
 - [Seed Commands](https://github.com/TeamMaestro/angular-native-seed/wiki/Seed-Commands)
 
-## How To's
-- [Integrating Angular Material (`@angular/material`)](https://github.com/TeamMaestro/angular-native-seed/wiki/Integrating-Material-for-Web)
+## Credits
 
-## Workspace Options
-- [VSCode WorkSpace Settings](https://github.com/TeamMaestro/angular-native-seed/wiki/Optional:-VSCode-WorkSpace-Settings)
-
-| | |
-|:---: |:---:|
-|![Web Preview](https://i.gyazo.com/1ba4d3be7b7332ce91bd6715dc752d8b.gif)|![Native Preview](https://i.gyazo.com/0a88b56cff9af632f618e5b123502f5f.gif)|
-
-# Contributors 
-
-[<img alt="Don Burgess" src="https://avatars1.githubusercontent.com/u/7612751?v=3&s=117" width="117">](https://github.com/db3dev) | [<img alt="Sean perkins" src="https://avatars1.githubusercontent.com/u/13732623?v=3&s=117" width="117">](https://github.com/sean-perkins) |
-:---: |:---: |
-[Don Burgess](https://github.com/db3dev) |[Sean Perkins](https://github.com/sean-perkins)|
+This project is based on the [Angular NativeScript Seed](https://github.com/TeamMaestro/angular-native-seed) by TeamMaestro.
