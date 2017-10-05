@@ -21,14 +21,16 @@ Build truly web and native applications using NativeScript and Angular. This see
 Web is setup from the root.
 
 ```
-npm i
+npm install
+npm start
 ```
 
 Mobile is setup from the `nativescript` folder.
 
 ```
 cd nativescript
-npm i
+npm install
+npm run android.phone
 ```
 
 Each platform is run respective to it's folder. View available commands here:
