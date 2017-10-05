@@ -20,6 +20,7 @@ import { LabelClass } from './label.directive';
   templateUrl: './issues.template.html'
 })
 export class IssuesComponent {
+    public isLoading: boolean = true;
     public selectedPeriod: number = 3;
     public issues: any;
     public allIssues: any;
@@ -42,6 +43,7 @@ export class IssuesComponent {
             data = data.reduce((agg, curr) => [...agg, ...curr], []).filter(issue => issue.pull_request ? false : true);
             this.allIssues = data;
             this.applyPaging(this.issuesProcessor.filterByMonth(this.allIssues, this.months))
+            this.isLoading = false;
         });
     }
 
