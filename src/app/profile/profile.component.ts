@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
     templateUrl: './profile.template.html'
 })
 export class ProfileComponent {
-    public user = {};
+    public user: any = {};
     private profileDialogVisible = false;
     private deleteDialogVisible = false;
 

@@ -26,10 +26,10 @@ import 'hammerjs';
     templateUrl: './dashboard.template.html'
 })
 export class DashboardComponent {
+    public today: Date = new Date();
+    public rangeStart: Date;
     private issues: any;
-    private today: Date = new Date();
     private months: number = 3;
-    private rangeStart: Date = this.issuesProcessor.getMonthsRange(this.months);
     private data: any;
     private subscription: Subscription;
     private selectedIndex: number = 0;
@@ -38,6 +38,8 @@ export class DashboardComponent {
     @HostBinding('class') get get_class() { return "dashboard"; }
 
     constructor(public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
+        this.rangeStart = this.issuesProcessor.getMonthsRange(this.months);
+
         this.subscription = githubService
             .getGithubIssues({pages: 14})
             .map(data => {
