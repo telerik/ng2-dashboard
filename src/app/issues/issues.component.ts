@@ -20,6 +20,7 @@ import { LabelClass } from './label.directive';
   templateUrl: './issues.template.html'
 })
 export class IssuesComponent {
+    public selectedPeriod: number = 3;
     public issues: any;
     public allIssues: any;
     public view: any;
@@ -45,10 +46,12 @@ export class IssuesComponent {
     }
 
     onFilterClick(e) {
+        this.selectedPeriod = e;
         this.skip = 0;
         this.months = e;
         this.range = this.dateRange();
         this.applyPaging(this.issuesProcessor.filterByMonth(this.allIssues, e));
+        
     }
 
     onPageChange(e) {
