@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 
                 <div class="row">
 
-                    <div class="col-sm-12 col-md-6 col-lg active-issues">
+                    <div class="col-12 col-lg-6 col-xl pb-4 active-issues">
                         <span class="comp-label">
                             <strong>{{ issues.open + issues.closed }}</strong>
                             <small>Active issues</small>
@@ -35,7 +35,7 @@ import { Component, Input } from '@angular/core';
                         </kendo-chart>
                     </div>
 
-                    <div class="col-sm-12 col-md-6 col-lg text-success closed-issues">
+                    <div class="col-12 col-lg-6 col-xl pb-4 text-success closed-issues">
                         <span class="comp-label">
                             <strong>{{ issues.closed }}</strong>
                             <small>Closed issues</small>
@@ -61,7 +61,7 @@ import { Component, Input } from '@angular/core';
                         </kendo-chart>
                     </div>
 
-                    <div class="col-sm-12 col-md-6 col-lg text-danger open-issues">
+                    <div class="col-12 col-lg-6 col-xl pb-4 text-danger open-issues">
                         <span class="comp-label">
                             <strong>{{ issues.open }}</strong>
                             <small>Open issues</small>
@@ -87,7 +87,7 @@ import { Component, Input } from '@angular/core';
                         </kendo-chart>
                     </div>
 
-                    <div class="col-sm-12 col-md-6 col-lg close-rate">
+                    <div class="col-12 col-lg-6 col-xl pb-4 close-rate">
                         <span class="comp-label">
                             <strong>{{ issues.closeRate.average | percent:'2.0-0' }}</strong>
                             <small>Close rate</small>
@@ -124,28 +124,31 @@ import { Component, Input } from '@angular/core';
 
                 </div>
 
-
-                <h3>All issues</h3>
-                <kendo-chart>
-                    <kendo-chart-series-defaults type="column" [stack]="true" [gap]="0.06" [overlay]="false"></kendo-chart-series-defaults>
-                    <kendo-chart-series>
-                        <kendo-chart-series-item [opacity]="0.3" [border]="{color: '#35C473', opacity: 0.3}" [color]="'#35C473'" [data]="data.open" field="count" categoryField="date" aggregate="count"></kendo-chart-series-item>
-                        <kendo-chart-series-item [opacity]="0.3" [border]="{color: '#CC3458', opacity: 0.3}" [color]="'#CC3458'" [data]="data.closed" field="count" categoryField="date" aggregate="count"></kendo-chart-series-item>
-                    </kendo-chart-series>
-                    <kendo-chart-category-axis>
-                        <kendo-chart-category-axis-item
-                            [baseUnit]="baseUnit"
-                            [majorTicks]="{visible: false}"
-                            [line]="{visible: false}"
-                            [majorGridLines]="{visible: false}"
-                            [labels]="{rotation: 'auto', margin: { top: 8 }}"
-                        ></kendo-chart-category-axis-item>
-                    </kendo-chart-category-axis>
-                    <kendo-chart-value-axis>
-                        <kendo-chart-value-axis-item [line]="{visible: false}" [labels]="{step: 2, skip: 2, margin: { right: 4 }}" [majorGridLines]="{step: 2, skip: 2, color: '#F0F2F2'}">
-                        </kendo-chart-value-axis-item>
-                    </kendo-chart-value-axis>
-                </kendo-chart>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>All issues</h3>
+                        <kendo-chart>
+                            <kendo-chart-series-defaults type="column" [stack]="true" [gap]="0.06" [overlay]="false"></kendo-chart-series-defaults>
+                            <kendo-chart-series>
+                                <kendo-chart-series-item [opacity]="0.3" [border]="{color: '#35C473', opacity: 0.3}" [color]="'#35C473'" [data]="data.open" field="count" categoryField="date" aggregate="count"></kendo-chart-series-item>
+                                <kendo-chart-series-item [opacity]="0.3" [border]="{color: '#CC3458', opacity: 0.3}" [color]="'#CC3458'" [data]="data.closed" field="count" categoryField="date" aggregate="count"></kendo-chart-series-item>
+                            </kendo-chart-series>
+                            <kendo-chart-category-axis>
+                                <kendo-chart-category-axis-item
+                                    [baseUnit]="baseUnit"
+                                    [majorTicks]="{visible: false}"
+                                    [line]="{visible: false}"
+                                    [majorGridLines]="{visible: false}"
+                                    [labels]="{rotation: 'auto', margin: { top: 8 }}"
+                                ></kendo-chart-category-axis-item>
+                            </kendo-chart-category-axis>
+                            <kendo-chart-value-axis>
+                                <kendo-chart-value-axis-item [line]="{visible: false}" [labels]="{step: 2, skip: 2, margin: { right: 4 }}" [majorGridLines]="{step: 2, skip: 2, color: '#F0F2F2'}">
+                                </kendo-chart-value-axis-item>
+                            </kendo-chart-value-axis>
+                        </kendo-chart>
+                    </div>
+                </div>
 
             </div>
         </div>
