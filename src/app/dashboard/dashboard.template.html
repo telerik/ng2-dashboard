@@ -1,16 +1,16 @@
-<div class="row mb-4">
-    <div class="col-sm">
-        <h2>
-            <span class="small text-uppercase text-muted d-block">Statistics</span>
-            {{ rangeStart | date }} - {{ today | date }}
-        </h2>
-    </div>
-    <div class="col-sm text-sm-right">
+<div class="row">
+    <div class="col-md text-center text-md-right mb-4">
         <kendo-buttongroup [selection]="'single'">
             <button kendoButton [togglable]="true" (click)="onFilterClick(3)" [selected]="true">3 Months</button>
             <button kendoButton [togglable]="true" (click)="onFilterClick(6)">6 Months</button>
             <button kendoButton [togglable]="true" (click)="onFilterClick(12)">1 Year</button>
         </kendo-buttongroup>
+    </div>
+    <div class="col-md order-md-first text-center text-md-left">
+        <h2>
+            <span class="small text-uppercase text-muted d-block">Statistics</span>
+            {{ rangeStart | date }} - {{ today | date }}
+        </h2>
     </div>
 </div>
 <kendo-tabstrip (select)="onTabSelect($event)">

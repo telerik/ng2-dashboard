@@ -1,22 +1,22 @@
-<div class="row mb-4">
-    <div class="col-sm">
-        <h2>
-            <span class="small text-uppercase text-muted d-block">Issues</span>
-            {{range.from | date}} - {{range.to | date}}
-        </h2>
-    </div>
-    <div class="col-sm text-sm-right">
+<div class="row">
+    <div class="col-md text-center text-md-right mb-4">
         <kendo-buttongroup [disabled]="isLoading" [selection]="'single'">
             <button kendoButton [disabled]="isLoading" (click)="onFilterClick(3)" [selected]="selectedPeriod === 3 ? true : false">3 Months</button>
             <button kendoButton [disabled]="isLoading" (click)="onFilterClick(6)" [selected]="selectedPeriod === 6 ? true : false">6 Months</button>
             <button kendoButton [disabled]="isLoading" (click)="onFilterClick(12)" [selected]="selectedPeriod === 12 ? true : false">1 Year</button>
         </kendo-buttongroup>
     </div>
+    <div class="col-md order-md-first text-center text-md-left">
+        <h2>
+            <span class="small text-uppercase text-muted d-block">Issues</span>
+            {{range.from | date}} - {{range.to | date}}
+        </h2>
+    </div>
 </div>
 <kendo-grid
     [data]="view"
     [pageSize]="pageSize"
-    [pageable]="{ pageSizes: true }"
+    [pageable]="{ pageSizes: true, buttonCount: 3 }"
     [skip]="skip"
     [scrollable]="'none'"
     (pageChange)='onPageChange($event)'
@@ -35,19 +35,19 @@
             {{ dataItem.title }}
         </ng-template>
     </kendo-grid-column>
-    <kendo-grid-column field="labels" title="Labels" width="100">
+    <kendo-grid-column field="labels" title="Labels" [media]="'sm'">
         <ng-template kendoGridCellTemplate let-dataItem>
             <span *ngFor="let label of dataItem.labels" class="badge" [labelClass]="label.name">
                 {{ label.name }}
             </span>
         </ng-template>
     </kendo-grid-column>
-     <kendo-grid-column field="milestone" title="Milestone" width="150">
+     <kendo-grid-column field="milestone" title="Milestone" width="200" [media]="'xl'">
         <ng-template kendoGridCellTemplate let-dataItem>
              {{ dataItem.milestone ? dataItem.milestone.title : '' }}
         </ng-template>
     </kendo-grid-column>
-    <kendo-grid-column field="assignee" title="Assignee" width="150">
+    <kendo-grid-column field="assignee" title="Assignee" width="200" [media]="'xl'">
          <ng-template kendoGridCellTemplate let-dataItem>
              <img *ngIf="dataItem.assignee" [src]="dataItem.assignee? dataItem.assignee.avatar_url : undefined" [ngStyle]="{'width': '30px', 'height': '30px'}" class="img-circle" />
             {{ dataItem.assignee ? dataItem.assignee.login : '' }}

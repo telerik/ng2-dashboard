@@ -63,7 +63,7 @@ kendo-tabstrip {
 #nav {
 	padding-left: $grid-gutter-width * 1.5;
 	padding-right: $grid-gutter-width * 1.5;
-	width: 320px;
+	width: 220px;
 	box-sizing: border-box;
 	flex-basis: auto;
 	flex-grow: 0;
@@ -102,6 +102,18 @@ kendo-tabstrip {
 		color: inherit;
 	}
 }
+@media (min-width: 768px) {
+	#nav {
+		width: 220px;
+	}
+}
+
+@media (min-width: 1500px) {
+	#nav {
+		width: 320px;
+	}
+}
+
 #app-title {
 	margin: 0;
 	font-weight: normal;
@@ -131,7 +143,7 @@ kendo-tabstrip {
 .top-bar {
 	padding: .25em;
 	font-size: 32px;
-	line-height: 1;
+	line-height: 1.01;
 
 	&:before { content: "."; display: block; }
 }
@@ -175,8 +187,14 @@ main {
 
 
 	// Cards
-	.card {}
+	.card {
+		margin-top: $spacer * 1.5;
+	}
 	.card .card-header {}
+}
+
+.img-circle {
+	border-radius: 50%;
 }
 
 
@@ -186,10 +204,6 @@ main {
 .dashboard {
 	display: block;
 
-
-	.card {
-		margin-top: $spacer * 1.5;
-	}
 	.card-block {
 		position: relative;
 	}
@@ -226,7 +240,7 @@ main {
 			display: block;
 		}
 		small {
-			font-size: .875em;
+			font-size: .7em;
 			text-transform: uppercase;
 			display: block;
 		}
@@ -243,6 +257,9 @@ main {
 	.close-rate {
 		.k-chart {
 			padding-top: 6px;
+		}
+		.small {
+			font-size: .7em;
 		}
 	}
 
@@ -271,7 +288,9 @@ main {
 .issues {
 	display: block;
 
-
+	.k-grid {
+		margin-top: $spacer * 1.5;
+	}
 	.badge {
 		margin-right: .5em;
 	}
@@ -290,6 +309,33 @@ main {
 	.issue-closed { background-image: url( "assets/issue-closed.png" ) }
 }
 
+
+// Issues Grid
+
+.k-grid td {
+	vertical-align: top;
+}
+
+.k-grid .title-cell {
+	width: calc(100% - 25px);
+}
+
+.k-pager-wrap .k-pager-info,
+.k-pager-wrap .k-pager-sizes  {
+	display: none;
+}
+
+@media (min-width: 992px) {
+	.k-pager-wrap .k-pager-sizes {
+		display: flex;
+	}
+}
+
+@media (min-width: 1200px) {
+	.k-pager-wrap .k-pager-info {
+		display: flex;
+	}
+}
 
 
 

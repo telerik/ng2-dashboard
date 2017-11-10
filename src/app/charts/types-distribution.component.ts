@@ -5,10 +5,10 @@ import { Component, Input, OnInit } from '@angular/core';
     template: `
         <div class="card">
             <h4 class="card-header">Types Distribution</h4>
-            <div class="row card-block small">
+            <div class="row card-block pb-0 small">
                 <a *ngFor="let button of seriesColors" (click)="addSeries(button, true)"
                     [style.color]="button.active ? button.value : initialGrey"
-                    class="col-xs-4 col-sm-3 col-md comp-label">
+                    class="col-6 col-lg-4 col-xl-2 pb-3 comp-label">
                     <strong>{{data[button.label].length}}</strong>
                     <small>{{button.label}}</small>
                 </a>

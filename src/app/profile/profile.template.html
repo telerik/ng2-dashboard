@@ -1,29 +1,29 @@
 <div *ngIf="user.id" >
 
-    <div class="row mb-4">
-        <div class="col-sm">
+    <div class="row">
+        <div class="col-md text-center text-md-left mb-3">
             <h2>
                 <span class="small text-uppercase text-muted d-block">Account</span>
                 {{user.login}} - {{user.name}}
             </h2>
         </div>
-        <div class="col-sm text-sm-right">
-            <button class="btn btn-secondary" (click)="onSignOutClick()">Sign out</button>
+        <div class="col-md text-center text-md-right">
+            <button class="btn btn-light" (click)="onSignOutClick()">Sign out</button>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-7">
+        <div class="col-12 col-lg-6 col-xl-8">
 
             <div class="card" id="profile">
                 <h3 class="card-header">Public Profile</h3>
                 <div class="card-block">
 
                     <div class="row">
-                        <div class="col-md-3 text-xs-center">
-                            <img [src]="user.avatar_url" [ngStyle]="{'max-width': '100%'}" class="img-circle mx-auto" />
+                        <div class="col-md-3 col-lg-12 col-xl-3 text-center">
+                            <img [src]="user.avatar_url" [ngStyle]="{'max-width': '100%'}" class="img-circle mx-auto mb-3" />
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-9 col-lg-12 col-xl-9">
                             <div class="form-group">
                                 <label class="h6">Username</label>
                                 <input type="text" id="username" class="form-control" [value]="user.login" />
@@ -65,7 +65,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-12 col-lg-6 col-xl-4">
 
             <div class="card" id="notifications">
                 <h3 class="card-header">Notifications</h3>
