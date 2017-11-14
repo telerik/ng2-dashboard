@@ -35,19 +35,19 @@
             {{ dataItem.title }}
         </ng-template>
     </kendo-grid-column>
-    <kendo-grid-column field="labels" title="Labels" [media]="'sm'">
+    <kendo-grid-column field="labels" title="Labels" media="sm">
         <ng-template kendoGridCellTemplate let-dataItem>
             <span *ngFor="let label of dataItem.labels" class="badge" [labelClass]="label.name">
                 {{ label.name }}
             </span>
         </ng-template>
     </kendo-grid-column>
-     <kendo-grid-column field="milestone" title="Milestone" width="200" [media]="'xl'">
+     <kendo-grid-column field="milestone" title="Milestone" width="200" media="xl">
         <ng-template kendoGridCellTemplate let-dataItem>
              {{ dataItem.milestone ? dataItem.milestone.title : '' }}
         </ng-template>
     </kendo-grid-column>
-    <kendo-grid-column field="assignee" title="Assignee" width="200" [media]="'xl'">
+    <kendo-grid-column field="assignee" title="Assignee" width="200" media="xl">
          <ng-template kendoGridCellTemplate let-dataItem>
              <img *ngIf="dataItem.assignee" [src]="dataItem.assignee? dataItem.assignee.avatar_url : undefined" [ngStyle]="{'width': '30px', 'height': '30px'}" class="img-circle" />
             {{ dataItem.assignee ? dataItem.assignee.login : '' }}
