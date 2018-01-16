@@ -1,3 +1,7 @@
+// scss source <nativescript/src>
+@import '~nativescript-theme-core/scss/ruby';
+@import '~nativescript-theme-core/scss/index';
+
 SegmentedBar, ActionBar {
     border-color: transparent;
     background-color: theme-color(primary);
