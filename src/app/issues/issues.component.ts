@@ -2,7 +2,8 @@ import { Component, ViewEncapsulation, NgModule, HostBinding } from '@angular/co
 import { CommonModule } from '@angular/common';
 import { MarkdownComponent } from '../markdown/markdown.component';
 import { Http, Headers } from '@angular/http';
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import { GithubService } from './../shared/github.service';
 import { IssuesProcessor } from './../shared/issues-processor.service';
 import { GridModule } from '@progress/kendo-angular-grid';
@@ -20,8 +21,8 @@ import { LabelClass } from './label.directive';
   templateUrl: './issues.template.html'
 })
 export class IssuesComponent {
-    public isLoading: boolean = true;
-    public selectedPeriod: number = 3;
+    public isLoading = true;
+    public selectedPeriod = 3;
     public issues: any;
     public allIssues: any;
     public view: any;
@@ -53,7 +54,7 @@ export class IssuesComponent {
         this.months = e;
         this.range = this.dateRange();
         this.applyPaging(this.issuesProcessor.filterByMonth(this.allIssues, e));
-        
+
     }
 
     onPageChange(e) {
@@ -70,13 +71,13 @@ export class IssuesComponent {
         return {
             data: this.issues.slice(skip, skip + take),
             total: this.issues.length
-        }
+        };
     }
 
     dateRange() {
         return {
             to: new Date(),
             from: this.issuesProcessor.getMonthsRange(this.months)
-        }
+        };
     }
 }

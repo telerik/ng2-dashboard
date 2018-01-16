@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Http, HttpModule } from '@angular/http';
-// vendor dependencies
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule } from '@angular/common/http';
+
 // app
 import { Config } from './common/index';
 import { AppComponent } from './app.component';
-import { SHARED_MODULES } from './app.common';
+import { SHARED_MODULES, SHARED_PROVIDERS } from './app.common';
 
 // Kendo UI
 import { GridModule } from '@progress/kendo-angular-grid';
@@ -32,10 +30,6 @@ import { IssueTypesComponent } from './charts/issue-types.component';
 import { StatisticsComponent } from './charts/statistics.component';
 
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
-
-export function createTranslateLoader(http: Http) {
-    return new TranslateHttpLoader(<any>http, './assets/i18n/', '.json');
-}
 
 @NgModule({
     declarations: [
@@ -61,17 +55,12 @@ export function createTranslateLoader(http: Http) {
         ButtonsModule,
         BrowserAnimationsModule,
         LayoutModule,
-        HttpModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: (createTranslateLoader),
-                deps: [Http]
-            }
-        }),
+        HttpClientModule,
         ...SHARED_MODULES
     ],
-    providers: [],
+    providers: [
+        ...SHARED_PROVIDERS,
+    ],
     bootstrap: [ AppComponent ]
 })
 export class AppModule {}

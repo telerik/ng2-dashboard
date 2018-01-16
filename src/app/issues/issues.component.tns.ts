@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
-import 'rxjs/add/operator/combineLatest';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
 
 import { GithubService } from './../shared/github.service';
 import { IssuesProcessor } from './../shared/issues-processor.service';
@@ -43,9 +47,9 @@ export interface Issue {
     templateUrl: './issues.template.html'
 })
 export class IssuesComponent {
-    loading: boolean = true;
+    loading = true;
     filteredIssues$: Observable<Issue[]>;
-  
+
     constructor(public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
       const activeIssues = githubService
         .getGithubIssues({ pages: 2 })
