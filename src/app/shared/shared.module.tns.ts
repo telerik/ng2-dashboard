@@ -1,5 +1,7 @@
 import { NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 
+import { RouterModule } from '../common';
+
 import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 
@@ -7,7 +9,8 @@ import { NativeScriptFormsModule } from 'nativescript-angular/forms';
     declarations: [],
     exports: [
         NativeScriptModule,
-        NativeScriptFormsModule
+        NativeScriptFormsModule,
+        RouterModule,
     ],
     schemas: [ NO_ERRORS_SCHEMA ]
 })

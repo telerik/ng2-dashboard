@@ -1,31 +1,27 @@
 import { Component, ViewEncapsulation, NgModule, HostBinding } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { GithubService } from './../shared/github.service'
-import { IssuesProcessor } from './../shared/issues-processor.service'
 
+// import { IssueTypesComponent } from '../charts/issue-types.component';
+// import { TypesDistributionComponent } from '../charts/types-distribution.component';
+// import { ActiveIssuesComponent } from '../charts/active-issues.component';
+// import { StatisticsComponent } from '../charts/statistics.component';
 
-import { IssueTypesComponent } from '../charts/issue-types.component';
-import { TypesDistributionComponent } from '../charts/types-distribution.component';
-import { ActiveIssuesComponent } from '../charts/active-issues.component';
-import { StatisticsComponent } from '../charts/statistics.component';
-
-import { IssuesModel } from './../shared/issues.model';
-import { ChartsModule } from '@progress/kendo-angular-charts';
-import { ButtonsModule } from '@progress/kendo-angular-buttons';
-import { LayoutModule } from '@progress/kendo-angular-layout';
+import { IssuesModel } from './../../shared/issues.model';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/merge';
-
 // import 'hammerjs';
+
+import { GithubService } from './../../shared/github.service';
+import { IssuesProcessor } from './../../shared/issues-processor.service';
 
 @Component({
     moduleId: module.id,
     selector: 'dashboard',
-    providers: [GithubService, IssuesProcessor],
+    // providers: [GithubService, IssuesProcessor],
     encapsulation: ViewEncapsulation.None,
     templateUrl: './dashboard.template.html'
 })
@@ -38,8 +34,8 @@ export class DashboardComponent {
     private subscription: Subscription;
     private selectedIndex = 0;
 
-    @HostBinding('attr.id') get get_id() { return 'dashboard'; }
-    @HostBinding('class') get get_class() { return 'dashboard'; }
+    // @HostBinding('attr.id') get get_id() { return 'dashboard'; }
+    // @HostBinding('class') get get_class() { return 'dashboard'; }
 
     constructor(public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
         this.rangeStart = this.issuesProcessor.getMonthsRange(this.months);

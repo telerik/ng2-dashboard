@@ -1,9 +1,9 @@
 import { Component, ViewEncapsulation, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GithubService } from './../shared/github.service';
-import { ButtonsModule } from '@progress/kendo-angular-buttons';
-import { DialogModule } from '@progress/kendo-angular-dialog';
-import { InputsModule } from '@progress/kendo-angular-inputs';
+import { GithubService } from './../../shared/github.service';
+// import { ButtonsModule } from '@progress/kendo-angular-buttons';
+// import { DialogModule } from '@progress/kendo-angular-dialog';
+// import { InputsModule } from '@progress/kendo-angular-inputs';
 import { Router } from '@angular/router';
 
 @Component({

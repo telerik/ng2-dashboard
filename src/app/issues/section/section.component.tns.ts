@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'ns-section',
-  styles: [require("../app-styles").all],
+  styles: [require('../../app-styles').all],
   template: `
     <GridLayout rows="auto auto auto" [row]="row">
         <Label *ngIf="title" [text]="title" class="section-title" margin="16 16 4 16"></Label>

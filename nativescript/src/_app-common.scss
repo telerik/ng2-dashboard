@@ -4,16 +4,16 @@
 
 SegmentedBar, ActionBar {
     border-color: transparent;
-    background-color: theme-color(primary);
+    background-color: theme-color(black); //primary
     color: white;
   }
   
   .issue-open {
-    background-color: theme-color(success); // #2AC46D;
+    background-color: theme-color(#2AC46D); //success
   }
   
   .issue-closed {
-    background-color: theme-color(danger); //#CF3257;
+    background-color: theme-color(#CF3257); //danger
   }
   
   .tag,.avatar-small {
@@ -48,7 +48,7 @@ SegmentedBar, ActionBar {
   }
   
   .username {
-    color: theme-color(primary);
+    color: theme-color(black); //primary
     vertical-align: center;
     margin: 0 12;
   }
@@ -101,6 +101,6 @@ SegmentedBar, ActionBar {
   }
   
   .link-btn {
-    color: theme-color(primary);
+    color: theme-color(black); //primary
   }
   

@@ -11,16 +11,20 @@ import { Router } from '@angular/router';
 })
 export class SigninComponent {
     constructor(private router: Router) {}
+    public email = 'ggkrustev';
+    public password = 'passw0rd';
 
     @HostBinding('attr.id') protected get id(): string {
         return 'signin';
     }
 
     @HostBinding('class') protected get appClass(): string {
-        return 'signin'
+        return 'signin';
     }
 
     public onLoginClick() {
-        this.router.navigate(['/dashboard']);
+        // this.router.navigate(['/dashboard']);
+        // this.router.navigate(['/issues']);
+        this.router.navigate(['/profile']);
     }
 }

@@ -1,5 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
-import { User } from './../shared/issues.model';
+import { User } from './../../shared/issues.model';
 
 @Component({
   selector: 'ns-user',

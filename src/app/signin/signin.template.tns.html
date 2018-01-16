@@ -1,0 +1,21 @@
+<ActionBar title="Signin" class="action-bar">
+</ActionBar>
+
+<GridLayout backgroundColor="#CCCCCC">
+    <StackLayout verticalAlignment="center">
+        <StackLayout class="form m-10 p-15" backgroundColor="#FFFFFF">
+            <StackLayout class="input-field">
+                <Label text="Email" class="label font-weight-bold m-b-5"></Label>
+                <TextField [text]="email" class="input"></TextField>
+                <StackLayout class="hr-light"></StackLayout>
+            </StackLayout>
+            <StackLayout class="input-field">
+                <Label text="Password" class="label font-weight-bold m-b-5"></Label>
+                <TextField [text]="password" secure="true" class="input"></TextField>
+                <StackLayout class="hr-light"></StackLayout>
+            </StackLayout>
+            <Button class="btn btn-primary w-full" text="Login" [nsRouterLink]="['/issues']" clearHistory="true"></Button>
+            <Label text="Forgot it?" class="text-center footnote"></Label>
+        </StackLayout>
+    </StackLayout>
+</GridLayout>

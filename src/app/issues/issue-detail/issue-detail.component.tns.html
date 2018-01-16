@@ -1,11 +1,12 @@
-<ActionBar [title]="'Issue #' + issue?.id" [class.issue-open]="issue?.state === 'open'" [class.issue-closed]="issue?.state === 'closed'">
-  <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" (tap)="onNavBtnTap()"></NavigationButton>
+<!-- <ActionBar [title]="'Issue #' + id" [class.issue-open]="issue?.state === 'open'" [class.issue-closed]="issue?.state === 'closed'"> -->
+<ActionBar [title]="'Issue #' + id" class="action-bar">
+  <!-- <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" (tap)="onNavBtnTap()"></NavigationButton> -->
 </ActionBar>
 
-<GridLayout rows="auto *">
+<GridLayout rows="auto *" class="m-5">
   <!-- Header -->
   <StackLayout *ngIf="issue" class="issue-detail-title" [class.issue-open]="issue?.state === 'open'" [class.issue-closed]="issue?.state === 'closed'">
-    <Label [text]="issue?.title" textWrap="true" class="title"></Label>
+    <Label [text]="issue?.title" textWrap="true" class="h2 text-center"></Label>
     <Label [text]="issue?.state | uppercase" class="status-tag"></Label>
   </StackLayout>
 

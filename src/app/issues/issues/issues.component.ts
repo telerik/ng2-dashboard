@@ -1,30 +1,25 @@
-import { Component, ViewEncapsulation, NgModule, HostBinding } from '@angular/core';
+import { Component, ViewEncapsulation, NgModule, HostBinding, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MarkdownComponent } from '../markdown/markdown.component';
-import { Http, Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { GithubService } from './../shared/github.service';
-import { IssuesProcessor } from './../shared/issues-processor.service';
+
+import { GithubService } from './../../shared/github.service';
+import { IssuesProcessor } from './../../shared/issues-processor.service';
+
 import { GridModule } from '@progress/kendo-angular-grid';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
-import { LabelClass } from './label.directive';
 
 @Component({
-    moduleId: module.id,
-    selector: 'issues',
-    encapsulation: ViewEncapsulation.None,
-    providers: [
-    GithubService,
-    IssuesProcessor
-    ],
-  templateUrl: './issues.template.html'
+  moduleId: module.id,
+  selector: 'issues',
+  templateUrl: './issues.component.html'
 })
-export class IssuesComponent {
+export class IssuesComponent implements OnInit {
     public isLoading = true;
     public selectedPeriod = 3;
-    public issues: any;
-    public allIssues: any;
+    public issues: any[];
+    public allIssues: any[];
     public view: any;
     public total = 5;
     public pageSize = 10;
@@ -39,22 +34,29 @@ export class IssuesComponent {
     @HostBinding('attr.id') get get_id() { return 'issues'; }
     @HostBinding('class') get get_class() { return 'issues'; }
 
-    constructor(public http: Http, public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
+    constructor(public http: HttpClient, public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
         githubService.getGithubIssues({pages: 12}).subscribe((data: any[]) => {
             data = data.reduce((agg, curr) => [...agg, ...curr], []).filter(issue => issue.pull_request ? false : true);
             this.allIssues = data;
-            this.applyPaging(this.issuesProcessor.filterByMonth(this.allIssues, this.months))
+            this.applyPaging(this.issuesProcessor.filterByMonth(this.allIssues, this.months));
             this.isLoading = false;
         });
     }
 
+    ngOnInit(): void {
+        // this.githubService.getGithubIssues({pages: 12}).map((data: any[]) => {
+        //     data = data.reduce((agg, curr) => [...agg, ...curr], []).filter(issue => issue.pull_request ? false : true);
+        //     this.allIssues = data;
+        //     this.applyPaging(this.issuesProcessor.filterByMonth(this.allIssues, this.months));
+        //     this.isLoading = false;
+        // });
+    }
     onFilterClick(e) {
         this.selectedPeriod = e;
         this.skip = 0;
         this.months = e;
         this.range = this.dateRange();
         this.applyPaging(this.issuesProcessor.filterByMonth(this.allIssues, e));
-
     }
 
     onPageChange(e) {
