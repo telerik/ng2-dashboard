@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/merge';
-// import 'hammerjs';
+import 'hammerjs';
 
 import { GithubService } from './../../shared/github.service';
 import { IssuesProcessor } from './../../shared/issues-processor.service';
@@ -34,8 +34,8 @@ export class DashboardComponent {
     private subscription: Subscription;
     private selectedIndex = 0;
 
-    // @HostBinding('attr.id') get get_id() { return 'dashboard'; }
-    // @HostBinding('class') get get_class() { return 'dashboard'; }
+    @HostBinding('attr.id') get get_id() { return 'dashboard'; }
+    @HostBinding('class') get get_class() { return 'dashboard'; }
 
     constructor(public githubService: GithubService, public issuesProcessor: IssuesProcessor) {
         this.rangeStart = this.issuesProcessor.getMonthsRange(this.months);
