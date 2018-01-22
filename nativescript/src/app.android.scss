@@ -1,4 +1,3 @@
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
+// scss source <nativescript/src>
 @import 'app-common';
-@import '~nativescript-theme-core/css/core.light.css';
+@import '~nativescript-theme-core/scss/platforms/index.android';

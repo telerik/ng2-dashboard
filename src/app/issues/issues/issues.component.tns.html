@@ -1,0 +1,31 @@
+<ActionBar title="Issues" class="action-bar">
+</ActionBar>
+<GridLayout rows="*">
+  <ListView [items]="filteredIssues$ | async" row="0">
+    <ng-template let-item="item" let-i="index">
+      
+      <GridLayout rows="auto, auto, auto" columns="auto, *, auto" [nsRouterLink]="['detail', item.id]">
+        <Image [src]='item.state | statusImage' col="0" rowSpan="3" class="status-image"></Image>
+        <Label [text]='"#" + item.id' col="2" rowSpan="3" class="issue-number"></Label>
+
+        <Label class="issue-title" [text]='item.title' col="1" row="0" textWrap="true"></Label>
+        <Label [text]='"by " + item.author.name + " on " + (item.date | date)' col="1" row="1" textWrap="true" class="author"></Label>
+
+        <WrapLayout orientation="horizontal" col="1" row="2" margin="6 0">
+          <Image [src]="item.author.avatarUrlThumb" class="avatar-small"></Image>
+
+          <Label 
+            *ngFor="let label of item.labels"
+            [text]="label.name"
+            [style.backgroundColor]="label.color"
+            class="tag">
+          </Label>
+        </WrapLayout>
+
+      </GridLayout>
+
+    </ng-template>
+  </ListView>
+
+  <ActivityIndicator width="100" height="100" [busy]="loading" row="0"></ActivityIndicator>
+</GridLayout>

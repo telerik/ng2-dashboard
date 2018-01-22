@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, HostBinding, HostListener, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 
 @Component({
