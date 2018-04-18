@@ -226,7 +226,6 @@ main {
 		overflow: hidden;
 	}
 
-
 	.comp-label {
 		-webkit-user-select: none;
 		-moz-user-select: none;
@@ -278,6 +277,16 @@ main {
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+	}
+}
+
+@media (max-width: 591px) {
+	.dashboard {
+		.k-tabstrip .k-tabstrip-items {
+			position: relative;
+			top: calc( 1.75em + 6px);
+			font-size: 11px;
+		}
 	}
 }
 
